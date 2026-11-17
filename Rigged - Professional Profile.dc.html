@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #05090D; }
+  * { box-sizing: border-box; }
+  a { color: #F4F7FA; text-decoration: none; }
+  a:hover { color: #6EC6FF; }
+  input, select, button { font: inherit; }
+  :focus-visible { outline: 1.5px solid #6EC6FF; outline-offset: 3px; }
+  ::selection { background: rgba(110,198,255,0.3); color: #F4F7FA; }
+  @keyframes rig-rise { 0% { opacity: 0; transform: translate3d(0, 14px, 0); } 100% { opacity: 1; transform: none; } }
+  @keyframes rig-pulse { 0% { box-shadow: 0 0 0 0 rgba(61,214,140,0.55); } 70% { box-shadow: 0 0 0 7px rgba(61,214,140,0); } 100% { box-shadow: 0 0 0 0 rgba(61,214,140,0); } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 1ms !important; animation-delay: 0ms !important; } }
+</style>
+</helmet>
+
+
+<div style="font-family: 'Archivo', system-ui, sans-serif; background: #05090D; color: #F4F7FA; -webkit-font-smoothing: antialiased; letter-spacing: -0.005em; min-height: 100vh; display: flex; flex-direction: column;">
+
+  <header style="position: sticky; top: 0; z-index: 20; padding: 12px 16px 0; margin-bottom: -70px;">
+    <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 0 10px 0 22px; height: 58px; display: flex; align-items: center; gap: 24px; border-radius: 16px; background: rgba(6,10,15,0.72); backdrop-filter: blur(28px) saturate(1.4); -webkit-backdrop-filter: blur(28px) saturate(1.4); border: 1px solid rgba(255,255,255,0.10); box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), 0 10px 32px -14px rgba(0,0,0,0.7);">
+      <span aria-hidden="true" style="position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.45) 50%, rgba(255,255,255,0) 100%); pointer-events: none;"></span>
+      <a href="Rigged - Ocean Deep.dc.html" aria-label="Rigged home" style="flex: none; display: flex; align-items: center;"><img src="logo-rigged-3.svg" alt="Rigged" style="height: 24px; width: auto; display: block;" /></a>
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <nav style="flex: 1 1 auto; min-width: 0; display: flex; gap: 2px;">
+        <a href="Rigged - Job Search.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #C2CCD6; padding: 8px 9px; border-radius: 3px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #F4F7FA; background: rgba(110,198,255,0.08);">Career</a>
+        <a href="Rigged - Certification.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #C2CCD6; padding: 8px 9px; border-radius: 3px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #F4F7FA; background: rgba(110,198,255,0.08);">Certification</a>
+        <a href="Rigged - Insights.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #C2CCD6; padding: 8px 9px; border-radius: 3px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #F4F7FA; background: rgba(110,198,255,0.08);">Insights</a>
+        <a href="#" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #C2CCD6; padding: 8px 9px; border-radius: 3px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #F4F7FA; background: rgba(110,198,255,0.08);">Contact us</a>
+        <a href="#" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #C2CCD6; padding: 8px 9px; border-radius: 3px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #F4F7FA; background: rgba(110,198,255,0.08);">For business</a>
+      </nav>
+      </sc-if>
+      <a href="#" aria-current="page" style="flex: none; margin-left: auto; display: flex; align-items: center; gap: 12px; padding: 5px 5px 5px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); transition: border-color 170ms ease, background 170ms ease;" style-hover="border-color: rgba(125,183,216,0.7); background: rgba(110,198,255,0.08); color: #F4F7FA;">
+        <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #F4F7FA; white-space: nowrap;">{{ firstName }}</span>
+        <img src="{{ photo }}" alt="" style="display: block; width: 36px; height: 36px; border-radius: 50%; object-fit: cover; background: #0A121A;" />
+      </a>
+    </div>
+  </header>
+
+  <section style="position: relative;">
+    <div aria-hidden="true" style="position: absolute; inset: 0; overflow: hidden;">
+      <img src="hero-wave.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 40%; image-rendering: auto;" />
+      <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,9,13,0.92) 0%, rgba(5,9,13,0.74) 45%, rgba(5,9,13,0.45) 100%);"></div>
+      <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5,9,13,0.5) 0%, rgba(5,9,13,0) 35%, rgba(5,9,13,0) 60%, #05090D 100%);"></div>
+    </div>
+
+    <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 150px 28px 64px; display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap; animation: rig-rise 900ms cubic-bezier(0.2, 0.7, 0.2, 1) 100ms both;">
+      <div style="flex: none; display: grid; justify-items: center; gap: 14px;">
+        <div style="width: 148px; height: 148px; border-radius: 50%; padding: 2px; background: linear-gradient(140deg, rgba(142,220,255,0.85) 0%, rgba(142,220,255,0.12) 45%, rgba(255,255,255,0.08) 70%, rgba(142,220,255,0.45) 100%); box-shadow: 0 24px 60px -24px rgba(0,0,0,0.9);">
+          <img src="{{ photo }}" alt="{{ name }}" style="display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: 50% 30%; background: #0A121A;" />
+        </div>
+        <label style="position: relative; display: inline-flex; align-items: center; gap: 7px; padding: 6px 10px; border-radius: 8px; cursor: pointer; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: #C2CCD6; transition: color 170ms ease, background 170ms ease;" style-hover="color: #F4F7FA; background: rgba(110,198,255,0.08);">
+          <input type="file" accept="image/*" onChange="{{ onPhoto }}" style="position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden;" />
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"></path><path d="M13.5 6.5l4 4"></path></svg>
+          Change photo
+        </label>
+      </div>
+
+      <div style="flex: 1 1 520px; min-width: 0;">
+        <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10.5px; letter-spacing: 0.24em; text-transform: uppercase; color: #8CC4E2;">Professional profile</span>
+
+        <sc-if value="{{ viewHead }}" hint-placeholder-val="{{ true }}">
+        <div style="margin-top: 18px; display: flex; align-items: center; gap: 14px;">
+          <h1 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: clamp(30px, 4vw, 48px); line-height: 1.12; letter-spacing: 0.01em; text-transform: uppercase; font-weight: 400; text-wrap: balance;">{{ name }}</h1>
+          <button type="button" aria-label="Edit name, role, country and email" title="Edit name, role, country and email" onClick="{{ editHead }}" style="flex: none; width: 32px; height: 32px; display: grid; place-items: center; padding: 0; border-radius: 8px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); color: #C2CCD6; cursor: pointer; transition: border-color 170ms ease, background 170ms ease, color 170ms ease;" style-hover="border-color: #7DB7D8; background: rgba(110,198,255,0.1); color: #F4F7FA;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"></path><path d="M13.5 6.5l4 4"></path></svg></button>
+        </div>
+        <div style="margin-top: 14px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-size: 17px; color: #C2CCD6;">
+          <span style="color: #F4F7FA; font-weight: 500;">{{ role }}</span>
+          <span style="width: 1px; height: 14px; background: rgba(210,230,245,0.3);"></span>
+          <span>Based in <span style="color: #F4F7FA;">{{ country }}</span></span>
+        </div>
+        <div style="margin-top: 12px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 15px; color: #DCE3EA;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8CC4E2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3.5 6.5l8.5 6.5 8.5-6.5"></path></svg>
+          <span style="overflow-wrap: anywhere;">{{ email }}</span>
+          <span style="display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #9AA6B2;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>Only visible to you</span>
+        </div>
+        </sc-if>
+        <sc-if value="{{ editingHead }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top: 18px; max-width: 690px; padding: 18px; border-radius: 12px; border: 1px solid rgba(142,220,255,0.35); background: rgba(110,198,255,0.05); display: grid; gap: 14px;">
+          <label style="display: grid; gap: 7px; min-width: 0;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Full name</span><input type="text" value="{{ d.name }}" onChange="{{ on.name }}" onKeyDown="{{ formKey }}" placeholder="e.g. Tom Delany" autoFocus="{{ true }}" maxLength="80" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);" /></label>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: 12px;">
+            <label style="display: grid; gap: 7px; min-width: 0;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Role</span><input type="text" value="{{ d.role }}" onChange="{{ on.role }}" onKeyDown="{{ formKey }}" placeholder="e.g. Derrickman" maxLength="80" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);" /></label>
+            <label style="display: grid; gap: 7px; min-width: 0;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Based in</span><select value="{{ d.country }}" onChange="{{ on.country }}" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark; cursor: pointer;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);"><sc-for list="{{ countries }}" as="ct" hint-placeholder-count="1"><option value="{{ ct }}">{{ ct }}</option></sc-for></select></label>
+            <label style="display: grid; gap: 7px; min-width: 0;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Email</span><input type="email" value="{{ d.email }}" onChange="{{ on.email }}" onKeyDown="{{ formKey }}" placeholder="you@example.com" maxLength="120" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);" /></label>
+          </div>
+          <div style="display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap;">
+            <button type="button" onClick="{{ cancelEdit }}" style="padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: transparent; color: #C2CCD6; font-size: 13px; font-weight: 500; cursor: pointer; transition: border-color 170ms ease, color 170ms ease;" style-hover="border-color: rgba(210,230,245,0.6); color: #F4F7FA;">Cancel</button>
+            <button type="button" onClick="{{ saveEdit }}" style="padding: 10px 18px; border-radius: 10px; border: 1px solid #F4F7FA; background: #F4F7FA; color: #05090D; font-size: 13px; font-weight: 600; cursor: pointer; opacity: {{ saveOpacity }}; transition: box-shadow 170ms ease, transform 140ms ease, opacity 170ms ease;" style-hover="box-shadow: 0 0 0 4px rgba(110,198,255,0.22);" style-active="transform: translateY(1px);">Save</button>
+          </div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ viewBio }}" hint-placeholder-val="{{ true }}">
+        <div style="margin-top: 22px; display: flex; align-items: flex-start; gap: 14px; max-width: 690px;">
+          <p style="margin: 0; flex: 1; font-size: 16px; line-height: 1.68; color: #DCE3EA; text-wrap: pretty;">{{ bio }}</p>
+          <button type="button" aria-label="Edit description" title="Edit description" onClick="{{ editBio }}" style="flex: none; width: 32px; height: 32px; display: grid; place-items: center; padding: 0; border-radius: 8px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); color: #C2CCD6; cursor: pointer; transition: border-color 170ms ease, background 170ms ease, color 170ms ease;" style-hover="border-color: #7DB7D8; background: rgba(110,198,255,0.1); color: #F4F7FA;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"></path><path d="M13.5 6.5l4 4"></path></svg></button>
+        </div>
+        </sc-if>
+        <sc-if value="{{ editingBio }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top: 22px; max-width: 690px; padding: 18px; border-radius: 12px; border: 1px solid rgba(142,220,255,0.35); background: rgba(110,198,255,0.05); display: grid; gap: 14px;">
+          <label style="display: grid; gap: 7px;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">About you</span><textarea value="{{ d.bio }}" onChange="{{ on.bio }}" autoFocus="{{ true }}" rows="5" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark; resize: vertical; font-size: 15.5px; line-height: 1.6;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);"></textarea></label>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+            <span style="font-size: 12.5px; color: {{ bioCountColor }}; font-variant-numeric: tabular-nums;">{{ bioCount }}</span>
+            <div style="display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap;">
+            <button type="button" onClick="{{ cancelEdit }}" style="padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: transparent; color: #C2CCD6; font-size: 13px; font-weight: 500; cursor: pointer; transition: border-color 170ms ease, color 170ms ease;" style-hover="border-color: rgba(210,230,245,0.6); color: #F4F7FA;">Cancel</button>
+            <button type="button" onClick="{{ saveEdit }}" style="padding: 10px 18px; border-radius: 10px; border: 1px solid #F4F7FA; background: #F4F7FA; color: #05090D; font-size: 13px; font-weight: 600; cursor: pointer; opacity: {{ saveOpacity }}; transition: box-shadow 170ms ease, transform 140ms ease, opacity 170ms ease;" style-hover="box-shadow: 0 0 0 4px rgba(110,198,255,0.22);" style-active="transform: translateY(1px);">Save</button>
+          </div>
+          </div>
+        </div>
+        </sc-if>
+      </div>
+
+      <div style="flex: 1 1 300px; max-width: 380px; min-width: 0; padding: 22px; border-radius: 16px; background: rgba(8,14,20,0.66); backdrop-filter: blur(20px) saturate(1.4); -webkit-backdrop-filter: blur(20px) saturate(1.4); border: 1px solid {{ av.border }}; box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 0 0 4px {{ av.ring }}, 0 30px 60px -30px rgba(0,0,0,0.9); transition: border-color 220ms ease, box-shadow 220ms ease;">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+          <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: #7DB7D8;">Availability</span>
+          <span style="font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #9AA6B2;">Shown to recruiters</span>
+        </div>
+        <div style="margin-top: 18px; display: flex; align-items: center; gap: 12px;">
+          <span style="flex: none; width: 12px; height: 12px; border-radius: 50%; background: {{ av.dot }}; animation: {{ av.pulse }};"></span>
+          <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 17px; line-height: 1.3; letter-spacing: 0.03em; text-transform: uppercase;">{{ av.label }}</span>
+        </div>
+        <p style="margin: 8px 0 0 24px; font-size: 14px; line-height: 1.5; color: #C2CCD6; text-wrap: pretty;">{{ av.hint }}</p>
+        <sc-if value="{{ isNow }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-top: 18px; padding: 14px; border-radius: 12px; background: rgba(61,214,140,0.06); border: 1px solid rgba(61,214,140,0.22);">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 10px;">
+              <span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Expires in</span>
+              <span style="font-size: 20px; font-weight: 600; letter-spacing: 0.01em; color: #F4F7FA; font-variant-numeric: tabular-nums;">{{ countdown }}</span>
+            </div>
+            <div style="margin-top: 12px; height: 4px; border-radius: 999px; background: rgba(255,255,255,0.08); overflow: hidden;"><div style="height: 100%; width: {{ cdPct }}; border-radius: 999px; background: #3DD68C; transition: width 900ms linear;"></div></div>
+            <div style="margin-top: 12px; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;">
+              <span style="font-size: 12.5px; color: #9AA6B2;">Resets to not available after 7 days</span>
+              <button type="button" onClick="{{ renew }}" style="padding: 7px 12px; border-radius: 8px; border: 1px solid rgba(61,214,140,0.5); background: transparent; color: #F4F7FA; font-size: 12.5px; font-weight: 600; cursor: pointer; transition: background 170ms ease, border-color 170ms ease;" style-hover="background: rgba(61,214,140,0.14); border-color: #3DD68C;" style-active="transform: translateY(1px);">Renew 7 days</button>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ isFrom }}" hint-placeholder-val="{{ false }}">
+          <label style="margin-top: 18px; display: grid; gap: 7px;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Available from</span><input type="date" value="{{ fromDate }}" onChange="{{ onFromDate }}" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);" /></label>
+        </sc-if>
+        <div role="radiogroup" aria-label="Set availability" style="margin-top: 18px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 4px; border-radius: 12px; background: rgba(5,9,13,0.6); border: 1px solid rgba(255,255,255,0.08);">
+          <sc-for list="{{ availOptions }}" as="o" hint-placeholder-count="3">
+            <button type="button" role="radio" aria-checked="{{ o.selected }}" onClick="{{ o.pick }}" style="display: flex; align-items: center; justify-content: center; gap: 7px; padding: 9px 6px; border-radius: 8px; border: 1px solid {{ o.border }}; background: {{ o.bg }}; color: #F4F7FA; font-size: 12.5px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: background 170ms ease, border-color 170ms ease;" style-hover="background: rgba(255,255,255,0.06);"><span style="flex: none; width: 7px; height: 7px; border-radius: 50%; background: {{ o.dot }};"></span>{{ o.short }}</button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main style="position: relative; flex: 1;">
+    <div aria-hidden="true" style="position: absolute; inset: 0; overflow: hidden; pointer-events: none;">
+      <img src="ocean-3.jpg" alt="" style="position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 900px; object-fit: cover; object-position: 50% 60%; image-rendering: auto; opacity: 0.32; -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 50%, #000 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 50%, #000 100%);" />
+      <div style="position: absolute; inset: 0; background: linear-gradient(180deg, #05090D 0%, rgba(5,9,13,0.6) 70%, rgba(5,9,13,0.85) 100%);"></div>
+    </div>
+
+    <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 8px 28px 96px; display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap;">
+
+      <section style="flex: 1 1 600px; min-width: 0; padding: 32px 32px 12px; border-radius: 16px; background: rgba(8,16,24,0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(210,230,245,0.18); box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);">
+        <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-bottom: 22px; border-bottom: 1px solid rgba(210,230,245,0.28);">
+          <div>
+            <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: #7DB7D8;">Experience history</span>
+            <h2 style="margin: 12px 0 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: clamp(19px, 2vw, 24px); line-height: 1.22; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 400;">Where I've worked</h2>
+          </div>
+          <button type="button" onClick="{{ newJob }}" style="display: flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: transparent; color: #F4F7FA; font-size: 13px; font-weight: 500; cursor: pointer; transition: border-color 170ms ease, background 170ms ease;" style-hover="border-color: #7DB7D8; background: rgba(110,198,255,0.08);"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg> Add experience</button>
+        </div>
+
+        <sc-if value="{{ editingNewJob }}" hint-placeholder-val="{{ false }}">
+        <div style="padding-top: 24px;">
+        <div style="padding: 18px; border-radius: 12px; border: 1px solid rgba(142,220,255,0.35); background: rgba(110,198,255,0.05); display: grid; gap: 14px;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 12px;">
+            <label style="display: grid; gap: 7px; min-width: 0;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Role</span><input type="text" value="{{ d.role }}" onChange="{{ on.role }}" onKeyDown="{{ formKey }}" placeholder="e.g. Derrickman" autoFocus="{{ true }}" maxLength="80" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);" /></label>
+            <label style="display: grid; gap: 7px; min-width: 0;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Company</span><input type="text" value="{{ d.company }}" onChange="{{ on.company }}" onKeyDown="{{ formKey }}" placeholder="e.g. Northgate Energy" maxLength="80" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);" /></label>
+            <label style="display: grid; gap: 7px; min-width: 0;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Rig, vessel or region</span><input type="text" value="{{ d.asset }}" onChange="{{ on.asset }}" onKeyDown="{{ formKey }}" placeholder="e.g. Sovereign Alpha" maxLength="80" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);" /></label>
+          </div>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end;">
+            <label style="display: grid; gap: 7px; width: 120px;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">From</span><input type="text" inputMode="numeric" value="{{ d.from }}" onChange="{{ on.from }}" onKeyDown="{{ formKey }}" placeholder="2023" maxLength="4" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);" /></label>
+            <sc-if value="{{ d.notCurrent }}" hint-placeholder-val="{{ true }}">
+            <label style="display: grid; gap: 7px; width: 120px;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">To</span><input type="text" inputMode="numeric" value="{{ d.to }}" onChange="{{ on.to }}" onKeyDown="{{ formKey }}" placeholder="2025" maxLength="4" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);" /></label>
+            </sc-if>
+            <label style="display: flex; align-items: center; gap: 9px; padding: 11px 2px; font-size: 14px; color: #DCE3EA; cursor: pointer;"><input type="checkbox" checked="{{ d.current }}" onChange="{{ on.current }}" style="width: 16px; height: 16px; margin: 0; accent-color: #6EC6FF; cursor: pointer;" />I currently work here</label>
+          </div>
+          <label style="display: grid; gap: 7px;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">What you did</span><textarea value="{{ d.desc }}" onChange="{{ on.desc }}" rows="3" placeholder="Rotation, type of unit, main duties" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark; resize: vertical; line-height: 1.55;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);"></textarea></label>
+          <div style="display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap;">
+            <button type="button" onClick="{{ cancelEdit }}" style="padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: transparent; color: #C2CCD6; font-size: 13px; font-weight: 500; cursor: pointer; transition: border-color 170ms ease, color 170ms ease;" style-hover="border-color: rgba(210,230,245,0.6); color: #F4F7FA;">Cancel</button>
+            <button type="button" onClick="{{ saveEdit }}" style="padding: 10px 18px; border-radius: 10px; border: 1px solid #F4F7FA; background: #F4F7FA; color: #05090D; font-size: 13px; font-weight: 600; cursor: pointer; opacity: {{ saveOpacity }}; transition: box-shadow 170ms ease, transform 140ms ease, opacity 170ms ease;" style-hover="box-shadow: 0 0 0 4px rgba(110,198,255,0.22);" style-active="transform: translateY(1px);">Save</button>
+          </div>
+        </div>
+        </div>
+        </sc-if>
+        <sc-if value="{{ noJobs }}" hint-placeholder-val="{{ false }}">
+          <p style="margin: 0; padding: 30px 0 22px; font-size: 15px; color: #9AA6B2;">No experience added yet.</p>
+        </sc-if>
+
+        <ol style="position: relative; list-style: none; margin: 0; padding: 0;">
+          <sc-for list="{{ jobs }}" as="j" hint-placeholder-count="3">
+            <li style="position: relative; display: grid; grid-template-columns: 16px minmax(0, 1fr); gap: 0 24px; padding: 30px 0; border-bottom: {{ j.rule }};">
+              <span aria-hidden="true" style="position: absolute; left: 7px; top: 44px; bottom: -44px; border-left: 2px dotted rgba(142,220,255,0.45); display: {{ j.line }};"></span>
+              <span aria-hidden="true" style="position: relative; z-index: 1; margin-top: 6px; width: 16px; height: 16px; border-radius: 50%; border: 2px solid {{ j.ring }}; background: {{ j.fill }}; box-shadow: {{ j.glow }};"></span>
+              <div style="min-width: 0;">
+                <sc-if value="{{ j.view }}" hint-placeholder-val="{{ true }}">
+                <div style="display: flex; align-items: flex-start; gap: 12px;">
+                  <div style="flex: 1; min-width: 0;">
+                    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                      <h3 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 15px; line-height: 1.35; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 400;">{{ j.role }}</h3>
+                      <sc-if value="{{ j.current }}" hint-placeholder-val="{{ false }}">
+                        <span style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8EDCFF; padding: 4px 8px; border-radius: 999px; border: 1px solid rgba(142,220,255,0.4); background: rgba(110,198,255,0.08);">Current</span>
+                      </sc-if>
+                    </div>
+                    <div style="margin-top: 9px; display: flex; gap: 8px 10px; flex-wrap: wrap; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #9AA6B2;">
+                      <span style="color: #C2CCD6;">{{ j.company }}</span><span>·</span><span>{{ j.asset }}</span><span>·</span><span style="font-variant-numeric: tabular-nums;">{{ j.dates }}</span>
+                    </div>
+                  </div>
+                  <div style="flex: none; display: flex; gap: 4px;">
+                    <button type="button" aria-label="Edit {{ j.role }}" title="Edit {{ j.role }}" onClick="{{ j.edit }}" style="flex: none; width: 30px; height: 30px; display: grid; place-items: center; padding: 0; border-radius: 8px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); color: #C2CCD6; cursor: pointer; transition: border-color 170ms ease, background 170ms ease, color 170ms ease;" style-hover="border-color: #7DB7D8; background: rgba(110,198,255,0.1); color: #F4F7FA;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"></path><path d="M13.5 6.5l4 4"></path></svg></button>
+                    <button type="button" aria-label="Remove {{ j.role }}" title="Remove {{ j.role }}" onClick="{{ j.remove }}" style="flex: none; width: 30px; height: 30px; display: grid; place-items: center; padding: 0; border-radius: 8px; border: 1px solid transparent; background: transparent; color: #6F7B87; cursor: pointer; transition: border-color 170ms ease, background 170ms ease, color 170ms ease;" style-hover="color: #F4F7FA; border-color: rgba(240,82,79,0.5); background: rgba(240,82,79,0.12);"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+                  </div>
+                </div>
+                <p style="margin: 14px 0 0; max-width: 620px; font-size: 15.5px; line-height: 1.65; color: #C2CCD6; text-wrap: pretty;">{{ j.desc }}</p>
+                </sc-if>
+                <sc-if value="{{ j.editing }}" hint-placeholder-val="{{ false }}">
+                <div style="padding: 18px; border-radius: 12px; border: 1px solid rgba(142,220,255,0.35); background: rgba(110,198,255,0.05); display: grid; gap: 14px;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 12px;">
+            <label style="display: grid; gap: 7px; min-width: 0;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Role</span><input type="text" value="{{ d.role }}" onChange="{{ on.role }}" onKeyDown="{{ formKey }}" placeholder="e.g. Derrickman" autoFocus="{{ true }}" maxLength="80" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);" /></label>
+            <label style="display: grid; gap: 7px; min-width: 0;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Company</span><input type="text" value="{{ d.company }}" onChange="{{ on.company }}" onKeyDown="{{ formKey }}" placeholder="e.g. Northgate Energy" maxLength="80" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);" /></label>
+            <label style="display: grid; gap: 7px; min-width: 0;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Rig, vessel or region</span><input type="text" value="{{ d.asset }}" onChange="{{ on.asset }}" onKeyDown="{{ formKey }}" placeholder="e.g. Sovereign Alpha" maxLength="80" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);" /></label>
+          </div>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end;">
+            <label style="display: grid; gap: 7px; width: 120px;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">From</span><input type="text" inputMode="numeric" value="{{ d.from }}" onChange="{{ on.from }}" onKeyDown="{{ formKey }}" placeholder="2023" maxLength="4" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);" /></label>
+            <sc-if value="{{ d.notCurrent }}" hint-placeholder-val="{{ true }}">
+            <label style="display: grid; gap: 7px; width: 120px;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">To</span><input type="text" inputMode="numeric" value="{{ d.to }}" onChange="{{ on.to }}" onKeyDown="{{ formKey }}" placeholder="2025" maxLength="4" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);" /></label>
+            </sc-if>
+            <label style="display: flex; align-items: center; gap: 9px; padding: 11px 2px; font-size: 14px; color: #DCE3EA; cursor: pointer;"><input type="checkbox" checked="{{ d.current }}" onChange="{{ on.current }}" style="width: 16px; height: 16px; margin: 0; accent-color: #6EC6FF; cursor: pointer;" />I currently work here</label>
+          </div>
+          <label style="display: grid; gap: 7px;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">What you did</span><textarea value="{{ d.desc }}" onChange="{{ on.desc }}" rows="3" placeholder="Rotation, type of unit, main duties" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark; resize: vertical; line-height: 1.55;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);"></textarea></label>
+          <div style="display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap;">
+            <button type="button" onClick="{{ cancelEdit }}" style="padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: transparent; color: #C2CCD6; font-size: 13px; font-weight: 500; cursor: pointer; transition: border-color 170ms ease, color 170ms ease;" style-hover="border-color: rgba(210,230,245,0.6); color: #F4F7FA;">Cancel</button>
+            <button type="button" onClick="{{ saveEdit }}" style="padding: 10px 18px; border-radius: 10px; border: 1px solid #F4F7FA; background: #F4F7FA; color: #05090D; font-size: 13px; font-weight: 600; cursor: pointer; opacity: {{ saveOpacity }}; transition: box-shadow 170ms ease, transform 140ms ease, opacity 170ms ease;" style-hover="box-shadow: 0 0 0 4px rgba(110,198,255,0.22);" style-active="transform: translateY(1px);">Save</button>
+          </div>
+        </div>
+                </sc-if>
+              </div>
+            </li>
+          </sc-for>
+        </ol>
+      </section>
+
+      <aside style="flex: 1 1 360px; min-width: 0; padding: 32px 28px 28px; border-radius: 16px; background: rgba(10,18,26,0.55); backdrop-filter: blur(20px) saturate(1.4); -webkit-backdrop-filter: blur(20px) saturate(1.4); border: 1px solid rgba(255,255,255,0.12); box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 30px 70px -40px rgba(0,0,0,0.95);">
+        <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; padding-bottom: 20px; border-bottom: 1px solid rgba(210,230,245,0.28);">
+          <div>
+            <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: #7DB7D8;">Certifications</span>
+            <h2 style="margin: 12px 0 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 17px; line-height: 1.3; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 400;">Qualifications &amp; credentials</h2>
+          </div>
+          <span style="flex: none; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: #9AA6B2; font-variant-numeric: tabular-nums;">{{ certCount }}</span>
+        </div>
+
+        <ul style="list-style: none; margin: 0; padding: 0;">
+          <sc-for list="{{ certs }}" as="c" hint-placeholder-count="9">
+            <li style="padding: 12px 0 12px 4px; border-bottom: 1px solid rgba(210,230,245,0.12);">
+              <sc-if value="{{ c.view }}" hint-placeholder-val="{{ true }}">
+              <div style="display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; gap: 14px; align-items: center;">
+                <span style="width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); font-size: 11px; font-weight: 600; color: #C2CCD6; font-variant-numeric: tabular-nums;">{{ c.n }}</span>
+                <div style="min-width: 0;">
+                  <div style="font-size: 15px; font-weight: 600; line-height: 1.3; color: #F4F7FA;">{{ c.name }}</div>
+                  <div style="margin-top: 5px; display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center;">
+                    <span style="font-size: 11.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #9AA6B2;">{{ c.meta }}</span>
+                    <span style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: {{ c.color }}; white-space: nowrap; font-variant-numeric: tabular-nums;"><span style="width: 6px; height: 6px; border-radius: 50%; background: {{ c.color }};"></span>{{ c.status }}</span>
+                  </div>
+                </div>
+                <div style="display: flex; gap: 2px;">
+                  <button type="button" aria-label="Edit {{ c.name }}" title="Edit {{ c.name }}" onClick="{{ c.edit }}" style="flex: none; width: 28px; height: 28px; display: grid; place-items: center; padding: 0; border-radius: 8px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); color: #C2CCD6; cursor: pointer; transition: border-color 170ms ease, background 170ms ease, color 170ms ease;" style-hover="border-color: #7DB7D8; background: rgba(110,198,255,0.1); color: #F4F7FA;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"></path><path d="M13.5 6.5l4 4"></path></svg></button>
+                  <button type="button" aria-label="Remove {{ c.name }}" title="Remove {{ c.name }}" onClick="{{ c.remove }}" style="flex: none; width: 28px; height: 28px; display: grid; place-items: center; padding: 0; border-radius: 8px; border: 1px solid transparent; background: transparent; color: #6F7B87; cursor: pointer; transition: border-color 170ms ease, background 170ms ease, color 170ms ease;" style-hover="color: #F4F7FA; border-color: rgba(240,82,79,0.5); background: rgba(240,82,79,0.12);"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+                </div>
+              </div>
+              </sc-if>
+              <sc-if value="{{ c.editing }}" hint-placeholder-val="{{ false }}">
+              <div style="padding: 18px; border-radius: 12px; border: 1px solid rgba(142,220,255,0.35); background: rgba(110,198,255,0.05); display: grid; gap: 14px;">
+            <label style="display: grid; gap: 7px; min-width: 0;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Qualification or certificate</span><input type="text" value="{{ d.cname }}" onChange="{{ on.cname }}" onKeyDown="{{ formKey }}" placeholder="e.g. FOET" autoFocus="{{ true }}" maxLength="80" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);" /></label>
+            <label style="display: grid; gap: 7px; min-width: 0;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Issuing body</span><input type="text" value="{{ d.issuer }}" onChange="{{ on.issuer }}" onKeyDown="{{ formKey }}" placeholder="e.g. OPITO" maxLength="80" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);" /></label>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: 12px; align-items: end;">
+              <label style="display: grid; gap: 7px; min-width: 0;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Type</span>
+                <select value="{{ d.kind }}" onChange="{{ on.kind }}" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark; cursor: pointer;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);">
+                  <option value="expiry">Certificate · expires</option>
+                  <option value="none">Certificate · no expiry</option>
+                  <option value="qual">Qualification</option>
+                </select></label>
+              <sc-if value="{{ d.showExpiry }}" hint-placeholder-val="{{ true }}">
+              <label style="display: grid; gap: 7px; min-width: 0;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Valid until</span><input type="month" value="{{ d.expiry }}" onChange="{{ on.expiry }}" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);" /></label>
+              </sc-if>
+            </div>
+            <div style="display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap;">
+            <button type="button" onClick="{{ cancelEdit }}" style="padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: transparent; color: #C2CCD6; font-size: 13px; font-weight: 500; cursor: pointer; transition: border-color 170ms ease, color 170ms ease;" style-hover="border-color: rgba(210,230,245,0.6); color: #F4F7FA;">Cancel</button>
+            <button type="button" onClick="{{ saveEdit }}" style="padding: 10px 18px; border-radius: 10px; border: 1px solid #F4F7FA; background: #F4F7FA; color: #05090D; font-size: 13px; font-weight: 600; cursor: pointer; opacity: {{ saveOpacity }}; transition: box-shadow 170ms ease, transform 140ms ease, opacity 170ms ease;" style-hover="box-shadow: 0 0 0 4px rgba(110,198,255,0.22);" style-active="transform: translateY(1px);">Save</button>
+          </div>
+          </div>
+              </sc-if>
+            </li>
+          </sc-for>
+        </ul>
+
+        <sc-if value="{{ showAddCert }}" hint-placeholder-val="{{ true }}">
+        <button type="button" onClick="{{ newCert }}" style="margin-top: 18px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 13px 14px; border-radius: 10px; border: 1px dashed rgba(142,220,255,0.45); background: rgba(110,198,255,0.04); color: #F4F7FA; font-size: 13.5px; font-weight: 500; cursor: pointer; opacity: {{ addOpacity }}; transition: border-color 170ms ease, background 170ms ease;" style-hover="border-color: #8EDCFF; background: rgba(110,198,255,0.1);">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+          {{ addLabel }}
+          <span style="color: #9AA6B2; font-variant-numeric: tabular-nums;">· {{ slotsLeft }}</span>
+        </button>
+        </sc-if>
+        <sc-if value="{{ editingNewCert }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top: 18px;">
+          <div style="padding: 18px; border-radius: 12px; border: 1px solid rgba(142,220,255,0.35); background: rgba(110,198,255,0.05); display: grid; gap: 14px;">
+            <label style="display: grid; gap: 7px; min-width: 0;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Qualification or certificate</span><input type="text" value="{{ d.cname }}" onChange="{{ on.cname }}" onKeyDown="{{ formKey }}" placeholder="e.g. FOET" autoFocus="{{ true }}" maxLength="80" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);" /></label>
+            <label style="display: grid; gap: 7px; min-width: 0;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Issuing body</span><input type="text" value="{{ d.issuer }}" onChange="{{ on.issuer }}" onKeyDown="{{ formKey }}" placeholder="e.g. OPITO" maxLength="80" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);" /></label>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: 12px; align-items: end;">
+              <label style="display: grid; gap: 7px; min-width: 0;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Type</span>
+                <select value="{{ d.kind }}" onChange="{{ on.kind }}" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark; cursor: pointer;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);">
+                  <option value="expiry">Certificate · expires</option>
+                  <option value="none">Certificate · no expiry</option>
+                  <option value="qual">Qualification</option>
+                </select></label>
+              <sc-if value="{{ d.showExpiry }}" hint-placeholder-val="{{ true }}">
+              <label style="display: grid; gap: 7px; min-width: 0;"><span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Valid until</span><input type="month" value="{{ d.expiry }}" onChange="{{ on.expiry }}" style="width: 100%; min-width: 0; padding: 11px 13px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 14.5px; transition: border-color 170ms ease, box-shadow 170ms ease; color-scheme: dark;" style-focus="border-color: #6EC6FF; box-shadow: 0 0 0 3px rgba(110,198,255,0.18);" /></label>
+              </sc-if>
+            </div>
+            <div style="display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap;">
+            <button type="button" onClick="{{ cancelEdit }}" style="padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(210,230,245,0.3); background: transparent; color: #C2CCD6; font-size: 13px; font-weight: 500; cursor: pointer; transition: border-color 170ms ease, color 170ms ease;" style-hover="border-color: rgba(210,230,245,0.6); color: #F4F7FA;">Cancel</button>
+            <button type="button" onClick="{{ saveEdit }}" style="padding: 10px 18px; border-radius: 10px; border: 1px solid #F4F7FA; background: #F4F7FA; color: #05090D; font-size: 13px; font-weight: 600; cursor: pointer; opacity: {{ saveOpacity }}; transition: box-shadow 170ms ease, transform 140ms ease, opacity 170ms ease;" style-hover="box-shadow: 0 0 0 4px rgba(110,198,255,0.22);" style-active="transform: translateY(1px);">Save</button>
+          </div>
+          </div>
+        </div>
+        </sc-if>
+
+        <div style="margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(210,230,245,0.18); display: grid; gap: 12px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+            <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: #7DB7D8;">Email reminders</span>
+            <span style="font-size: 12.5px; color: #9AA6B2; overflow-wrap: anywhere;">To {{ email }}</span>
+          </div>
+          <div style="padding: 16px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.10); display: grid; gap: 10px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 14px;">
+              <span style="font-size: 15px; font-weight: 600;">Certificate expiry</span>
+              <button type="button" role="switch" aria-checked="{{ certRem.attr }}" aria-label="Certificate expiry reminders" onClick="{{ certRem.toggle }}" style="flex: none; position: relative; width: 40px; height: 24px; padding: 0; border-radius: 999px; border: 1px solid {{ certRem.border }}; background: {{ certRem.bg }}; cursor: pointer; transition: background 180ms ease, border-color 180ms ease;"><span style="position: absolute; top: 3px; left: {{ certRem.x }}; width: 16px; height: 16px; border-radius: 50%; background: #F4F7FA; box-shadow: 0 1px 3px rgba(0,0,0,0.4); transition: left 180ms ease;"></span></button>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 13.5px; color: #C2CCD6; opacity: {{ certRem.dim }}; transition: opacity 180ms ease;">Email me
+              <select value="{{ certLead }}" onChange="{{ onCertLead }}" aria-label="Reminder lead time" style="padding: 7px 10px; border-radius: 8px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 13.5px; color-scheme: dark; cursor: pointer; transition: border-color 170ms ease;" style-focus="border-color: #6EC6FF;"><option value="30">30 days</option><option value="60">60 days</option><option value="90">90 days</option></select>
+              before any certificate expires</div>
+          </div>
+          <div style="padding: 16px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.10); display: grid; gap: 12px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 14px;">
+              <span style="font-size: 15px; font-weight: 600;">Job alerts</span>
+              <button type="button" role="switch" aria-checked="{{ jobRem.attr }}" aria-label="Job alert emails" onClick="{{ jobRem.toggle }}" style="flex: none; position: relative; width: 40px; height: 24px; padding: 0; border-radius: 999px; border: 1px solid {{ jobRem.border }}; background: {{ jobRem.bg }}; cursor: pointer; transition: background 180ms ease, border-color 180ms ease;"><span style="position: absolute; top: 3px; left: {{ jobRem.x }}; width: 16px; height: 16px; border-radius: 50%; background: #F4F7FA; box-shadow: 0 1px 3px rgba(0,0,0,0.4); transition: left 180ms ease;"></span></button>
+            </div>
+            <div style="display: grid; gap: 12px; opacity: {{ jobRem.dim }}; transition: opacity 180ms ease;">
+            <span style="font-size: 13.5px; color: #C2CCD6;">Email me when a new job is posted for:</span>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              <sc-for list="{{ alerts }}" as="al" hint-placeholder-count="2">
+                <span style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 6px 6px 11px; border-radius: 999px; border: 1px solid rgba(142,220,255,0.35); background: rgba(110,198,255,0.06); font-size: 13px; color: #F4F7FA;">{{ al.label }}<button type="button" aria-label="Remove alert {{ al.label }}" onClick="{{ al.remove }}" style="width: 20px; height: 20px; display: grid; place-items: center; padding: 0; border: 0; border-radius: 50%; background: transparent; color: #9AA6B2; cursor: pointer; transition: background 160ms ease, color 160ms ease;" style-hover="background: rgba(255,255,255,0.1); color: #F4F7FA;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></span>
+              </sc-for>
+            </div>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              <input type="text" value="{{ alertRole }}" onChange="{{ onAlertRole }}" onKeyDown="{{ alertKey }}" placeholder="Role, e.g. Driller" aria-label="Job alert role" maxLength="60" style="flex: 1 1 130px; min-width: 0; padding: 8px 10px; border-radius: 8px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 13.5px; transition: border-color 170ms ease;" style-focus="border-color: #6EC6FF;" />
+              <select value="{{ alertCountry }}" onChange="{{ onAlertCountry }}" aria-label="Job alert country" style="flex: 1 1 110px; min-width: 0; padding: 7px 10px; border-radius: 8px; border: 1px solid rgba(210,230,245,0.3); background: rgba(5,9,13,0.6); color: #F4F7FA; outline: none; font-size: 13.5px; color-scheme: dark; cursor: pointer; transition: border-color 170ms ease;" style-focus="border-color: #6EC6FF;"><option value="Any country">Any country</option><sc-for list="{{ countries }}" as="ct" hint-placeholder-count="1"><option value="{{ ct }}">{{ ct }}</option></sc-for></select>
+              <button type="button" onClick="{{ addAlert }}" style="flex: none; padding: 8px 14px; border-radius: 8px; border: 1px solid #F4F7FA; background: #F4F7FA; color: #05090D; font-size: 13px; font-weight: 600; cursor: pointer; opacity: {{ alertOpacity }}; transition: box-shadow 170ms ease, opacity 170ms ease;" style-hover="box-shadow: 0 0 0 4px rgba(110,198,255,0.22);" style-active="transform: translateY(1px);">Add</button>
+            </div>
+            </div>
+          </div>
+          <p style="margin: 4px 0 0; font-size: 13.5px; line-height: 1.6; color: #9AA6B2; text-wrap: pretty;">Your email is never shown on your public profile. Other users cannot message you through RIGGED.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer style="background: #05090D; border-top: 1px solid rgba(210,230,245,0.14);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 14px;"><img src="logo-rigged-3.svg" alt="Rigged" style="height: 20px; width: auto; display: block;" /><span style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Offshore personnel and operators</span></div>
+      <nav style="display: flex; gap: 22px; flex-wrap: wrap;">
+        <a href="Rigged - Job Search.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; color: #C2CCD6; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; transition: color 170ms ease;" style-hover="color: #6EC6FF;">Career</a>
+        <a href="Rigged - Certification.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; color: #C2CCD6; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; transition: color 170ms ease;" style-hover="color: #6EC6FF;">Certification</a>
+        <a href="Rigged - Insights.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; color: #C2CCD6; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; transition: color 170ms ease;" style-hover="color: #6EC6FF;">Insights</a>
+        <a href="#" style="font-family: 'Michroma', 'Archivo', sans-serif; color: #C2CCD6; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; transition: color 170ms ease;" style-hover="color: #6EC6FF;">Contact us</a>
+      </nav>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;availability&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Available now&quot;,&quot;options&quot;:[&quot;Available now&quot;,&quot;Available from&quot;,&quot;Not available&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Profile&quot;}}">
+class Component extends DCLogic {
+  state = (() => {
+    const D = {
+      name: 'Tom Delany', role: 'Derrickman', country: 'Poland', email: 'tom.delany@gmail.com',
+      availSince: Date.now() - 31 * 3600e3, certRem: true, certLead: '90', jobRem: true,
+      alerts: [{ id: 'a1', role: 'Derrickman', country: 'Norway' }, { id: 'a2', role: 'Assistant Driller', country: 'United Kingdom' }],
+      bio: 'Derrickman with eight years offshore across North Sea and Baltic drilling units, from roustabout on deck to running the derrick on a semi-submersible. Experienced in pipe handling, racking systems and drill floor operations on three-week rotations. Safety-first, calm under pressure, and holding current BOSIET, HUET and Stage 3 lifting tickets.',
+      photo: 'https://images.unsplash.com/photo-1663720526823-07a4dcf345cc?fm=jpg&q=80&w=600&h=600&auto=format&fit=crop&crop=faces',
+      avail: null, fromDate: '2026-11-14',
+      jobs: [
+        { id: 'j1', role: 'Derrickman', company: 'Northgate Energy', asset: 'Sovereign Alpha', from: '2023', to: '', desc: 'Semi-submersible in the Central North Sea, three weeks on, three weeks off. Handling pipe in the derrick and maintaining the racking system.' },
+        { id: 'j2', role: 'Roughneck', company: 'Baltic Drilling', asset: 'Baltic Sea', from: '2020', to: '2023', desc: 'Jack-up unit on a two-and-two rotation. Drill floor operations and pipe handling.' },
+        { id: 'j3', role: 'Roustabout', company: 'Baltic Drilling', asset: 'Baltic Sea', from: '2018', to: '2020', desc: 'Deck crew. Cargo handling, deck maintenance, and assisting the crane operator.' },
+      ],
+      certs: [
+        ['BOSIET with CA-EBS', 'OPITO · Survival training', '2028-03'],
+        ['Offshore medical', 'OEUK · Fitness to work', '2027-01'],
+        ['HUET', 'OPITO', '2028-03'],
+        ['MIST', 'OPITO · Minimum industry safety', ''],
+        ['Stage 3 lifting and slinging', 'LEEA', '2027-08'],
+        ['IWCF Drilling Well Control, Level 2', 'IWCF', '2027-05'],
+        ['Working at height & rescue', 'GWO', '2027-10'],
+        ['NVQ Level 3 — Drilling Operations', 'OPITO · 2019', 'q'],
+        ['HNC Mechanical Engineering', 'Gdańsk Technical College · 2017', 'q'],
+      ].map(([name, meta, exp], i) => ({ id: 'c' + i, name, meta, exp })),
+    };
+    let saved = {};
+    try { saved = JSON.parse(localStorage.getItem('rigged-profile-v3') || '{}'); } catch (e) {}
+    return { ...D, ...saved, w: typeof window !== 'undefined' ? window.innerWidth : 1440, open: false, editing: null, d: {}, now: Date.now(), alertRole: '', alertCountry: 'Any country' };
+  })();
+  KEYS = ['name', 'role', 'country', 'email', 'bio', 'photo', 'avail', 'availSince', 'fromDate', 'jobs', 'certs', 'certRem', 'certLead', 'jobRem', 'alerts'];
+  COUNTRIES = ['Angola', 'Australia', 'Brazil', 'Brunei', 'Canada', 'Denmark', 'Egypt', 'Germany', 'Ghana', 'Guyana', 'India', 'Indonesia', 'Ireland', 'Malaysia', 'Mexico', 'Netherlands', 'Nigeria', 'Norway', 'Philippines', 'Poland', 'Portugal', 'Qatar', 'Romania', 'Saudi Arabia', 'Singapore', 'South Africa', 'Spain', 'Trinidad and Tobago', 'United Arab Emirates', 'United Kingdom', 'United States'];
+  addAlert() {
+    const role = this.state.alertRole.trim(); if (!role) return;
+    this.setState(s => ({ alerts: [...s.alerts, { id: 'a' + Date.now(), role, country: s.alertCountry }], alertRole: '' }), () => this.persist());
+  }
+  persist() {
+    const o = {}; this.KEYS.forEach(k => { o[k] = this.state[k]; });
+    try { localStorage.setItem('rigged-profile-v3', JSON.stringify(o)); } catch (e) { try { delete o.photo; localStorage.setItem('rigged-profile-v3', JSON.stringify(o)); } catch (e2) {} }
+  }
+  componentDidMount() {
+    this._r = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this._r);
+    this._d = (e) => { if (this.state.open && !e.target.closest('[aria-haspopup], [role="listbox"]')) this.setState({ open: false }); };
+    document.addEventListener('click', this._d);
+    this._k = (e) => { if (e.key === 'Escape') this.setState({ editing: null, open: false }); };
+    document.addEventListener('keydown', this._k);
+    this._t = setInterval(() => this.setState({ now: Date.now() }), 1000);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this._r); document.removeEventListener('click', this._d); document.removeEventListener('keydown', this._k); clearInterval(this._t); }
+  edit(key, d) { this.setState({ editing: key, d, open: false }); }
+  certStatus(exp) {
+    if (exp === 'q') return ['Qualification', '#C2CCD6'];
+    if (!exp) return ['No expiry', '#8FD3A9'];
+    const [y, m] = exp.split('-').map(Number);
+    const months = (y - 2026) * 12 + (m - 10);
+    const label = new Date(y, m - 1, 1).toLocaleString('en-GB', { month: 'short' }) + ' ' + y;
+    if (months < 0) return ['Expired ' + label, '#F0524F'];
+    return ['Valid to ' + label, months <= 3 ? '#F2B33D' : '#8FD3A9'];
+  }
+  canSave() {
+    const { editing: k, d } = this.state; if (!k) return false;
+    const t = (v) => !!(v || '').trim();
+    if (k === 'head') return t(d.name);
+    if (k === 'bio') return t(d.bio);
+    if (k.startsWith('job')) return t(d.role);
+    if (k.startsWith('cert')) return t(d.cname);
+    return false;
+  }
+  save() {
+    if (!this.canSave()) return;
+    const { editing: k, d } = this.state; const t = (v) => (v || '').trim();
+    let up = {};
+    if (k === 'head') up = { name: t(d.name), role: t(d.role), country: d.country || this.state.country, email: t(d.email) };
+    else if (k === 'bio') up = { bio: t(d.bio) };
+    else if (k.startsWith('job')) {
+      const j = { id: d.id || 'j' + Date.now(), role: t(d.role), company: t(d.company), asset: t(d.asset), from: t(d.from), to: d.current ? '' : t(d.to), desc: t(d.desc) };
+      up = { jobs: k === 'job:new' ? [j, ...this.state.jobs] : this.state.jobs.map(x => x.id === j.id ? j : x) };
+    } else if (k.startsWith('cert')) {
+      const exp = d.kind === 'qual' ? 'q' : d.kind === 'none' ? '' : (d.expiry || '');
+      const c = { id: d.id || 'c' + Date.now(), name: t(d.cname), meta: t(d.issuer), exp };
+      if (k === 'cert:new' && this.state.certs.length >= 15) return;
+      up = { certs: k === 'cert:new' ? [...this.state.certs, c] : this.state.certs.map(x => x.id === c.id ? c : x) };
+    }
+    this.setState({ ...up, editing: null }, () => this.persist());
+  }
+  onPhoto = (e) => {
+    const file = e.target.files && e.target.files[0]; e.target.value = '';
+    if (!file) return;
+    const img = new Image(); const url = URL.createObjectURL(file);
+    img.onload = () => {
+      const s = 480, c = document.createElement('canvas'); c.width = s; c.height = s;
+      const side = Math.min(img.width, img.height);
+      c.getContext('2d').drawImage(img, (img.width - side) / 2, (img.height - side) / 2, side, side, 0, 0, s, s);
+      URL.revokeObjectURL(url);
+      this.setState({ photo: c.toDataURL('image/jpeg', 0.86) }, () => this.persist());
+    };
+    img.src = url;
+  };
+  renderVals() {
+    const st = this.state, k = st.editing;
+    const fmt = (iso) => { const [y, m, dd] = (iso || '').split('-').map(Number); return y ? new Date(y, m - 1, dd).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : 'a date'; };
+    const S = {
+      now: { label: 'Available now', short: 'Now', hint: 'Ready to mobilise. Recruiters see you first.', dot: '#3DD68C', border: 'rgba(61,214,140,0.55)', bg: 'rgba(61,214,140,0.10)', ring: 'rgba(61,214,140,0.16)', pulse: 'rig-pulse 2.4s ease-out infinite' },
+      from: { label: 'Available from ' + fmt(st.fromDate), short: 'From date', hint: 'Currently on rotation.', dot: '#F2B33D', border: 'rgba(242,179,61,0.55)', bg: 'rgba(242,179,61,0.10)', ring: 'rgba(242,179,61,0.16)', pulse: 'none' },
+      not: { label: 'Not available', short: 'Not available', hint: 'Not taking offers right now.', dot: '#F0524F', border: 'rgba(240,82,79,0.55)', bg: 'rgba(240,82,79,0.10)', ring: 'rgba(240,82,79,0.16)', pulse: 'none' },
+    };
+    const map = { 'Available now': 'now', 'Available from': 'from', 'Not available': 'not' };
+    let key = st.avail ?? map[this.props.availability] ?? 'now';
+    const WEEK = 7 * 86400e3, left = (st.availSince || 0) + WEEK - st.now;
+    const expired = key === 'now' && left <= 0;
+    if (expired) key = 'not';
+    const sl = Math.max(0, left), dd = Math.floor(sl / 86400e3), hh = Math.floor(sl / 3600e3) % 24, mm = Math.floor(sl / 60e3) % 60, ss = Math.floor(sl / 1000) % 60;
+    const p2 = (n) => String(n).padStart(2, '0');
+    const sw = (on, toggle) => ({ attr: on ? 'true' : 'false', toggle, border: on ? '#6EC6FF' : 'rgba(210,230,245,0.3)', bg: on ? 'rgba(110,198,255,0.55)' : 'rgba(255,255,255,0.06)', x: on ? '19px' : '3px', dim: on ? 1 : 0.45 });
+    const sorted = [...st.jobs].sort((a, b) => ((b.to ? +b.to : 9999) - (a.to ? +a.to : 9999)) || ((+b.from || 0) - (+a.from || 0)));
+    const jobs = sorted.map((j, i, a) => {
+      const cur = !j.to, ed = k === 'job:' + j.id;
+      return { ...j, current: cur, view: !ed, editing: ed,
+        company: j.company || '—', asset: j.asset || '—', dates: (j.from || '—') + ' – ' + (j.to || 'Present'),
+        rule: i < a.length - 1 ? '1px solid rgba(210,230,245,0.12)' : '0', line: i < a.length - 1 ? 'block' : 'none',
+        ring: cur ? '#8EDCFF' : 'rgba(142,220,255,0.55)', fill: cur ? '#8EDCFF' : '#0A121A',
+        glow: cur ? '0 0 0 5px rgba(110,198,255,0.14), 0 0 18px rgba(110,198,255,0.45)' : '0 0 0 5px #0A121A',
+        edit: () => this.edit('job:' + j.id, { ...j, current: !j.to }),
+        remove: () => this.setState(s => ({ jobs: s.jobs.filter(x => x.id !== j.id), editing: s.editing === 'job:' + j.id ? null : s.editing }), () => this.persist()) };
+    });
+    const max = 15;
+    const certs = st.certs.map((c, i) => {
+      const [status, color] = this.certStatus(c.exp); const ed = k === 'cert:' + c.id;
+      return { n: String(i + 1).padStart(2, '0'), name: c.name, meta: c.meta || '—', status, color, view: !ed, editing: ed,
+        edit: () => this.edit('cert:' + c.id, { id: c.id, cname: c.name, issuer: c.meta, kind: c.exp === 'q' ? 'qual' : c.exp ? 'expiry' : 'none', expiry: c.exp && c.exp !== 'q' ? c.exp : '' }),
+        remove: () => this.setState(s => ({ certs: s.certs.filter(x => x.id !== c.id), editing: s.editing === 'cert:' + c.id ? null : s.editing }), () => this.persist()) };
+    });
+    const on = {};
+    ['name', 'role', 'country', 'email', 'bio', 'company', 'asset', 'from', 'to', 'desc', 'current', 'cname', 'issuer', 'kind', 'expiry'].forEach(f => {
+      on[f] = (e) => { const v = e.target.type === 'checkbox' ? e.target.checked : e.target.value; this.setState(s => ({ d: { ...s.d, [f]: v } })); };
+    });
+    const words = ((st.d.bio || '').trim().match(/\S+/g) || []).length;
+    const full = st.certs.length >= max;
+    return {
+      wide: st.w >= 1100,
+      name: st.name, firstName: (st.name || '').split(/\s+/)[0], role: st.role || '—', country: st.country || '—', email: st.email || 'Add your email', bio: st.bio, photo: st.photo,
+      countries: this.COUNTRIES,
+      isNow: key === 'now', isFrom: key === 'from',
+      countdown: dd + 'd ' + p2(hh) + ':' + p2(mm) + ':' + p2(ss), cdPct: Math.max(0, Math.min(100, left / WEEK * 100)).toFixed(2) + '%',
+      renew: () => this.setState({ avail: 'now', availSince: Date.now() }, () => this.persist()),
+      certRem: sw(st.certRem, () => this.setState(s => ({ certRem: !s.certRem }), () => this.persist())),
+      jobRem: sw(st.jobRem, () => this.setState(s => ({ jobRem: !s.jobRem }), () => this.persist())),
+      certLead: st.certLead, onCertLead: (e) => this.setState({ certLead: e.target.value }, () => this.persist()),
+      alerts: st.alerts.map(a => ({ label: a.role + ' · ' + a.country, remove: () => this.setState(s => ({ alerts: s.alerts.filter(x => x.id !== a.id) }), () => this.persist()) })),
+      alertRole: st.alertRole, alertCountry: st.alertCountry,
+      onAlertRole: (e) => this.setState({ alertRole: e.target.value }),
+      onAlertCountry: (e) => this.setState({ alertCountry: e.target.value }),
+      alertKey: (e) => { if (e.key === 'Enter') { e.preventDefault(); this.addAlert(); } },
+      addAlert: () => this.addAlert(), alertOpacity: st.alertRole.trim() ? 1 : 0.45,
+      onPhoto: this.onPhoto,
+      av: expired ? { ...S.not, hint: 'Your 7-day availability ran out. Select Now to show as available again.' } : S[key], availOpen: st.open, availOpenAttr: st.open ? 'true' : 'false',
+      toggleAvail: () => this.setState({ open: !st.open }),
+      availOptions: Object.keys(S).map(x => ({ ...S[x], selected: x === key ? 'true' : 'false', bg: x === key ? 'rgba(255,255,255,0.08)' : 'transparent', border: x === key ? S[x].border : 'transparent', pick: () => this.setState(x === 'now' ? { avail: x, availSince: Date.now() } : { avail: x }, () => this.persist()) })),
+      fromDate: st.fromDate, onFromDate: (e) => this.setState({ fromDate: e.target.value, avail: 'from' }, () => this.persist()),
+      d: { ...st.d, notCurrent: !st.d.current, showExpiry: (st.d.kind || 'expiry') === 'expiry', kind: st.d.kind || 'expiry' },
+      on, saveEdit: () => this.save(), cancelEdit: () => this.setState({ editing: null }),
+      formKey: (e) => { if (e.key === 'Enter') { e.preventDefault(); this.save(); } },
+      saveOpacity: this.canSave() ? 1 : 0.45,
+      viewHead: k !== 'head', editingHead: k === 'head',
+      editHead: () => this.edit('head', { name: st.name, role: st.role, country: st.country, email: st.email }),
+      viewBio: k !== 'bio', editingBio: k === 'bio',
+      editBio: () => this.edit('bio', { bio: st.bio }),
+      bioCount: words + ' / 50 words', bioCountColor: words > 50 ? '#F2B33D' : '#9AA6B2',
+      jobs, noJobs: !st.jobs.length && k !== 'job:new', editingNewJob: k === 'job:new',
+      newJob: () => this.edit('job:new', { role: '', company: '', asset: '', from: '', to: '', desc: '', current: false }),
+      certs, certCount: st.certs.length + ' / ' + max,
+      slotsLeft: (max - st.certs.length) + (max - st.certs.length === 1 ? ' slot left' : ' slots left'),
+      addOpacity: full ? 0.45 : 1, addLabel: full ? 'Limit reached' : 'Add qualification',
+      showAddCert: k !== 'cert:new', editingNewCert: k === 'cert:new',
+      newCert: () => { if (!full) this.edit('cert:new', { cname: '', issuer: '', kind: 'expiry', expiry: '' }); },
+    };
+  }
+}
+</script>
+</body>
+</html>

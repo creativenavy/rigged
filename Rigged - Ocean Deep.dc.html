@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #05090D; }
+  * { box-sizing: border-box; }
+  a { color: #F4F7FA; text-decoration: none; }
+  a:hover { color: #6EC6FF; }
+  input, select, button { font: inherit; }
+  input::placeholder { color: #9AA6B2; }
+  select option { background: #0B121A; color: #F4F7FA; }
+  :focus-visible { outline: 1.5px solid #6EC6FF; outline-offset: 3px; }
+  @keyframes rig-sweep { 0% { transform: translate(-50%, -50%) rotate(0deg); opacity: 0; } 12% { opacity: 1; } 78% { opacity: 1; } 100% { transform: translate(-50%, -50%) rotate(360deg); opacity: 0; } }
+  @keyframes rig-swell { 0% { transform: translate3d(9%, 0, 0) scale(1.02); } 50% { transform: translate3d(7.8%, -0.9%, 0) scale(1.05); } 100% { transform: translate3d(9%, 0, 0) scale(1.02); } }
+  @keyframes rig-drift { 0% { transform: translate3d(0, 0, 0) scale(1.04); } 50% { transform: translate3d(-1.6%, -14px, 0) scale(1.08); } 100% { transform: translate3d(0, 0, 0) scale(1.04); } }
+  @media (prefers-reduced-motion: reduce) { img { animation: none !important; } }
+  @keyframes rig-veil { 0% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes rig-focus { 0% { filter: blur(10px) brightness(0.55); } 100% { filter: blur(0) brightness(1); } }
+  @keyframes rig-rise { 0% { opacity: 0; transform: translate3d(0, 18px, 0); filter: blur(6px); } 100% { opacity: 1; transform: none; filter: blur(0); } }
+  @keyframes rig-drop { 0% { opacity: 0; transform: translate3d(0, -10px, 0); } 100% { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 1ms !important; animation-delay: 0ms !important; } }
+  @keyframes rig-settle { 0% { opacity: 0; } 60% { opacity: 0; } 100% { opacity: 1; } }
+  ::selection { background: rgba(110,198,255,0.3); color: #F4F7FA; }
+</style>
+</helmet>
+<div style="font-family: 'Archivo', system-ui, sans-serif; background: #05090D; color: #F4F7FA; -webkit-font-smoothing: antialiased; letter-spacing: -0.005em;">
+
+  <header style="position: sticky; top: 0; z-index: 20; padding: 12px 16px 0; margin-bottom: -70px; animation: rig-drop 900ms cubic-bezier(0.2, 0.7, 0.2, 1) 400ms both;">
+    <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 0 18px 0 22px; height: 58px; display: flex; align-items: center; gap: 24px; border-radius: 16px; background: rgba(6,10,15, calc(0.38 + var(--hs, 0) * 0.5)); backdrop-filter: blur(calc(24px + var(--hs, 0) * 16px)) saturate(1.4); -webkit-backdrop-filter: blur(calc(24px + var(--hs, 0) * 16px)) saturate(1.4); transition: background 200ms ease; border: 1px solid rgba(255,255,255,0.10); box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), inset 0 -1px 0 rgba(255,255,255,0.03), inset 1px 0 0 rgba(255,255,255,0.05), inset -1px 0 0 rgba(255,255,255,0.05), 0 10px 32px -14px rgba(0,0,0,0.7);">
+      <span aria-hidden="true" style="position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.45) 50%, rgba(255,255,255,0) 100%); pointer-events: none;"></span>
+      <span aria-hidden="true" style="position: absolute; inset: 0; border-radius: 16px; background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 100%); pointer-events: none;"></span>
+      <a href="#" aria-label="Rigged home" style="flex: none; display: flex; align-items: center;"><img src="logo-rigged-3.svg" alt="Rigged" style="height: 24px; width: auto; display: block;" /></a>
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <nav style="flex: 1 1 auto; min-width: 0; display: flex; gap: 2px;">
+        <a href="Rigged - Job Search.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; white-space: nowrap; color: #C2CCD6; padding: 8px 9px; border-radius: 3px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #F4F7FA; background: rgba(110,198,255,0.08);">Career</a>
+        <a href="Rigged - Certification.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; white-space: nowrap; color: #C2CCD6; padding: 8px 9px; border-radius: 3px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #F4F7FA; background: rgba(110,198,255,0.08);">Certification</a>
+        <a href="Rigged - Insights.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; white-space: nowrap; color: #C2CCD6; padding: 8px 9px; border-radius: 3px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #F4F7FA; background: rgba(110,198,255,0.08);">Insights</a>
+        <a href="#" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; white-space: nowrap; color: #C2CCD6; padding: 8px 9px; border-radius: 3px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #F4F7FA; background: rgba(110,198,255,0.08);">Contact us</a>
+        <a href="#" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; white-space: nowrap; color: #C2CCD6; padding: 7px 12px; margin-left: 6px; border: 1px solid rgba(210,230,245,0.45); border-radius: 6px; color: #F4F7FA; transition: color 170ms ease, background 170ms ease, border-color 170ms ease;" style-hover="color: #F4F7FA; background: rgba(110,198,255,0.08); border-color: #7DB7D8;">For business</a>
+      </nav>
+      </sc-if>
+      <div style="flex: none; margin-left: auto; display: flex; align-items: center; gap: 6px;">
+        <sc-if value="{{ authInline }}" hint-placeholder-val="{{ true }}">
+        <a href="Rigged - Professional Profile.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #05090D; background: #F4F7FA; padding: 10px 14px; border-radius: 4px; transition: background 170ms ease, transform 150ms ease, box-shadow 170ms ease;" style-hover="background: #FFFFFF; color: #05090D; box-shadow: 0 0 0 4px rgba(110,198,255,0.22);" style-active="transform: translateY(1px);">Create account</a>
+        <a href="Rigged - Professional Profile.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #C2CCD6; padding: 10px 10px; border-radius: 3px; transition: color 170ms ease, background 170ms ease, border-color 170ms ease;" style-hover="color: #F4F7FA; background: rgba(110,198,255,0.08);">Sign in</a>
+        </sc-if>
+        <sc-if value="{{ compact }}" hint-placeholder-val="{{ false }}">
+        <button type="button" aria-label="Menu" aria-expanded="{{ menuOpen }}" onClick="{{ toggleMenu }}" style="margin-left: 4px; width: 40px; height: 40px; display: grid; align-content: center; justify-items: center; gap: 5px; padding: 0; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; cursor: pointer; transition: border-color 170ms ease, background 170ms ease;" style-hover="border-color: rgba(210,230,245,0.45); background: rgba(110,198,255,0.08);">
+          <span style="display: block; width: 16px; height: 1.5px; background: #F4F7FA;"></span>
+          <span style="display: block; width: 16px; height: 1.5px; background: #F4F7FA;"></span>
+          <span style="display: block; width: 16px; height: 1.5px; background: #F4F7FA;"></span>
+        </button>
+        </sc-if>
+      </div>
+      <sc-if value="{{ menuVisible }}" hint-placeholder-val="{{ false }}">
+        <div style="position: absolute; top: calc(100% + 8px); left: 0; right: 0; padding: 8px; display: grid; gap: 2px; border-radius: 14px; background: rgba(8,14,20,0.9); backdrop-filter: blur(24px) saturate(1.6); -webkit-backdrop-filter: blur(24px) saturate(1.6); border: 1px solid rgba(255,255,255,0.10); box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 24px 48px -20px rgba(0,0,0,0.85);">
+          <a href="Rigged - Job Search.dc.html" onClick="{{ closeMenu }}" style="font-family: 'Michroma', 'Archivo', sans-serif; display: flex; align-items: center; justify-content: space-between; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #C2CCD6; padding: 15px 14px; border-radius: 6px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #F4F7FA; background: rgba(110,198,255,0.08);">Career<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+          <a href="Rigged - Certification.dc.html" onClick="{{ closeMenu }}" style="font-family: 'Michroma', 'Archivo', sans-serif; display: flex; align-items: center; justify-content: space-between; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #C2CCD6; padding: 15px 14px; border-radius: 6px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #F4F7FA; background: rgba(110,198,255,0.08);">Certification<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+          <a href="Rigged - Insights.dc.html" onClick="{{ closeMenu }}" style="font-family: 'Michroma', 'Archivo', sans-serif; display: flex; align-items: center; justify-content: space-between; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #C2CCD6; padding: 15px 14px; border-radius: 6px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #F4F7FA; background: rgba(110,198,255,0.08);">Insights<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+          <a href="#" onClick="{{ closeMenu }}" style="font-family: 'Michroma', 'Archivo', sans-serif; display: flex; align-items: center; justify-content: space-between; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #C2CCD6; padding: 15px 14px; border-radius: 6px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #F4F7FA; background: rgba(110,198,255,0.08);">Contact us<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+          <a href="#" onClick="{{ closeMenu }}" style="font-family: 'Michroma', 'Archivo', sans-serif; display: flex; align-items: center; justify-content: space-between; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #F4F7FA; padding: 14px 13px; margin-top: 4px; border: 1px solid rgba(210,230,245,0.45); border-radius: 6px; transition: color 170ms ease, background 170ms ease, border-color 170ms ease;" style-hover="color: #F4F7FA; background: rgba(110,198,255,0.08); border-color: #7DB7D8;">For business<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+          <sc-if value="{{ authInMenu }}" hint-placeholder-val="{{ false }}">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px 6px 6px; margin-top: 6px; border-top: 1px solid rgba(210,230,245,0.14);">
+            <a href="Rigged - Professional Profile.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #05090D; background: #F4F7FA; padding: 10px 14px; border-radius: 4px; text-align: center; padding: 13px 14px; transition: background 170ms ease, transform 150ms ease, box-shadow 170ms ease;" style-hover="background: #FFFFFF; color: #05090D; box-shadow: 0 0 0 4px rgba(110,198,255,0.22);" style-active="transform: translateY(1px);">Create account</a>
+            <a href="Rigged - Professional Profile.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #C2CCD6; padding: 10px 10px; border-radius: 3px; text-align: center; padding: 12px 14px; border: 1px solid rgba(210,230,245,0.30); transition: color 170ms ease, background 170ms ease, border-color 170ms ease;" style-hover="color: #F4F7FA; background: rgba(110,198,255,0.08);">Sign in</a>
+          </div>
+          </sc-if>
+        </div>
+      </sc-if>
+    </div>
+  </header>
+
+  <section style="position: relative; z-index: 1;">
+    <div aria-hidden="true" style="position: absolute; top: 0; left: 0; right: 0; bottom: -200px; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 calc(100% - 340px), rgba(0,0,0,0.4) calc(100% - 140px), transparent 100%); mask-image: linear-gradient(180deg, #000 0%, #000 calc(100% - 340px), rgba(0,0,0,0.4) calc(100% - 140px), transparent 100%); transform: scale(calc(1 + var(--hp, 0) * 0.06)); transform-origin: 60% 40%; opacity: calc(1 - var(--hp, 0) * 0.4); animation: rig-focus 2400ms cubic-bezier(0.4, 0, 0.2, 1) 120ms both;">
+    <img src="hero-wave.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% 50%; image-rendering: auto; transform: translateX(9%); transform-origin: 60% 55%; animation: rig-swell 24s ease-in-out infinite; will-change: transform; -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 16%); mask-image: linear-gradient(90deg, transparent 0%, #000 16%);" />
+    <img src="ocean-1.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; image-rendering: auto; transition: opacity 300ms ease; opacity: {{ show2 }};" />
+    <img src="ocean-3.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; image-rendering: auto; transition: opacity 300ms ease; opacity: {{ show3 }};" />
+    <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,9,13,0.84) 0%, rgba(5,9,13,0.68) 38%, rgba(5,9,13,0.28) 68%, rgba(5,9,13,0.12) 100%);"></div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5,9,13,0.35) 0%, rgba(5,9,13,0) 30%, rgba(5,9,13,0) 48%, rgba(5,9,13,0.16) 60%, rgba(5,9,13,0.40) 72%, rgba(5,9,13,0.68) 84%, rgba(5,9,13,0.88) 93%, rgba(5,9,13,0.55) 100%);"></div>
+    <div style="position: absolute; inset: 0; background: radial-gradient(55% 45% at 88% 6%, rgba(110,198,255,0.10) 0%, rgba(110,198,255,0) 70%);"></div>
+    </div>
+    <div aria-hidden="true" style="position: absolute; inset: 0; background: #05090D; pointer-events: none; animation: rig-veil 1800ms cubic-bezier(0.4, 0, 0.2, 1) 120ms both;"></div>
+    <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 242px 28px 76px; transform: translate3d(0, calc(var(--hp, 0) * -70px), 0); opacity: calc(1 - var(--hp, 0) * 0.85);">
+      <div style="max-width: 760px;">
+        <h1 style="margin: 0; animation: rig-rise 1200ms cubic-bezier(0.2, 0.7, 0.2, 1) 650ms both; font-family: 'Michroma', 'Archivo', sans-serif; font-size: clamp(28px, 3.6vw, 46px); line-height: 1.16; letter-spacing: 0.01em; text-transform: uppercase; font-weight: 400; color: #F4F7FA; text-wrap: balance;">Start your next offshore contract</h1>
+        <p style="margin: 22px 0 0; animation: rig-rise 1200ms cubic-bezier(0.2, 0.7, 0.2, 1) 820ms both; max-width: 560px; font-size: 17px; line-height: 1.6; color: #C2CCD6; text-wrap: pretty;">Find offshore jobs, check ratings from personnel who have worked offshore and discover the certificates you need to work within the industry.</p>
+
+        <div style="position: relative; margin-top: 40px; max-width: 700px; animation: rig-rise 1200ms cubic-bezier(0.2, 0.7, 0.2, 1) 980ms both;">
+          <div style="position: absolute; inset: -1px; border-radius: 17px; box-shadow: 0 0 0 1px #6EC6FF, 0 0 0 5px rgba(110,198,255,0.14), 0 0 44px -6px rgba(110,198,255,0.30); pointer-events: none; transition: opacity 200ms ease; opacity: {{ ringOpacity }};"></div>
+          <div style="position: relative; display: flex; align-items: stretch; gap: 6px; padding: 6px; background: rgba(10,18,26,0.42); backdrop-filter: blur(24px) saturate(1.7); -webkit-backdrop-filter: blur(24px) saturate(1.7); border: 1px solid rgba(210,230,245,0.30); border-radius: 16px; box-shadow: 0 30px 70px -30px rgba(0,0,0,0.9), 0 0 36px rgba(110,198,255,0.16), inset 0 1px 0 rgba(255,255,255,0.14), inset 0 -1px 0 rgba(255,255,255,0.03); flex-wrap: wrap; transition: border-color 180ms ease, box-shadow 180ms ease;" style-hover="border-color: rgba(210,230,245,0.45); box-shadow: 0 30px 70px -30px rgba(0,0,0,0.9), 0 0 48px rgba(110,198,255,0.26);">
+            {{ searchLight }}
+            <div style="flex: 1 1 250px; display: flex; align-items: center; gap: 11px; padding: 0 12px; min-height: 52px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2CCD6" stroke-width="1.8" stroke-linecap="round" style="flex: none;"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.6 15.6L21 21"></path></svg>
+              <input type="text" placeholder="Search jobs, training courses or rig reviews" aria-label="Search jobs, training courses or rig reviews" onFocus="{{ onFocusIn }}" onBlur="{{ onFocusOut }}" style="width: 100%; background: transparent; border: 0; outline: none; color: #F4F7FA; font-size: 15.5px; padding: 14px 0;" />
+            </div>
+            <div style="position: relative; display: flex; align-items: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); box-shadow: inset 0 1px 0 rgba(255,255,255,0.10); border-radius: 10px; transition: background 180ms ease, border-color 180ms ease;" style-hover="background: rgba(110,198,255,0.08); border-color: rgba(210,230,245,0.5);">
+              <select aria-label="Region" onFocus="{{ onFocusIn }}" onBlur="{{ onFocusOut }}" style="appearance: none; -webkit-appearance: none; background: transparent; border: 0; outline: none; color: #F4F7FA; font-size: 14px; font-weight: 500; padding: 14px 36px 14px 14px; cursor: pointer;">
+                <option>All regions</option>
+                <option>North Sea</option>
+                <option>Norwegian Sea</option>
+                <option>Gulf of Mexico</option>
+                <option>West Africa</option>
+              </select>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C2CCD6" stroke-width="2.4" stroke-linecap="round" style="position: absolute; right: 13px; pointer-events: none;"><path d="M5 9l7 7 7-7"></path></svg>
+            </div>
+            <button type="button" style="flex: none; padding: 0 22px; min-height: 52px; border-radius: 10px; background: #F4F7FA; color: #05090D; border: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: background 170ms ease, box-shadow 170ms ease, transform 140ms ease;" style-hover="background: #FFFFFF; box-shadow: 0 0 0 4px rgba(110,198,255,0.22), 0 10px 28px -12px rgba(110,198,255,0.5);" style-active="transform: translateY(1px); background: #DCE6EF;">
+              Search
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#05090D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 12px; margin-top: 18px; flex-wrap: wrap; animation: rig-rise 1200ms cubic-bezier(0.2, 0.7, 0.2, 1) 1120ms both;">
+          <span style="font-size: 11.5px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #C2CCD6;">Popular</span>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <button type="button" onClick="{{ pick0 }}" style="position: relative; overflow: hidden; padding: 7px 12px; border-radius: 3px; background: rgba(10,18,26,0.34); backdrop-filter: blur(16px) saturate(1.6); -webkit-backdrop-filter: blur(16px) saturate(1.6); border: 1px solid rgba(255,255,255,0.16); color: #DCE6EF; font-size: 13px; font-weight: 500; cursor: pointer; transition: border-color 170ms ease, background 170ms ease, color 170ms ease;" style-hover="border-color: #7DB7D8; background: rgba(110,198,255,0.08); color: #F4F7FA;">
+              <span style="position: absolute; inset: 0; border-radius: 3px; background: rgba(110,198,255,0.16); border: 1px solid #6EC6FF; transition: opacity 170ms ease; opacity: {{ c0 }};"></span>
+              <span style="position: relative;">Derrickman</span>
+            </button>
+            <button type="button" onClick="{{ pick1 }}" style="position: relative; overflow: hidden; padding: 7px 12px; border-radius: 3px; background: rgba(10,18,26,0.34); backdrop-filter: blur(16px) saturate(1.6); -webkit-backdrop-filter: blur(16px) saturate(1.6); border: 1px solid rgba(255,255,255,0.16); color: #DCE6EF; font-size: 13px; font-weight: 500; cursor: pointer; transition: border-color 170ms ease, background 170ms ease, color 170ms ease;" style-hover="border-color: #7DB7D8; background: rgba(110,198,255,0.08); color: #F4F7FA;">
+              <span style="position: absolute; inset: 0; border-radius: 3px; background: rgba(110,198,255,0.16); border: 1px solid #6EC6FF; transition: opacity 170ms ease; opacity: {{ c1 }};"></span>
+              <span style="position: relative;">Rig electrician</span>
+            </button>
+            <button type="button" onClick="{{ pick2 }}" style="position: relative; overflow: hidden; padding: 7px 12px; border-radius: 3px; background: rgba(10,18,26,0.34); backdrop-filter: blur(16px) saturate(1.6); -webkit-backdrop-filter: blur(16px) saturate(1.6); border: 1px solid rgba(255,255,255,0.16); color: #DCE6EF; font-size: 13px; font-weight: 500; cursor: pointer; transition: border-color 170ms ease, background 170ms ease, color 170ms ease;" style-hover="border-color: #7DB7D8; background: rgba(110,198,255,0.08); color: #F4F7FA;">
+              <span style="position: absolute; inset: 0; border-radius: 3px; background: rgba(110,198,255,0.16); border: 1px solid #6EC6FF; transition: opacity 170ms ease; opacity: {{ c2 }};"></span>
+              <span style="position: relative;">Crane operator</span>
+            </button>
+            <button type="button" onClick="{{ pick3 }}" style="position: relative; overflow: hidden; padding: 7px 12px; border-radius: 3px; background: rgba(10,18,26,0.34); backdrop-filter: blur(16px) saturate(1.6); -webkit-backdrop-filter: blur(16px) saturate(1.6); border: 1px solid rgba(255,255,255,0.16); color: #DCE6EF; font-size: 13px; font-weight: 500; cursor: pointer; transition: border-color 170ms ease, background 170ms ease, color 170ms ease;" style-hover="border-color: #7DB7D8; background: rgba(110,198,255,0.08); color: #F4F7FA;">
+              <span style="position: absolute; inset: 0; border-radius: 3px; background: rgba(110,198,255,0.16); border: 1px solid #6EC6FF; transition: opacity 170ms ease; opacity: {{ c3 }};"></span>
+              <span style="position: relative;">Turbine technician</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div data-reveal-root="" style="position: relative; background: #05090D;">
+    <div aria-hidden="true" style="position: absolute; inset: 0; overflow: hidden; pointer-events: none;">
+      <img src="ocean-1.jpg" alt="" style="position: absolute; left: 0; right: 0; top: -120px; width: 100%; height: 1100px; object-fit: cover; object-position: 50% 40%; image-rendering: auto; animation: rig-drift 34s ease-in-out -4s infinite; will-change: transform; opacity: 0.6; -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%);" />
+      <img src="ocean-2.jpg" alt="" style="position: absolute; left: 0; right: 0; top: 24%; width: 100%; height: 1100px; object-fit: cover; object-position: 50% 55%; image-rendering: auto; animation: rig-drift 41s ease-in-out -17s infinite; will-change: transform; opacity: 0.5; -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%);" />
+      <img src="ocean-3.jpg" alt="" style="position: absolute; left: 0; right: 0; top: 50%; width: 100%; height: 1100px; object-fit: cover; object-position: 50% 60%; image-rendering: auto; animation: rig-drift 37s ease-in-out -9s infinite; will-change: transform; opacity: 0.45; -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%);" />
+      <img src="ocean-1.jpg" alt="" style="position: absolute; left: 0; right: 0; top: calc(100% - 1150px); width: 100%; height: 1100px; object-fit: cover; object-position: 50% 70%; image-rendering: auto; animation: rig-drift 45s ease-in-out -26s infinite; will-change: transform; opacity: 0.5; -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%);" />
+    </div>
+    <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none;">{{ oceanLayer }}</div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, #05090D 0px, #05090D 240px, rgba(5,8,13,0.82) 380px, rgba(5,8,13,0.55) 540px, rgba(5,8,13,0.38) 720px, rgba(5,8,13,0.34) 900px, rgba(5,8,13,0.4) 50%, rgba(5,8,13,0.48) calc(100% - 260px), #05090D 100%);"></div>
+    <div style="position: absolute; inset: 0; background: radial-gradient(70% 30% at 50% 10%, rgba(110,198,255,0.06) 0%, rgba(110,198,255,0) 70%);"></div>
+    <div aria-hidden="true" style="position: absolute; z-index: 1; left: 0; right: 0; top: -150px; height: 420px; pointer-events: none; background: linear-gradient(180deg, rgba(5,9,13,0) 0px, rgba(5,9,13,0.18) 40px, rgba(5,9,13,0.5) 85px, rgba(5,9,13,0.82) 125px, #05090D 165px, #05090D 250px, rgba(5,9,13,0.6) 320px, rgba(5,9,13,0) 420px);"></div>
+  <section style="position: relative; z-index: 2;">
+    <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 75px 28px 40px; display: flex; flex-wrap: wrap; gap: 32px 56px; align-items: flex-start;">
+      <div style="flex: 0 1 330px; min-width: min(100%, 280px);">
+        <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10.5px; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: #8CC4E2;">About Rigged</span>
+        <h2 style="margin: 16px 0 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: clamp(24px, 2.8vw, 36px); line-height: 1.2; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 400; color: #F4F7FA; text-wrap: balance;">Everything offshore</h2>
+        <span style="display: block; width: 56px; height: 1px; margin-top: 28px; background: linear-gradient(90deg, #8EDCFF 0%, rgba(142,220,255,0.15) 100%);"></span>
+      </div>
+      <div style="flex: 1 1 520px; min-width: 0; display: grid; gap: 20px; max-width: 780px;">
+        <p style="margin: 0; font-size: 17px; line-height: 1.68; color: #E2E8EE; text-wrap: pretty;">RIGGED was created by offshore workers who understand the industry and the challenges that come with it. Across oil &amp; gas, renewables and marine, we know how difficult it can be to find the right jobs, keep track of certifications and get genuine insight into the platforms and vessels we work on.</p>
+        <p style="margin: 0; font-size: 17px; line-height: 1.68; color: #C2CCD6; text-wrap: pretty;">RIGGED is built to bring the offshore industry together as one connected community, giving workers, recruiters and training providers a place to connect, share knowledge and discover new opportunities.</p>
+        <p style="margin: 12px 0 0; padding-top: 22px; border-top: 1px solid rgba(210,230,245,0.18); font-family: 'Michroma', 'Archivo', sans-serif; font-size: 12px; line-height: 1.7; letter-spacing: 0.14em; text-transform: uppercase; color: #F4F7FA;">One platform, one community,<br />everything offshore</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="position: relative;">
+    <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 56px 28px 96px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        <a href="#" style="position: relative; display: flex; flex-direction: column; padding: 30px 30px 28px; min-height: 400px; border: 1px solid rgba(210,230,245,0.45); border-radius: 14px; background: rgba(5,9,13,0.30); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: #F4F7FA; box-shadow: inset 0 1px 0 rgba(255,255,255,0.08); transition: border-color 200ms ease, background 200ms ease, box-shadow 200ms ease, transform 200ms ease;" style-hover="border-color: #7DB7D8; background: rgba(8,16,24,0.52); box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 0 0 1px rgba(110,198,255,0.22), 0 0 40px -8px rgba(110,198,255,0.28), 0 30px 60px -40px rgba(0,0,0,0.9); transform: translateY(-3px); color: #F4F7FA;">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F4F7FA" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16.5c0-4.7 3.2-8.5 8-8.5s8 3.8 8 8.5"></path><path d="M10 8.3V5.5h4v2.8"></path><path d="M2.8 16.5h18.4v1.6a1 1 0 0 1-1 1H3.8a1 1 0 0 1-1-1z"></path><path d="M12 8v8.5"></path></svg>
+            <span style="font-size: 13px; letter-spacing: 0.12em; color: #C2CCD6; font-variant-numeric: tabular-nums; font-family: 'Michroma', 'Archivo', sans-serif;">01</span>
+          </div>
+          <h2 style="margin: 34px 0 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 21px; line-height: 1.2; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 400; min-height: 2.4em;">Offshore job search</h2>
+          <span style="display: block; width: 32px; height: 1px; background: rgba(210,230,245,0.7); margin: 22px 0 0;"></span>
+          <p style="margin: 24px 0 0; font-size: 15px; line-height: 1.6; color: #C2CCD6; text-wrap: pretty;">Search offshore vacancies from leading companies recruiting across Oil &amp; Gas, Offshore Wind and Marine.</p>
+          <span style="margin-top: auto; padding-top: 36px; display: flex;">
+            <span style="width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(210,230,245,0.55); display: grid; place-items: center; transition: border-color 200ms ease, background 200ms ease, box-shadow 200ms ease;" style-hover="border-color: #6EC6FF; background: rgba(110,198,255,0.12); box-shadow: 0 0 0 4px rgba(110,198,255,0.14);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F4F7FA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            </span>
+          </span>
+        </a>
+        <a href="#" style="position: relative; display: flex; flex-direction: column; padding: 30px 30px 28px; min-height: 400px; border: 1px solid rgba(210,230,245,0.45); border-radius: 14px; background: rgba(5,9,13,0.30); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: #F4F7FA; box-shadow: inset 0 1px 0 rgba(255,255,255,0.08); transition: border-color 200ms ease, background 200ms ease, box-shadow 200ms ease, transform 200ms ease;" style-hover="border-color: #7DB7D8; background: rgba(8,16,24,0.52); box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 0 0 1px rgba(110,198,255,0.22), 0 0 40px -8px rgba(110,198,255,0.28), 0 30px 60px -40px rgba(0,0,0,0.9); transform: translateY(-3px); color: #F4F7FA;">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F4F7FA" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l7.5 3v6c0 4.6-3.2 8.3-7.5 10-4.3-1.7-7.5-5.4-7.5-10v-6z"></path><path d="M8.5 12l2.4 2.4L15.5 9.5"></path></svg>
+            <span style="font-size: 13px; letter-spacing: 0.12em; color: #C2CCD6; font-variant-numeric: tabular-nums; font-family: 'Michroma', 'Archivo', sans-serif;">02</span>
+          </div>
+          <h2 style="margin: 34px 0 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 21px; line-height: 1.2; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 400; min-height: 2.4em;">Training courses &amp; medicals</h2>
+          <span style="display: block; width: 32px; height: 1px; background: rgba(210,230,245,0.7); margin: 22px 0 0;"></span>
+          <p style="margin: 24px 0 0; font-size: 15px; line-height: 1.6; color: #C2CCD6; text-wrap: pretty;">Find offshore training courses, certification and medical providers by location.</p>
+          <span style="margin-top: auto; padding-top: 36px; display: flex;">
+            <span style="width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(210,230,245,0.55); display: grid; place-items: center; transition: border-color 200ms ease, background 200ms ease, box-shadow 200ms ease;" style-hover="border-color: #6EC6FF; background: rgba(110,198,255,0.12); box-shadow: 0 0 0 4px rgba(110,198,255,0.14);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F4F7FA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            </span>
+          </span>
+        </a>
+        <a href="#" style="position: relative; display: flex; flex-direction: column; padding: 30px 30px 28px; min-height: 400px; border: 1px solid rgba(210,230,245,0.45); border-radius: 14px; background: rgba(5,9,13,0.30); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: #F4F7FA; box-shadow: inset 0 1px 0 rgba(255,255,255,0.08); transition: border-color 200ms ease, background 200ms ease, box-shadow 200ms ease, transform 200ms ease;" style-hover="border-color: #7DB7D8; background: rgba(8,16,24,0.52); box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 0 0 1px rgba(110,198,255,0.22), 0 0 40px -8px rgba(110,198,255,0.28), 0 30px 60px -40px rgba(0,0,0,0.9); transform: translateY(-3px); color: #F4F7FA;">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F4F7FA" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="13" width="4" height="7.5" rx="0.5"></rect><rect x="10" y="8.5" width="4" height="12" rx="0.5"></rect><rect x="16.5" y="4" width="4" height="16.5" rx="0.5"></rect></svg>
+            <span style="font-size: 13px; letter-spacing: 0.12em; color: #C2CCD6; font-variant-numeric: tabular-nums; font-family: 'Michroma', 'Archivo', sans-serif;">03</span>
+          </div>
+          <h2 style="margin: 34px 0 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 21px; line-height: 1.2; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 400; min-height: 2.4em;">Real ratings</h2>
+          <span style="display: block; width: 32px; height: 1px; background: rgba(210,230,245,0.7); margin: 22px 0 0;"></span>
+          <p style="margin: 24px 0 0; font-size: 15px; line-height: 1.6; color: #C2CCD6; text-wrap: pretty;">Explore worker ratings on offshore platforms and vessels. Get the honest view of life offshore.</p>
+          <span style="margin-top: auto; padding-top: 36px; display: flex;">
+            <span style="width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(210,230,245,0.55); display: grid; place-items: center; transition: border-color 200ms ease, background 200ms ease, box-shadow 200ms ease;" style-hover="border-color: #6EC6FF; background: rgba(110,198,255,0.12); box-shadow: 0 0 0 4px rgba(110,198,255,0.14);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F4F7FA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section style="position: relative;">
+    <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 24px 28px 96px;">
+      <span aria-hidden="true" style="display: block; height: 1px; margin-bottom: 88px; background: linear-gradient(90deg, rgba(210,230,245,0) 0%, rgba(210,230,245,0.28) 20%, rgba(210,230,245,0.28) 80%, rgba(210,230,245,0) 100%);"></span>
+      <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10.5px; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: #7DB7D8;">Career</span>
+      <h2 style="margin: 14px 0 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: clamp(20px, 2.2vw, 27px); line-height: 1.22; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 400;">Top available positions</h2>
+      <p style="margin: 14px 0 0; max-width: 540px; font-size: 16px; line-height: 1.58; color: #C2CCD6; text-wrap: pretty;">Live vacancies from operators, contractors and vessel owners across Oil &amp; Gas, Offshore Wind and Marine.</p>
+      <div style="margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap: 16px;">
+        <article style="display: flex; flex-direction: column; background: rgba(8,16,24,0.62); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(210,230,245,0.30); border-radius: 10px; overflow: hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease, background 200ms ease;" style-hover="border-color: #7DB7D8; transform: translateY(-3px); background: rgba(8,16,24,0.78); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 0 0 1px rgba(110,198,255,0.22), 0 0 40px -8px rgba(110,198,255,0.24), 0 30px 60px -40px rgba(0,0,0,0.9);">
+          <div style="padding: 22px 22px 0; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+            <span style="font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #8CC4E2; padding: 5px 8px; border: 1px solid rgba(142,220,255,0.35); border-radius: 3px; background: rgba(110,198,255,0.06);">Oil &amp; Gas</span>
+            <span style="font-size: 12px; color: #9AA6B2;">2 days ago</span>
+          </div>
+          <div style="padding: 18px 22px 22px; flex: 1;">
+            <h3 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 13.5px; line-height: 1.45; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase;">Derrickman</h3>
+            <p style="margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: #C2CCD6;">Valaris · Semi-submersible drilling rig</p>
+            <dl style="margin: 20px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;">
+              <div><dt style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Location</dt><dd style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.35; color: #F4F7FA; font-variant-numeric: tabular-nums;">North Sea, UK</dd></div>
+              <div><dt style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Rotation</dt><dd style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.35; color: #F4F7FA; font-variant-numeric: tabular-nums;">3 / 3 weeks</dd></div>
+              <div><dt style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Day rate</dt><dd style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.35; color: #F4F7FA; font-variant-numeric: tabular-nums;">£320</dd></div>
+            </dl>
+          </div>
+          <div style="padding: 16px 22px; border-top: 1px solid rgba(210,230,245,0.18); display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+            <span style="font-size: 13px; color: #C2CCD6;">Starts <span style="color: #F4F7FA; font-variant-numeric: tabular-nums;">14 Nov</span></span>
+            <a href="#" style="display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 3px; background: transparent; border: 1px solid rgba(210,230,245,0.45); color: #F4F7FA; font-size: 12.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: background 170ms ease, border-color 170ms ease, color 170ms ease;" style-hover="background: #F4F7FA; border-color: #F4F7FA; color: #05090D;">View role
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"></path></svg>
+            </a>
+          </div>
+        </article>
+        <article style="display: flex; flex-direction: column; background: rgba(8,16,24,0.62); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(210,230,245,0.30); border-radius: 10px; overflow: hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease, background 200ms ease;" style-hover="border-color: #7DB7D8; transform: translateY(-3px); background: rgba(8,16,24,0.78); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 0 0 1px rgba(110,198,255,0.22), 0 0 40px -8px rgba(110,198,255,0.24), 0 30px 60px -40px rgba(0,0,0,0.9);">
+          <div style="padding: 22px 22px 0; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+            <span style="font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #8CC4E2; padding: 5px 8px; border: 1px solid rgba(142,220,255,0.35); border-radius: 3px; background: rgba(110,198,255,0.06);">Offshore Wind</span>
+            <span style="font-size: 12px; color: #9AA6B2;">1 day ago</span>
+          </div>
+          <div style="padding: 18px 22px 22px; flex: 1;">
+            <h3 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 13.5px; line-height: 1.45; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase;">Wind turbine technician</h3>
+            <p style="margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: #C2CCD6;">Ørsted · Hornsea 2</p>
+            <dl style="margin: 20px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;">
+              <div><dt style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Location</dt><dd style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.35; color: #F4F7FA; font-variant-numeric: tabular-nums;">North Sea, UK</dd></div>
+              <div><dt style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Rotation</dt><dd style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.35; color: #F4F7FA; font-variant-numeric: tabular-nums;">2 / 2 weeks</dd></div>
+              <div><dt style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Day rate</dt><dd style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.35; color: #F4F7FA; font-variant-numeric: tabular-nums;">£285</dd></div>
+            </dl>
+          </div>
+          <div style="padding: 16px 22px; border-top: 1px solid rgba(210,230,245,0.18); display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+            <span style="font-size: 13px; color: #C2CCD6;">Starts <span style="color: #F4F7FA; font-variant-numeric: tabular-nums;">03 Nov</span></span>
+            <a href="#" style="display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 3px; background: transparent; border: 1px solid rgba(210,230,245,0.45); color: #F4F7FA; font-size: 12.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: background 170ms ease, border-color 170ms ease, color 170ms ease;" style-hover="background: #F4F7FA; border-color: #F4F7FA; color: #05090D;">View role
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"></path></svg>
+            </a>
+          </div>
+        </article>
+        <article style="display: flex; flex-direction: column; background: rgba(8,16,24,0.62); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(210,230,245,0.30); border-radius: 10px; overflow: hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease, background 200ms ease;" style-hover="border-color: #7DB7D8; transform: translateY(-3px); background: rgba(8,16,24,0.78); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 0 0 1px rgba(110,198,255,0.22), 0 0 40px -8px rgba(110,198,255,0.24), 0 30px 60px -40px rgba(0,0,0,0.9);">
+          <div style="padding: 22px 22px 0; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+            <span style="font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #8CC4E2; padding: 5px 8px; border: 1px solid rgba(142,220,255,0.35); border-radius: 3px; background: rgba(110,198,255,0.06);">Oil &amp; Gas</span>
+            <span style="font-size: 12px; color: #9AA6B2;">3 days ago</span>
+          </div>
+          <div style="padding: 18px 22px 22px; flex: 1;">
+            <h3 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 13.5px; line-height: 1.45; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase;">Crane operator, stage 3</h3>
+            <p style="margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: #C2CCD6;">Equinor · Fixed production platform</p>
+            <dl style="margin: 20px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;">
+              <div><dt style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Location</dt><dd style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.35; color: #F4F7FA; font-variant-numeric: tabular-nums;">Norwegian Sea, NO</dd></div>
+              <div><dt style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Rotation</dt><dd style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.35; color: #F4F7FA; font-variant-numeric: tabular-nums;">2 / 4 weeks</dd></div>
+              <div><dt style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Day rate</dt><dd style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.35; color: #F4F7FA; font-variant-numeric: tabular-nums;">NOK 5,200</dd></div>
+            </dl>
+          </div>
+          <div style="padding: 16px 22px; border-top: 1px solid rgba(210,230,245,0.18); display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+            <span style="font-size: 13px; color: #C2CCD6;">Starts <span style="color: #F4F7FA; font-variant-numeric: tabular-nums;">21 Nov</span></span>
+            <a href="#" style="display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 3px; background: transparent; border: 1px solid rgba(210,230,245,0.45); color: #F4F7FA; font-size: 12.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: background 170ms ease, border-color 170ms ease, color 170ms ease;" style-hover="background: #F4F7FA; border-color: #F4F7FA; color: #05090D;">View role
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"></path></svg>
+            </a>
+          </div>
+        </article>
+        <article style="display: flex; flex-direction: column; background: rgba(8,16,24,0.62); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(210,230,245,0.30); border-radius: 10px; overflow: hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease, background 200ms ease;" style-hover="border-color: #7DB7D8; transform: translateY(-3px); background: rgba(8,16,24,0.78); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 0 0 1px rgba(110,198,255,0.22), 0 0 40px -8px rgba(110,198,255,0.24), 0 30px 60px -40px rgba(0,0,0,0.9);">
+          <div style="padding: 22px 22px 0; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+            <span style="font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #8CC4E2; padding: 5px 8px; border: 1px solid rgba(142,220,255,0.35); border-radius: 3px; background: rgba(110,198,255,0.06);">Oil &amp; Gas</span>
+            <span style="font-size: 12px; color: #9AA6B2;">4 days ago</span>
+          </div>
+          <div style="padding: 18px 22px 22px; flex: 1;">
+            <h3 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 13.5px; line-height: 1.45; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase;">Electrical technician</h3>
+            <p style="margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: #C2CCD6;">Shell · Spar platform</p>
+            <dl style="margin: 20px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;">
+              <div><dt style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Location</dt><dd style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.35; color: #F4F7FA; font-variant-numeric: tabular-nums;">Gulf of Mexico, US</dd></div>
+              <div><dt style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Rotation</dt><dd style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.35; color: #F4F7FA; font-variant-numeric: tabular-nums;">14 / 14 days</dd></div>
+              <div><dt style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Day rate</dt><dd style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.35; color: #F4F7FA; font-variant-numeric: tabular-nums;">$540</dd></div>
+            </dl>
+          </div>
+          <div style="padding: 16px 22px; border-top: 1px solid rgba(210,230,245,0.18); display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+            <span style="font-size: 13px; color: #C2CCD6;">Starts <span style="color: #F4F7FA; font-variant-numeric: tabular-nums;">10 Nov</span></span>
+            <a href="#" style="display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 3px; background: transparent; border: 1px solid rgba(210,230,245,0.45); color: #F4F7FA; font-size: 12.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: background 170ms ease, border-color 170ms ease, color 170ms ease;" style-hover="background: #F4F7FA; border-color: #F4F7FA; color: #05090D;">View role
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"></path></svg>
+            </a>
+          </div>
+        </article>
+        <article style="display: flex; flex-direction: column; background: rgba(8,16,24,0.62); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(210,230,245,0.30); border-radius: 10px; overflow: hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease, background 200ms ease;" style-hover="border-color: #7DB7D8; transform: translateY(-3px); background: rgba(8,16,24,0.78); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 0 0 1px rgba(110,198,255,0.22), 0 0 40px -8px rgba(110,198,255,0.24), 0 30px 60px -40px rgba(0,0,0,0.9);">
+          <div style="padding: 22px 22px 0; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+            <span style="font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #8CC4E2; padding: 5px 8px; border: 1px solid rgba(142,220,255,0.35); border-radius: 3px; background: rgba(110,198,255,0.06);">Marine</span>
+            <span style="font-size: 12px; color: #9AA6B2;">5 days ago</span>
+          </div>
+          <div style="padding: 18px 22px 22px; flex: 1;">
+            <h3 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 13.5px; line-height: 1.45; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase;">Chief officer, DP2</h3>
+            <p style="margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: #C2CCD6;">Boskalis · Construction support vessel</p>
+            <dl style="margin: 20px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;">
+              <div><dt style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Location</dt><dd style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.35; color: #F4F7FA; font-variant-numeric: tabular-nums;">West Africa</dd></div>
+              <div><dt style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Rotation</dt><dd style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.35; color: #F4F7FA; font-variant-numeric: tabular-nums;">5 / 5 weeks</dd></div>
+              <div><dt style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Day rate</dt><dd style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.35; color: #F4F7FA; font-variant-numeric: tabular-nums;">€610</dd></div>
+            </dl>
+          </div>
+          <div style="padding: 16px 22px; border-top: 1px solid rgba(210,230,245,0.18); display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+            <span style="font-size: 13px; color: #C2CCD6;">Starts <span style="color: #F4F7FA; font-variant-numeric: tabular-nums;">01 Dec</span></span>
+            <a href="#" style="display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 3px; background: transparent; border: 1px solid rgba(210,230,245,0.45); color: #F4F7FA; font-size: 12.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: background 170ms ease, border-color 170ms ease, color 170ms ease;" style-hover="background: #F4F7FA; border-color: #F4F7FA; color: #05090D;">View role
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"></path></svg>
+            </a>
+          </div>
+        </article>
+        <article style="display: flex; flex-direction: column; background: rgba(8,16,24,0.62); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(210,230,245,0.30); border-radius: 10px; overflow: hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease, background 200ms ease;" style-hover="border-color: #7DB7D8; transform: translateY(-3px); background: rgba(8,16,24,0.78); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 0 0 1px rgba(110,198,255,0.22), 0 0 40px -8px rgba(110,198,255,0.24), 0 30px 60px -40px rgba(0,0,0,0.9);">
+          <div style="padding: 22px 22px 0; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+            <span style="font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #8CC4E2; padding: 5px 8px; border: 1px solid rgba(142,220,255,0.35); border-radius: 3px; background: rgba(110,198,255,0.06);">Oil &amp; Gas</span>
+            <span style="font-size: 12px; color: #9AA6B2;">6 days ago</span>
+          </div>
+          <div style="padding: 18px 22px 22px; flex: 1;">
+            <h3 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 13.5px; line-height: 1.45; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase;">Offshore medic</h3>
+            <p style="margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: #C2CCD6;">Petrofac · FPSO</p>
+            <dl style="margin: 20px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;">
+              <div><dt style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Location</dt><dd style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.35; color: #F4F7FA; font-variant-numeric: tabular-nums;">North Sea, UK</dd></div>
+              <div><dt style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Rotation</dt><dd style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.35; color: #F4F7FA; font-variant-numeric: tabular-nums;">3 / 3 weeks</dd></div>
+              <div><dt style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Day rate</dt><dd style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.35; color: #F4F7FA; font-variant-numeric: tabular-nums;">£390</dd></div>
+            </dl>
+          </div>
+          <div style="padding: 16px 22px; border-top: 1px solid rgba(210,230,245,0.18); display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+            <span style="font-size: 13px; color: #C2CCD6;">Starts <span style="color: #F4F7FA; font-variant-numeric: tabular-nums;">17 Nov</span></span>
+            <a href="#" style="display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 3px; background: transparent; border: 1px solid rgba(210,230,245,0.45); color: #F4F7FA; font-size: 12.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: background 170ms ease, border-color 170ms ease, color 170ms ease;" style-hover="background: #F4F7FA; border-color: #F4F7FA; color: #05090D;">View role
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"></path></svg>
+            </a>
+          </div>
+        </article>
+      </div>
+      <div style="display: flex; justify-content: flex-end; margin-top: 24px;">
+        <a href="#" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 3px; background: rgba(5,9,13,0.5); border: 1px solid rgba(210,230,245,0.45); color: #F4F7FA; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: border-color 170ms ease, background 170ms ease, transform 140ms ease, box-shadow 170ms ease;" style-hover="border-color: #7DB7D8; background: rgba(110,198,255,0.08); color: #F4F7FA; box-shadow: 0 0 0 3px rgba(110,198,255,0.12);" style-active="transform: translateY(1px);">Browse all jobs
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section style="position: relative;">
+    <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 0 28px 96px;">
+      <span aria-hidden="true" style="display: block; height: 1px; margin-bottom: 88px; background: linear-gradient(90deg, rgba(210,230,245,0) 0%, rgba(210,230,245,0.28) 20%, rgba(210,230,245,0.28) 80%, rgba(210,230,245,0) 100%);"></span>
+      <div style="display: flex; align-items: flex-end; gap: 32px; flex-wrap: wrap;">
+        <div style="flex: 1 1 420px;">
+          <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10.5px; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: #7DB7D8;">Certification</span>
+          <h2 style="margin: 14px 0 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: clamp(20px, 2.2vw, 27px); line-height: 1.22; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 400;">Training &amp; medicals</h2>
+          <p style="margin: 14px 0 0; max-width: 520px; font-size: 16px; line-height: 1.58; color: #C2CCD6; text-wrap: pretty;">Courses and medicals run on site at training centres. Filter by city and book direct with the provider.</p>
+        </div>
+        <div style="position: relative; display: flex; align-items: center; background: rgba(5,9,13,0.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(210,230,245,0.45); border-radius: 3px; transition: border-color 170ms ease, background 170ms ease;" style-hover="border-color: #7DB7D8; background: rgba(110,198,255,0.08);">
+          <select aria-label="City" style="appearance: none; -webkit-appearance: none; background: transparent; border: 0; outline: none; color: #F4F7FA; font-size: 14px; font-weight: 500; padding: 11px 38px 11px 14px; cursor: pointer;">
+            <option>Aberdeen, UK</option>
+            <option>Stavanger, NO</option>
+            <option>Houston, US</option>
+            <option>Esbjerg, DK</option>
+          </select>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C2CCD6" stroke-width="2.4" stroke-linecap="round" style="position: absolute; right: 13px; pointer-events: none;"><path d="M5 9l7 7 7-7"></path></svg>
+        </div>
+      </div>
+
+      <div style="margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap: 16px;">
+        <article style="display: flex; flex-direction: column; background: rgba(8,16,24,0.62); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(210,230,245,0.30); border-radius: 10px; overflow: hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease, background 200ms ease;" style-hover="border-color: #7DB7D8; transform: translateY(-3px); background: rgba(8,16,24,0.78); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 0 0 1px rgba(110,198,255,0.22), 0 0 40px -8px rgba(110,198,255,0.24), 0 30px 60px -40px rgba(0,0,0,0.9);">
+          <div style="padding: 24px 24px 0; display: flex; align-items: baseline; gap: 10px;">
+            <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 26px; font-weight: 400; letter-spacing: 0.02em; line-height: 1; font-variant-numeric: tabular-nums;">08</span>
+            <span style="font-size: 11.5px; font-weight: 500; color: #C2CCD6; text-transform: uppercase; letter-spacing: 0.16em;">Oct 2026</span>
+          </div>
+          <div style="padding: 18px 24px 24px; flex: 1;">
+            <h3 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 13.5px; line-height: 1.45; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase;">HUET — helicopter underwater escape</h3>
+            <p style="margin: 10px 0 0; font-size: 14px; line-height: 1.58; color: #C2CCD6; text-wrap: pretty;">One-day course covering helicopter safety briefings, escape from a submerged helicopter, and use of the emergency breathing system.</p>
+          </div>
+          <div style="padding: 16px 24px; border-top: 1px solid rgba(210,230,245,0.18); display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+            <span style="font-size: 17px; font-weight: 500; letter-spacing: 0.01em; font-variant-numeric: tabular-nums;">£310</span>
+            <a href="#" style="display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 3px; background: transparent; border: 1px solid rgba(210,230,245,0.45); color: #F4F7FA; font-size: 12.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: background 170ms ease, border-color 170ms ease, color 170ms ease;" style-hover="background: #F4F7FA; border-color: #F4F7FA; color: #05090D;">Book
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"></path></svg>
+            </a>
+          </div>
+        </article>
+        <article style="display: flex; flex-direction: column; background: rgba(8,16,24,0.62); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(210,230,245,0.30); border-radius: 10px; overflow: hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease, background 200ms ease;" style-hover="border-color: #7DB7D8; transform: translateY(-3px); background: rgba(8,16,24,0.78); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 0 0 1px rgba(110,198,255,0.22), 0 0 40px -8px rgba(110,198,255,0.24), 0 30px 60px -40px rgba(0,0,0,0.9);">
+          <div style="padding: 24px 24px 0; display: flex; align-items: baseline; gap: 10px;">
+            <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 26px; font-weight: 400; letter-spacing: 0.02em; line-height: 1; font-variant-numeric: tabular-nums;">13</span>
+            <span style="font-size: 11.5px; font-weight: 500; color: #C2CCD6; text-transform: uppercase; letter-spacing: 0.16em;">Oct 2026</span>
+          </div>
+          <div style="padding: 18px 24px 24px; flex: 1;">
+            <h3 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 13.5px; line-height: 1.45; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase;">Offshore medical examination</h3>
+            <p style="margin: 10px 0 0; font-size: 14px; line-height: 1.58; color: #C2CCD6; text-wrap: pretty;">Half-day medical to Oil &amp; Gas UK standard, including vision, hearing, blood pressure, and fitness assessment. Certificate issued on the day.</p>
+          </div>
+          <div style="padding: 16px 24px; border-top: 1px solid rgba(210,230,245,0.18); display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+            <span style="font-size: 17px; font-weight: 500; letter-spacing: 0.01em; font-variant-numeric: tabular-nums;">£145</span>
+            <a href="#" style="display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 3px; background: transparent; border: 1px solid rgba(210,230,245,0.45); color: #F4F7FA; font-size: 12.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: background 170ms ease, border-color 170ms ease, color 170ms ease;" style-hover="background: #F4F7FA; border-color: #F4F7FA; color: #05090D;">Book
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"></path></svg>
+            </a>
+          </div>
+        </article>
+        <article style="display: flex; flex-direction: column; background: rgba(8,16,24,0.62); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(210,230,245,0.30); border-radius: 10px; overflow: hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease, background 200ms ease;" style-hover="border-color: #7DB7D8; transform: translateY(-3px); background: rgba(8,16,24,0.78); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 0 0 1px rgba(110,198,255,0.22), 0 0 40px -8px rgba(110,198,255,0.24), 0 30px 60px -40px rgba(0,0,0,0.9);">
+          <div style="padding: 24px 24px 0; display: flex; align-items: baseline; gap: 10px;">
+            <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 26px; font-weight: 400; letter-spacing: 0.02em; line-height: 1; font-variant-numeric: tabular-nums;">20</span>
+            <span style="font-size: 11.5px; font-weight: 500; color: #C2CCD6; text-transform: uppercase; letter-spacing: 0.16em;">Oct 2026</span>
+          </div>
+          <div style="padding: 18px 24px 24px; flex: 1;">
+            <h3 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 13.5px; line-height: 1.45; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase;">BOSIET refresher</h3>
+            <p style="margin: 10px 0 0; font-size: 14px; line-height: 1.58; color: #C2CCD6; text-wrap: pretty;">Three-day refresher covering sea survival, firefighting, first aid, and helicopter escape for returning offshore personnel.</p>
+          </div>
+          <div style="padding: 16px 24px; border-top: 1px solid rgba(210,230,245,0.18); display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+            <span style="font-size: 17px; font-weight: 500; letter-spacing: 0.01em; font-variant-numeric: tabular-nums;">£845</span>
+            <a href="#" style="display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 3px; background: transparent; border: 1px solid rgba(210,230,245,0.45); color: #F4F7FA; font-size: 12.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: background 170ms ease, border-color 170ms ease, color 170ms ease;" style-hover="background: #F4F7FA; border-color: #F4F7FA; color: #05090D;">Book
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"></path></svg>
+            </a>
+          </div>
+        </article>
+        <article style="display: flex; flex-direction: column; background: rgba(8,16,24,0.62); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(210,230,245,0.30); border-radius: 10px; overflow: hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease, background 200ms ease;" style-hover="border-color: #7DB7D8; transform: translateY(-3px); background: rgba(8,16,24,0.78); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 0 0 1px rgba(110,198,255,0.22), 0 0 40px -8px rgba(110,198,255,0.24), 0 30px 60px -40px rgba(0,0,0,0.9);">
+          <div style="padding: 24px 24px 0; display: flex; align-items: baseline; gap: 10px;">
+            <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 26px; font-weight: 400; letter-spacing: 0.02em; line-height: 1; font-variant-numeric: tabular-nums;">23</span>
+            <span style="font-size: 11.5px; font-weight: 500; color: #C2CCD6; text-transform: uppercase; letter-spacing: 0.16em;">Oct 2026</span>
+          </div>
+          <div style="padding: 18px 24px 24px; flex: 1;">
+            <h3 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 13.5px; line-height: 1.45; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase;">GWO Basic Safety Training</h3>
+            <p style="margin: 10px 0 0; font-size: 14px; line-height: 1.58; color: #C2CCD6; text-wrap: pretty;">Five modules for offshore wind: first aid, manual handling, fire awareness, working at heights, and sea survival.</p>
+          </div>
+          <div style="padding: 16px 24px; border-top: 1px solid rgba(210,230,245,0.18); display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+            <span style="font-size: 17px; font-weight: 500; letter-spacing: 0.01em; font-variant-numeric: tabular-nums;">£1,150</span>
+            <a href="#" style="display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 3px; background: transparent; border: 1px solid rgba(210,230,245,0.45); color: #F4F7FA; font-size: 12.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: background 170ms ease, border-color 170ms ease, color 170ms ease;" style-hover="background: #F4F7FA; border-color: #F4F7FA; color: #05090D;">Book
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"></path></svg>
+            </a>
+          </div>
+        </article>
+        <article style="display: flex; flex-direction: column; background: rgba(8,16,24,0.62); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(210,230,245,0.30); border-radius: 10px; overflow: hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease, background 200ms ease;" style-hover="border-color: #7DB7D8; transform: translateY(-3px); background: rgba(8,16,24,0.78); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 0 0 1px rgba(110,198,255,0.22), 0 0 40px -8px rgba(110,198,255,0.24), 0 30px 60px -40px rgba(0,0,0,0.9);">
+          <div style="padding: 24px 24px 0; display: flex; align-items: baseline; gap: 10px;">
+            <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 26px; font-weight: 400; letter-spacing: 0.02em; line-height: 1; font-variant-numeric: tabular-nums;">27</span>
+            <span style="font-size: 11.5px; font-weight: 500; color: #C2CCD6; text-transform: uppercase; letter-spacing: 0.16em;">Oct 2026</span>
+          </div>
+          <div style="padding: 18px 24px 24px; flex: 1;">
+            <h3 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 13.5px; line-height: 1.45; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase;">MIST — minimum industry safety</h3>
+            <p style="margin: 10px 0 0; font-size: 14px; line-height: 1.58; color: #C2CCD6; text-wrap: pretty;">Two-day induction to the hazards, permits, and safe systems of work on UK offshore installations.</p>
+          </div>
+          <div style="padding: 16px 24px; border-top: 1px solid rgba(210,230,245,0.18); display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+            <span style="font-size: 17px; font-weight: 500; letter-spacing: 0.01em; font-variant-numeric: tabular-nums;">£395</span>
+            <a href="#" style="display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 3px; background: transparent; border: 1px solid rgba(210,230,245,0.45); color: #F4F7FA; font-size: 12.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: background 170ms ease, border-color 170ms ease, color 170ms ease;" style-hover="background: #F4F7FA; border-color: #F4F7FA; color: #05090D;">Book
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"></path></svg>
+            </a>
+          </div>
+        </article>
+        <article style="display: flex; flex-direction: column; background: rgba(8,16,24,0.62); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(210,230,245,0.30); border-radius: 10px; overflow: hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease, background 200ms ease;" style-hover="border-color: #7DB7D8; transform: translateY(-3px); background: rgba(8,16,24,0.78); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 0 0 1px rgba(110,198,255,0.22), 0 0 40px -8px rgba(110,198,255,0.24), 0 30px 60px -40px rgba(0,0,0,0.9);">
+          <div style="padding: 24px 24px 0; display: flex; align-items: baseline; gap: 10px;">
+            <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 26px; font-weight: 400; letter-spacing: 0.02em; line-height: 1; font-variant-numeric: tabular-nums;">03</span>
+            <span style="font-size: 11.5px; font-weight: 500; color: #C2CCD6; text-transform: uppercase; letter-spacing: 0.16em;">Nov 2026</span>
+          </div>
+          <div style="padding: 18px 24px 24px; flex: 1;">
+            <h3 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 13.5px; line-height: 1.45; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase;">CA-EBS — emergency breathing</h3>
+            <p style="margin: 10px 0 0; font-size: 14px; line-height: 1.58; color: #C2CCD6; text-wrap: pretty;">Half-day course on compressed air emergency breathing systems for helicopter travel offshore.</p>
+          </div>
+          <div style="padding: 16px 24px; border-top: 1px solid rgba(210,230,245,0.18); display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+            <span style="font-size: 17px; font-weight: 500; letter-spacing: 0.01em; font-variant-numeric: tabular-nums;">£195</span>
+            <a href="#" style="display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 3px; background: transparent; border: 1px solid rgba(210,230,245,0.45); color: #F4F7FA; font-size: 12.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: background 170ms ease, border-color 170ms ease, color 170ms ease;" style-hover="background: #F4F7FA; border-color: #F4F7FA; color: #05090D;">Book
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"></path></svg>
+            </a>
+          </div>
+        </article>
+      </div>
+      <div style="display: flex; justify-content: flex-end; margin-top: 24px;">
+        <a href="#" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 3px; background: rgba(5,9,13,0.5); border: 1px solid rgba(210,230,245,0.45); color: #F4F7FA; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: border-color 170ms ease, background 170ms ease, transform 140ms ease, box-shadow 170ms ease;" style-hover="border-color: #7DB7D8; background: rgba(110,198,255,0.08); color: #F4F7FA; box-shadow: 0 0 0 3px rgba(110,198,255,0.12);" style-active="transform: translateY(1px);">Browse all certificates
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section style="position: relative;">
+    <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 0 28px 112px;">
+      <span aria-hidden="true" style="display: block; height: 1px; margin-bottom: 88px; background: linear-gradient(90deg, rgba(210,230,245,0) 0%, rgba(210,230,245,0.28) 20%, rgba(210,230,245,0.28) 80%, rgba(210,230,245,0) 100%);"></span>
+      <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10.5px; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: #7DB7D8;">Insights</span>
+      <h2 style="margin: 14px 0 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: clamp(20px, 2.2vw, 27px); line-height: 1.22; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 400;">Offshore rig profiles</h2>
+      <p style="margin: 14px 0 0; max-width: 540px; font-size: 16px; line-height: 1.58; color: #C2CCD6; text-wrap: pretty;">What living on board is actually like — food, cabins, gym, Wi-Fi, and recreation, rated by the personnel who worked the rotation.</p>
+      <div style="margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: 16px; align-items: start;">
+        <div style="background: rgba(10,18,26,0.42); backdrop-filter: blur(24px) saturate(1.7); -webkit-backdrop-filter: blur(24px) saturate(1.7); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; overflow: hidden; box-shadow: 0 30px 70px -40px rgba(0,0,0,0.95), inset 0 1px 0 rgba(255,255,255,0.14);">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 22px; border-bottom: 1px solid rgba(210,230,245,0.22); background: rgba(255,255,255,0.02);">
+            <h3 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 400;">Top 5 platforms</h3>
+            <span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Personnel rating</span>
+          </div>
+          <a href="#" style="display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; align-items: center; gap: 16px; padding: 18px 22px; border-bottom: 1px solid rgba(210,230,245,0.14); color: #F4F7FA; transition: background 170ms ease, box-shadow 170ms ease;" style-hover="background: rgba(110,198,255,0.07); color: #F4F7FA; box-shadow: inset 2px 0 0 #6EC6FF;">
+            <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 12px; color: #9AA6B2; font-variant-numeric: tabular-nums;">01</span>
+            <div style="min-width: 0;">
+              <div style="font-size: 16px; font-weight: 500; letter-spacing: 0.01em;">Havstjerne</div>
+              <div style="margin-top: 5px; font-size: 13.5px; color: #C2CCD6;">Equinor · Gas · Norwegian Sea</div>
+            </div>
+            <div style="display: grid; justify-items: end; gap: 6px;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+              <span role="img" aria-label="4.6 out of 5" style="position: relative; display: flex; gap: 2px; width: 78px; height: 14px; flex: none;">
+                <span style="position: absolute; inset: 0; display: flex; gap: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg></span>
+                <span style="position: absolute; top: 0; left: 0; bottom: 0; width: 92%; overflow: hidden; display: flex; gap: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg></span>
+              </span>
+                <span style="font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; min-width: 26px; text-align: right;">4.6</span>
+              </div>
+              <span style="font-size: 12px; color: #9AA6B2; font-variant-numeric: tabular-nums;">21 ratings</span>
+            </div>
+          </a>
+          <a href="#" style="display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; align-items: center; gap: 16px; padding: 18px 22px; border-bottom: 1px solid rgba(210,230,245,0.14); color: #F4F7FA; transition: background 170ms ease, box-shadow 170ms ease;" style-hover="background: rgba(110,198,255,0.07); color: #F4F7FA; box-shadow: inset 2px 0 0 #6EC6FF;">
+            <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 12px; color: #9AA6B2; font-variant-numeric: tabular-nums;">02</span>
+            <div style="min-width: 0;">
+              <div style="font-size: 16px; font-weight: 500; letter-spacing: 0.01em;">Dogger Bank C</div>
+              <div style="margin-top: 5px; font-size: 13.5px; color: #C2CCD6;">SSE Renewables · Wind · North Sea</div>
+            </div>
+            <div style="display: grid; justify-items: end; gap: 6px;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+              <span role="img" aria-label="4.4 out of 5" style="position: relative; display: flex; gap: 2px; width: 78px; height: 14px; flex: none;">
+                <span style="position: absolute; inset: 0; display: flex; gap: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg></span>
+                <span style="position: absolute; top: 0; left: 0; bottom: 0; width: 88%; overflow: hidden; display: flex; gap: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg></span>
+              </span>
+                <span style="font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; min-width: 26px; text-align: right;">4.4</span>
+              </div>
+              <span style="font-size: 12px; color: #9AA6B2; font-variant-numeric: tabular-nums;">12 ratings</span>
+            </div>
+          </a>
+          <a href="#" style="display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; align-items: center; gap: 16px; padding: 18px 22px; border-bottom: 1px solid rgba(210,230,245,0.14); color: #F4F7FA; transition: background 170ms ease, box-shadow 170ms ease;" style-hover="background: rgba(110,198,255,0.07); color: #F4F7FA; box-shadow: inset 2px 0 0 #6EC6FF;">
+            <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 12px; color: #9AA6B2; font-variant-numeric: tabular-nums;">03</span>
+            <div style="min-width: 0;">
+              <div style="font-size: 16px; font-weight: 500; letter-spacing: 0.01em;">Sovereign Alpha</div>
+              <div style="margin-top: 5px; font-size: 13.5px; color: #C2CCD6;">BP · Oil · North Sea</div>
+            </div>
+            <div style="display: grid; justify-items: end; gap: 6px;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+              <span role="img" aria-label="4.2 out of 5" style="position: relative; display: flex; gap: 2px; width: 78px; height: 14px; flex: none;">
+                <span style="position: absolute; inset: 0; display: flex; gap: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg></span>
+                <span style="position: absolute; top: 0; left: 0; bottom: 0; width: 84%; overflow: hidden; display: flex; gap: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg></span>
+              </span>
+                <span style="font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; min-width: 26px; text-align: right;">4.2</span>
+              </div>
+              <span style="font-size: 12px; color: #9AA6B2; font-variant-numeric: tabular-nums;">38 ratings</span>
+            </div>
+          </a>
+          <a href="#" style="display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; align-items: center; gap: 16px; padding: 18px 22px; border-bottom: 1px solid rgba(210,230,245,0.14); color: #F4F7FA; transition: background 170ms ease, box-shadow 170ms ease;" style-hover="background: rgba(110,198,255,0.07); color: #F4F7FA; box-shadow: inset 2px 0 0 #6EC6FF;">
+            <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 12px; color: #9AA6B2; font-variant-numeric: tabular-nums;">04</span>
+            <div style="min-width: 0;">
+              <div style="font-size: 16px; font-weight: 500; letter-spacing: 0.01em;">Northgate Bravo</div>
+              <div style="margin-top: 5px; font-size: 13.5px; color: #C2CCD6;">Harbour Energy · Oil · North Sea</div>
+            </div>
+            <div style="display: grid; justify-items: end; gap: 6px;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+              <span role="img" aria-label="4 out of 5" style="position: relative; display: flex; gap: 2px; width: 78px; height: 14px; flex: none;">
+                <span style="position: absolute; inset: 0; display: flex; gap: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg></span>
+                <span style="position: absolute; top: 0; left: 0; bottom: 0; width: 80%; overflow: hidden; display: flex; gap: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg></span>
+              </span>
+                <span style="font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; min-width: 26px; text-align: right;">4.0</span>
+              </div>
+              <span style="font-size: 12px; color: #9AA6B2; font-variant-numeric: tabular-nums;">29 ratings</span>
+            </div>
+          </a>
+          <a href="#" style="display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; align-items: center; gap: 16px; padding: 18px 22px; color: #F4F7FA; transition: background 170ms ease, box-shadow 170ms ease;" style-hover="background: rgba(110,198,255,0.07); color: #F4F7FA; box-shadow: inset 2px 0 0 #6EC6FF;">
+            <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 12px; color: #9AA6B2; font-variant-numeric: tabular-nums;">05</span>
+            <div style="min-width: 0;">
+              <div style="font-size: 16px; font-weight: 500; letter-spacing: 0.01em;">Ocean Vantage</div>
+              <div style="margin-top: 5px; font-size: 13.5px; color: #C2CCD6;">Shell · Oil · Gulf of Mexico</div>
+            </div>
+            <div style="display: grid; justify-items: end; gap: 6px;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+              <span role="img" aria-label="3.5 out of 5" style="position: relative; display: flex; gap: 2px; width: 78px; height: 14px; flex: none;">
+                <span style="position: absolute; inset: 0; display: flex; gap: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg></span>
+                <span style="position: absolute; top: 0; left: 0; bottom: 0; width: 70%; overflow: hidden; display: flex; gap: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg></span>
+              </span>
+                <span style="font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; min-width: 26px; text-align: right;">3.5</span>
+              </div>
+              <span style="font-size: 12px; color: #9AA6B2; font-variant-numeric: tabular-nums;">47 ratings</span>
+            </div>
+          </a>
+        </div>
+        <div style="background: rgba(10,18,26,0.42); backdrop-filter: blur(24px) saturate(1.7); -webkit-backdrop-filter: blur(24px) saturate(1.7); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; overflow: hidden; box-shadow: 0 30px 70px -40px rgba(0,0,0,0.95), inset 0 1px 0 rgba(255,255,255,0.14);">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 22px; border-bottom: 1px solid rgba(210,230,245,0.22); background: rgba(255,255,255,0.02);">
+            <h3 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 400;">Top 5 vessels</h3>
+            <span style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA6B2;">Personnel rating</span>
+          </div>
+          <a href="#" style="display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; align-items: center; gap: 16px; padding: 18px 22px; border-bottom: 1px solid rgba(210,230,245,0.14); color: #F4F7FA; transition: background 170ms ease, box-shadow 170ms ease;" style-hover="background: rgba(110,198,255,0.07); color: #F4F7FA; box-shadow: inset 2px 0 0 #6EC6FF;">
+            <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 12px; color: #9AA6B2; font-variant-numeric: tabular-nums;">01</span>
+            <div style="min-width: 0;">
+              <div style="font-size: 16px; font-weight: 500; letter-spacing: 0.01em;">Northern Resolve</div>
+              <div style="margin-top: 5px; font-size: 13.5px; color: #C2CCD6;">Boskalis · Construction support · North Sea</div>
+            </div>
+            <div style="display: grid; justify-items: end; gap: 6px;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+              <span role="img" aria-label="4.7 out of 5" style="position: relative; display: flex; gap: 2px; width: 78px; height: 14px; flex: none;">
+                <span style="position: absolute; inset: 0; display: flex; gap: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg></span>
+                <span style="position: absolute; top: 0; left: 0; bottom: 0; width: 94%; overflow: hidden; display: flex; gap: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg></span>
+              </span>
+                <span style="font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; min-width: 26px; text-align: right;">4.7</span>
+              </div>
+              <span style="font-size: 12px; color: #9AA6B2; font-variant-numeric: tabular-nums;">18 ratings</span>
+            </div>
+          </a>
+          <a href="#" style="display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; align-items: center; gap: 16px; padding: 18px 22px; border-bottom: 1px solid rgba(210,230,245,0.14); color: #F4F7FA; transition: background 170ms ease, box-shadow 170ms ease;" style-hover="background: rgba(110,198,255,0.07); color: #F4F7FA; box-shadow: inset 2px 0 0 #6EC6FF;">
+            <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 12px; color: #9AA6B2; font-variant-numeric: tabular-nums;">02</span>
+            <div style="min-width: 0;">
+              <div style="font-size: 16px; font-weight: 500; letter-spacing: 0.01em;">Skandi Meridian</div>
+              <div style="margin-top: 5px; font-size: 13.5px; color: #C2CCD6;">DOF · Subsea support · Norwegian Sea</div>
+            </div>
+            <div style="display: grid; justify-items: end; gap: 6px;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+              <span role="img" aria-label="4.5 out of 5" style="position: relative; display: flex; gap: 2px; width: 78px; height: 14px; flex: none;">
+                <span style="position: absolute; inset: 0; display: flex; gap: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg></span>
+                <span style="position: absolute; top: 0; left: 0; bottom: 0; width: 90%; overflow: hidden; display: flex; gap: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg></span>
+              </span>
+                <span style="font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; min-width: 26px; text-align: right;">4.5</span>
+              </div>
+              <span style="font-size: 12px; color: #9AA6B2; font-variant-numeric: tabular-nums;">24 ratings</span>
+            </div>
+          </a>
+          <a href="#" style="display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; align-items: center; gap: 16px; padding: 18px 22px; border-bottom: 1px solid rgba(210,230,245,0.14); color: #F4F7FA; transition: background 170ms ease, box-shadow 170ms ease;" style-hover="background: rgba(110,198,255,0.07); color: #F4F7FA; box-shadow: inset 2px 0 0 #6EC6FF;">
+            <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 12px; color: #9AA6B2; font-variant-numeric: tabular-nums;">03</span>
+            <div style="min-width: 0;">
+              <div style="font-size: 16px; font-weight: 500; letter-spacing: 0.01em;">Atlantic Tern</div>
+              <div style="margin-top: 5px; font-size: 13.5px; color: #C2CCD6;">Bourbon · Platform supply · West Africa</div>
+            </div>
+            <div style="display: grid; justify-items: end; gap: 6px;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+              <span role="img" aria-label="4.3 out of 5" style="position: relative; display: flex; gap: 2px; width: 78px; height: 14px; flex: none;">
+                <span style="position: absolute; inset: 0; display: flex; gap: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg></span>
+                <span style="position: absolute; top: 0; left: 0; bottom: 0; width: 86%; overflow: hidden; display: flex; gap: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg></span>
+              </span>
+                <span style="font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; min-width: 26px; text-align: right;">4.3</span>
+              </div>
+              <span style="font-size: 12px; color: #9AA6B2; font-variant-numeric: tabular-nums;">31 ratings</span>
+            </div>
+          </a>
+          <a href="#" style="display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; align-items: center; gap: 16px; padding: 18px 22px; border-bottom: 1px solid rgba(210,230,245,0.14); color: #F4F7FA; transition: background 170ms ease, box-shadow 170ms ease;" style-hover="background: rgba(110,198,255,0.07); color: #F4F7FA; box-shadow: inset 2px 0 0 #6EC6FF;">
+            <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 12px; color: #9AA6B2; font-variant-numeric: tabular-nums;">04</span>
+            <div style="min-width: 0;">
+              <div style="font-size: 16px; font-weight: 500; letter-spacing: 0.01em;">Wind Osprey</div>
+              <div style="margin-top: 5px; font-size: 13.5px; color: #C2CCD6;">Esvagt · Service operation vessel · North Sea</div>
+            </div>
+            <div style="display: grid; justify-items: end; gap: 6px;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+              <span role="img" aria-label="4.2 out of 5" style="position: relative; display: flex; gap: 2px; width: 78px; height: 14px; flex: none;">
+                <span style="position: absolute; inset: 0; display: flex; gap: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg></span>
+                <span style="position: absolute; top: 0; left: 0; bottom: 0; width: 84%; overflow: hidden; display: flex; gap: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg></span>
+              </span>
+                <span style="font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; min-width: 26px; text-align: right;">4.2</span>
+              </div>
+              <span style="font-size: 12px; color: #9AA6B2; font-variant-numeric: tabular-nums;">15 ratings</span>
+            </div>
+          </a>
+          <a href="#" style="display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; align-items: center; gap: 16px; padding: 18px 22px; color: #F4F7FA; transition: background 170ms ease, box-shadow 170ms ease;" style-hover="background: rgba(110,198,255,0.07); color: #F4F7FA; box-shadow: inset 2px 0 0 #6EC6FF;">
+            <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 12px; color: #9AA6B2; font-variant-numeric: tabular-nums;">05</span>
+            <div style="min-width: 0;">
+              <div style="font-size: 16px; font-weight: 500; letter-spacing: 0.01em;">Gulf Sentinel</div>
+              <div style="margin-top: 5px; font-size: 13.5px; color: #C2CCD6;">Hornbeck · Platform supply · Gulf of Mexico</div>
+            </div>
+            <div style="display: grid; justify-items: end; gap: 6px;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+              <span role="img" aria-label="3.9 out of 5" style="position: relative; display: flex; gap: 2px; width: 78px; height: 14px; flex: none;">
+                <span style="position: absolute; inset: 0; display: flex; gap: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(210,230,245,0.18)" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg></span>
+                <span style="position: absolute; top: 0; left: 0; bottom: 0; width: 78%; overflow: hidden; display: flex; gap: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#7DB7D8" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg></span>
+              </span>
+                <span style="font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; min-width: 26px; text-align: right;">3.9</span>
+              </div>
+              <span style="font-size: 12px; color: #9AA6B2; font-variant-numeric: tabular-nums;">40 ratings</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div style="display: flex; justify-content: flex-end; margin-top: 24px;">
+        <a href="#" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 3px; background: rgba(5,9,13,0.5); border: 1px solid rgba(210,230,245,0.45); color: #F4F7FA; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: border-color 170ms ease, background 170ms ease, transform 140ms ease, box-shadow 170ms ease;" style-hover="border-color: #7DB7D8; background: rgba(110,198,255,0.08); color: #F4F7FA; box-shadow: 0 0 0 3px rgba(110,198,255,0.12);" style-active="transform: translateY(1px);">Browse all rigs
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <footer style="background: #05090D; border-top: 1px solid rgba(210,230,245,0.14);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 14px;"><img src="logo-rigged-3.svg" alt="Rigged" style="height: 20px; width: auto; display: block;" /><span style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #C2CCD6;">Offshore personnel and operators</span></div>
+      <nav style="display: flex; gap: 22px; flex-wrap: wrap;">
+        <a href="Rigged - Job Search.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; color: #C2CCD6; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; transition: color 170ms ease;" style-hover="color: #6EC6FF;">Career</a>
+        <a href="Rigged - Certification.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; color: #C2CCD6; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; transition: color 170ms ease;" style-hover="color: #6EC6FF;">Certification</a>
+        <a href="Rigged - Insights.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; color: #C2CCD6; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; transition: color 170ms ease;" style-hover="color: #6EC6FF;">Insights</a>
+        <a href="#" style="font-family: 'Michroma', 'Archivo', sans-serif; color: #C2CCD6; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; transition: color 170ms ease;" style-hover="color: #6EC6FF;">Contact us</a>
+        <a href="#" style="font-family: 'Michroma', 'Archivo', sans-serif; color: #C2CCD6; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; transition: color 170ms ease;" style-hover="color: #6EC6FF;">For business</a>
+      </nav>
+    </div>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 28px 36px;">
+      <div style="border-top: 1px solid rgba(210,230,245,0.12); padding-top: 24px; display: grid; gap: 10px; max-width: 920px;">
+        <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #A8B4C0;">Legal disclaimer</span>
+        <p style="margin: 0; font-size: 13px; line-height: 1.65; color: #A8B4C0; text-wrap: pretty;">RIGGED is an independent platform providing offshore industry insights, employment opportunities and training information.</p>
+        <p style="margin: 0; font-size: 13px; line-height: 1.65; color: #A8B4C0; text-wrap: pretty;">All ratings and opinions reflect individual user experiences and do not necessarily represent the views of RIGGED. Job vacancies, company listings and training information may be provided by third parties and are not guaranteed to be accurate, complete or current.</p>
+        <p style="margin: 0; font-size: 13px; line-height: 1.65; color: #A8B4C0; text-wrap: pretty;">RIGGED does not guarantee employment, endorse individual companies or independently verify all information published on the platform. Users should make their own enquiries before relying on any information provided.</p>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"texture": {"editor": "enum", "default": "Storm wave", "options": ["Storm wave", "Choppy surface", "Barrel wave"], "tsType": "string", "section": "Hero"}}'>
+class Component extends DCLogic {
+  state = { focus: 0, chip: -1, w: typeof window !== 'undefined' ? window.innerWidth : 1440, menu: false };
+  componentDidMount() {
+    this._onResize = () => this.setState({ w: window.innerWidth, menu: window.innerWidth >= 1200 ? false : this.state.menu });
+    window.addEventListener('resize', this._onResize);
+    this._onResize();
+    this._onScroll = () => {
+      const hp = Math.min(1, Math.max(0, window.scrollY / (window.innerHeight * 0.9)));
+      document.documentElement.style.setProperty('--hp', hp.toFixed(4));
+      document.documentElement.style.setProperty('--hs', Math.min(1, Math.max(0, (window.scrollY - 40) / 160)).toFixed(3));
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+    setTimeout(() => this.initReveal(), 0);
+    // play the outline light once the hero is actually painted
+    const go = () => { if (!this._lit) { this._lit = true; setTimeout(() => this.setState({ sweep: 1 }), 1500); } };
+    const hero = document.querySelector('img[src="hero-wave.jpg"]');
+    if (!hero || hero.complete) go(); else { hero.addEventListener('load', go, { once: true }); hero.addEventListener('error', go, { once: true }); }
+    this._fallback = setTimeout(go, 2500);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this._onResize); clearTimeout(this._fallback); window.removeEventListener('scroll', this._onScroll); if (this._revealIO) this._revealIO.disconnect(); if (this._oceanDispose) this._oceanDispose(); if (this._waveRaf) cancelAnimationFrame(this._waveRaf); }
+  oceanVS = [
+    'uniform float uTime; uniform float uScroll;',
+    'varying vec3 vWorld; varying vec3 vNormal; varying float vH; varying vec2 vS; varying vec2 vP;',
+    'vec3 gerstner(vec4 w, vec3 p, inout vec3 t, inout vec3 b) {',
+    '  float s = w.z; float k = 6.2831853 / w.w; float c = sqrt(9.8 / k);',
+    '  vec2 d = normalize(w.xy); float f = k * (dot(d, p.xz) - c * uTime); float a = s / k;',
+    '  t += vec3(-d.x * d.x * s * sin(f), d.x * s * cos(f), -d.x * d.y * s * sin(f));',
+    '  b += vec3(-d.x * d.y * s * sin(f), d.y * s * cos(f), -d.y * d.y * s * sin(f));',
+    '  return vec3(d.x * a * cos(f), a * sin(f), d.y * a * cos(f));',
+    '}',
+    'void main() {',
+    '  vec3 p = position + vec3(uScroll * 0.18, 0.0, -uScroll); vec3 t = vec3(1.0, 0.0, 0.0); vec3 b = vec3(0.0, 0.0, 1.0); vec3 g = position;',
+    '  g += gerstner(vec4(0.6982, 0.7159, 0.0520, 96.000), p, t, b);',
+    '  g += gerstner(vec4(0.3264, 0.9452, 0.0489, 75.840), p, t, b);',
+    '  g += gerstner(vec4(0.4852, 0.8744, 0.0459, 59.914), p, t, b);',
+    '  g += gerstner(vec4(0.7781, 0.6282, 0.0432, 47.332), p, t, b);',
+    '  g += gerstner(vec4(-0.2575, 0.9663, 0.0406, 37.392), p, t, b);',
+    '  g += gerstner(vec4(0.4071, 0.9134, 0.0382, 29.540), p, t, b);',
+    '  g += gerstner(vec4(0.2405, 0.9706, 0.0359, 23.336), p, t, b);',
+    '  g += gerstner(vec4(0.3267, 0.9451, 0.0337, 18.436), p, t, b);',
+    '  g += gerstner(vec4(0.3216, 0.9469, 0.0317, 14.564), p, t, b);',
+    '  g += gerstner(vec4(0.6648, 0.7470, 0.0298, 11.506), p, t, b);',
+    '  g += gerstner(vec4(0.7785, 0.6277, 0.0280, 9.090), p, t, b);',
+    '  vNormal = normalize(cross(b, t)); vH = g.y; vS = p.xz + (g.xz - position.xz); vP = p.xz;',
+    '  vec4 wp = modelMatrix * vec4(g, 1.0); vWorld = wp.xyz;',
+    '  gl_Position = projectionMatrix * viewMatrix * wp;',
+    '}'
+  ].join('\n');
+  oceanFS = [
+    'uniform vec3 uCam; uniform vec3 uLight; uniform float uTime;',
+    'varying vec3 vWorld; varying vec3 vNormal; varying float vH; varying vec2 vS; varying vec2 vP;',
+    'float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }',
+    'float noise(vec2 p) { vec2 i = floor(p); vec2 f = fract(p); f = f * f * (3.0 - 2.0 * f);',
+    '  return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), f.x), mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), f.x), f.y); }',
+    'float fbm(vec2 p) { float v = 0.0; float a = 0.5; mat2 m = mat2(1.6, 1.2, -1.2, 1.6);',
+    '  for (int i = 0; i < 4; i++) { v += a * noise(p); p = m * p; a *= 0.5; } return v; }',
+    'void gn(vec4 w, vec2 p, float fade, inout vec3 t, inout vec3 b) {',
+    '  float s = w.z * fade; float k = 6.2831853 / w.w; float c = sqrt(9.8 / k);',
+    '  vec2 d = vec2(w.x, w.y); float f = k * (dot(d, p) - c * uTime);',
+    '  t += vec3(-d.x * d.x * s * sin(f), d.x * s * cos(f), -d.x * d.y * s * sin(f));',
+    '  b += vec3(-d.x * d.y * s * sin(f), d.y * s * cos(f), -d.y * d.y * s * sin(f));',
+    '}',
+    'const vec3 HZ = vec3(0.03, 0.04, 0.054);',
+    'vec3 sky(vec3 r) { float y = clamp(r.y, 0.0, 1.0);',
+    '  vec3 c = mix(HZ, vec3(0.004, 0.007, 0.012), pow(y, 0.38));',
+    '  float cl = fbm(r.xz / (r.y + 0.2) * 0.5 + vec2(uTime * 0.006, 0.0));',
+    '  c *= 0.8 + 0.4 * cl;',
+    '  c += vec3(0.34, 0.4, 0.48) * pow(max(dot(r, uLight), 0.0), 90.0) * 0.4;',
+    '  return c; }',
+    'void main() {',
+    '  vec3 v = normalize(uCam - vWorld);',
+    '  float dist = length(vWorld.xz - uCam.xz);',
+    '  vec3 t = vec3(1.0, 0.0, 0.0); vec3 b = vec3(0.0, 0.0, 1.0);',
+    '  gn(vec4(0.6982, 0.7159, 0.0520, 96.000), vP, 1.0 - smoothstep(864.0, 2112.0, dist), t, b);',
+    '  gn(vec4(0.3264, 0.9452, 0.0489, 75.840), vP, 1.0 - smoothstep(682.6, 1668.5, dist), t, b);',
+    '  gn(vec4(0.4852, 0.8744, 0.0459, 59.914), vP, 1.0 - smoothstep(539.2, 1318.1, dist), t, b);',
+    '  gn(vec4(0.7781, 0.6282, 0.0432, 47.332), vP, 1.0 - smoothstep(426.0, 1041.3, dist), t, b);',
+    '  gn(vec4(-0.2575, 0.9663, 0.0406, 37.392), vP, 1.0 - smoothstep(336.5, 822.6, dist), t, b);',
+    '  gn(vec4(0.4071, 0.9134, 0.0382, 29.540), vP, 1.0 - smoothstep(265.9, 649.9, dist), t, b);',
+    '  gn(vec4(0.2405, 0.9706, 0.0359, 23.336), vP, 1.0 - smoothstep(210.0, 513.4, dist), t, b);',
+    '  gn(vec4(0.3267, 0.9451, 0.0337, 18.436), vP, 1.0 - smoothstep(165.9, 405.6, dist), t, b);',
+    '  gn(vec4(0.3216, 0.9469, 0.0317, 14.564), vP, 1.0 - smoothstep(131.1, 320.4, dist), t, b);',
+    '  gn(vec4(0.6648, 0.7470, 0.0298, 11.506), vP, 1.0 - smoothstep(103.6, 253.1, dist), t, b);',
+    '  gn(vec4(0.7785, 0.6277, 0.0280, 9.090), vP, 1.0 - smoothstep(81.8, 200.0, dist), t, b);',
+    '  gn(vec4(-0.2207, 0.9753, 0.0263, 7.181), vP, 1.0 - smoothstep(64.6, 158.0, dist), t, b);',
+    '  gn(vec4(0.9127, 0.4086, 0.0247, 5.673), vP, 1.0 - smoothstep(51.1, 124.8, dist), t, b);',
+    '  gn(vec4(0.5476, 0.8368, 0.0233, 4.482), vP, 1.0 - smoothstep(40.3, 98.6, dist), t, b);',
+    '  gn(vec4(0.0370, 0.9993, 0.0219, 3.540), vP, 1.0 - smoothstep(31.9, 77.9, dist), t, b);',
+    '  gn(vec4(-0.5986, 0.8010, 0.0206, 2.797), vP, 1.0 - smoothstep(25.2, 61.5, dist), t, b);',
+    '  gn(vec4(0.5775, 0.8164, 0.0193, 2.210), vP, 1.0 - smoothstep(19.9, 48.6, dist), t, b);',
+    '  gn(vec4(0.9994, 0.0352, 0.0182, 1.746), vP, 1.0 - smoothstep(15.7, 38.4, dist), t, b);',
+    '  gn(vec4(0.9190, 0.3943, 0.0171, 1.379), vP, 1.0 - smoothstep(12.4, 30.3, dist), t, b);',
+    '  gn(vec4(-0.4782, 0.8782, 0.0160, 1.089), vP, 1.0 - smoothstep(9.8, 24.0, dist), t, b);',
+    '  vec3 n = normalize(cross(b, t));',
+    '  float nv = length(fwidth(n));',
+    '  float rough = clamp(1.0 - nv * 4.0, 0.12, 1.0) * mix(1.0, 0.3, smoothstep(15.0, 240.0, dist));',
+    '  float ndv = max(dot(n, v), 0.0);',
+    '  float fres = 0.02 + 0.98 * pow(1.0 - ndv, 5.0);',
+    '  vec3 deep = vec3(0.003, 0.006, 0.011);',
+    '  vec3 scatter = vec3(0.01, 0.019, 0.03) * clamp(vH * 0.4 + 0.5, 0.0, 1.0) * pow(max(dot(v, -uLight), 0.0) * 0.5 + 0.5, 3.0);',
+    '  vec3 r = reflect(-v, n); r.y = abs(r.y);',
+    '  vec3 col = mix(deep + scatter, sky(r), clamp(fres, 0.0, 1.0));',
+    '  vec3 hv = normalize(uLight + v);',
+    '  float sp = pow(max(dot(n, hv), 0.0), 380.0 * rough) * mix(0.42, 0.1, smoothstep(30.0, 240.0, dist)) * (0.4 + 0.6 * rough);',
+    '  col += vec3(0.76, 0.83, 0.9) * sp;',
+    '  col += vec3(0.18, 0.22, 0.28) * pow(max(dot(n, hv), 0.0), 20.0) * 0.12;',
+    '  float fog = smoothstep(70.0, 270.0, dist);',
+    '  col = mix(col, HZ, fog);',
+    '  col = col / (1.0 + col * 0.6);',
+    '  col += (hash(gl_FragCoord.xy + fract(uTime)) - 0.5) / 255.0;',
+    '  gl_FragColor = vec4(pow(col, vec3(0.96)), 1.0);',
+    '}'
+  ].join('\n');
+  oceanRef = (el) => {
+    if (this._oceanCv === el) return;
+    if (this._oceanDispose) { this._oceanDispose(); this._oceanDispose = null; }
+    this._oceanCv = el;
+    if (el) this.initOcean(el);
+  };
+  initOcean = async (cv) => {
+    let THREE;
+    try { THREE = await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js'); } catch (e) { return; }
+    if (this._oceanCv !== cv) return;
+    let renderer;
+    try { renderer = new THREE.WebGLRenderer({ canvas: cv, antialias: true, alpha: false, powerPreference: 'low-power' }); } catch (e) { return; }
+    renderer.setClearColor(0x080b0f, 1);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(48, 1, 0.1, 700);
+    camera.position.set(0, 7, 12); camera.lookAt(0, -22, -70);
+    const geo = new THREE.PlaneGeometry(460, 340, 620, 460); geo.rotateX(-Math.PI / 2); geo.translate(0, 0, -120);
+    const mat = new THREE.ShaderMaterial({
+      uniforms: { uTime: { value: 0 }, uScroll: { value: 0 }, uCam: { value: camera.position.clone() }, uLight: { value: new THREE.Vector3(0.12, 0.16, -1).normalize() } },
+      vertexShader: this.oceanVS, fragmentShader: this.oceanFS, extensions: { derivatives: true }
+    });
+    scene.add(new THREE.Mesh(geo, mat));
+    let w0 = 0, h0 = 0, last = 0, visible = true, sc = 0;
+    const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; });
+    io.observe(cv.parentElement);
+    const still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const t0 = performance.now();
+    const loop = (t) => {
+      this._oceanRaf = requestAnimationFrame(loop);
+      if (!visible || t - last < 33) return;
+      last = t;
+      if (cv.clientWidth !== w0 || cv.clientHeight !== h0) {
+        w0 = cv.clientWidth; h0 = cv.clientHeight;
+        if (!w0 || !h0) return;
+        renderer.setSize(w0, h0, false); camera.aspect = w0 / h0; camera.updateProjectionMatrix();
+      }
+      mat.uniforms.uTime.value = (t - t0) / 1000 * 0.24;
+      if (!still) {
+        const top = cv.parentElement.getBoundingClientRect().top;
+        const target = Math.max(0, -top) * 0.02;
+        sc += (target - sc) * 0.05;
+        mat.uniforms.uScroll.value = sc;
+        camera.position.y = 7 + Math.sin(sc * 0.035) * 0.15;
+        camera.lookAt(0, -22, -70);
+      }
+      renderer.render(scene, camera);
+      if (still) cancelAnimationFrame(this._oceanRaf);
+    };
+    this._oceanRaf = requestAnimationFrame(loop);
+    this._oceanDispose = () => { cancelAnimationFrame(this._oceanRaf); io.disconnect(); geo.dispose(); mat.dispose(); renderer.dispose(); };
+  };
+  initReveal() {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const root = document.querySelector('[data-reveal-root]');
+    if (!root || !window.IntersectionObserver) return;
+    const targets = [];
+    root.querySelectorAll(':scope > section > div > *').forEach((el) => {
+      const kids = el.children;
+      const isGrid = getComputedStyle(el).display === 'grid' && kids.length > 2;
+      if (isGrid) Array.from(kids).forEach((k, i) => targets.push([k, i * 90]));
+      else targets.push([el, 0]);
+    });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        const el = en.target; io.unobserve(el);
+        const d = +el.dataset.rd || 0;
+        el.style.transition = 'opacity 1000ms cubic-bezier(0.2, 0.7, 0.2, 1) ' + d + 'ms, transform 1000ms cubic-bezier(0.2, 0.7, 0.2, 1) ' + d + 'ms';
+        el.style.opacity = '1'; el.style.transform = 'none';
+        setTimeout(() => { el.style.transition = el.dataset.rt || ''; el.style.transform = ''; el.style.opacity = ''; }, 1060 + d);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    targets.forEach(([el, d]) => {
+      el.dataset.rd = d; el.dataset.rt = el.style.transition || '';
+      el.style.opacity = '0'; el.style.transform = 'translate3d(0, 28px, 0)';
+      io.observe(el);
+    });
+    this._revealIO = io;
+  }
+  replaySweep = () => this.setState(s => ({ sweep: (s.sweep || 0) + 1 }));
+  searchLight() {
+    const h = React.createElement;
+    const ring = { position: 'absolute', inset: -1, borderRadius: 16, pointerEvents: 'none', WebkitMask: 'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)', WebkitMaskComposite: 'xor', mask: 'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)', maskComposite: 'exclude' };
+    const on = !!this.state.sweep;
+    return h(React.Fragment, { key: 'sl' + (this.state.sweep || 0) },
+      h('span', { 'aria-hidden': true, style: { ...ring, padding: 1, background: 'linear-gradient(100deg, rgba(142,220,255,0.95) 0%, rgba(110,198,255,0.35) 22%, rgba(110,198,255,0.10) 50%, rgba(110,198,255,0.35) 78%, rgba(142,220,255,0.85) 100%)', opacity: on ? undefined : 0, animation: on ? 'rig-settle 2.6s ease-out 1 both' : 'none' } }),
+      on ? h('span', { 'aria-hidden': true, style: { ...ring, padding: 1.5, overflow: 'hidden' } },
+        h('span', { style: { position: 'absolute', top: '50%', left: '50%', width: '120%', height: '1400%', background: 'conic-gradient(from 0deg, rgba(142,220,255,0) 0deg, rgba(142,220,255,0) 280deg, rgba(142,220,255,0.55) 325deg, rgba(220,245,255,1) 348deg, rgba(142,220,255,0) 360deg)', animation: 'rig-sweep 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0s 1 both' } })) : null
+    );
+  }
+  renderVals() {
+    const w = this.state.w;
+    const set = (n) => () => this.setState({ chip: this.state.chip === n ? -1 : n });
+    return {
+      onFocusIn: () => this.setState({ focus: this.state.focus + 1 }),
+      onFocusOut: () => this.setState({ focus: 0 }),
+      ringOpacity: this.state.focus > 0 ? 1 : 0,
+      searchLight: this.searchLight(),
+      oceanLayer: this._oceanEl || (this._oceanEl = React.createElement('canvas', { ref: this.oceanRef, style: { position: 'sticky', top: 0, display: 'block', width: '100%', height: '100vh' } })),
+      wide: w >= 1200, compact: w < 1200, authInline: w >= 640, authInMenu: w < 640,
+      menuOpen: this.state.menu ? 'true' : 'false', menuVisible: w < 1200 && this.state.menu,
+      toggleMenu: () => this.setState({ menu: !this.state.menu }),
+      closeMenu: () => this.setState({ menu: false }),
+      show2: (this.props.texture ?? 'Storm wave') === 'Choppy surface' ? 1 : 0,
+      show3: (this.props.texture ?? 'Storm wave') === 'Barrel wave' ? 1 : 0,
+      c0: this.state.chip === 0 ? 1 : 0,
+      c1: this.state.chip === 1 ? 1 : 0,
+      c2: this.state.chip === 2 ? 1 : 0,
+      c3: this.state.chip === 3 ? 1 : 0,
+      pick0: set(0), pick1: set(1), pick2: set(2), pick3: set(3)
+    };
+  }
+}
+</script>
+</body>
+</html>

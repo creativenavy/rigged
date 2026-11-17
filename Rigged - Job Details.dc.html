@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #F5F7F9; }
+  * { box-sizing: border-box; }
+  a { color: #0B121A; text-decoration: none; }
+  a:hover { color: #1D6FA3; }
+  input, select, button { font: inherit; }
+  input::placeholder { color: #8A96A2; }
+  :focus-visible { outline: 2px solid #1D6FA3; outline-offset: 3px; }
+  ::selection { background: rgba(29,111,163,0.2); }
+</style>
+</helmet>
+
+
+<div style="font-family: 'Archivo', system-ui, sans-serif; background: #F5F7F9; color: #0B121A; -webkit-font-smoothing: antialiased; letter-spacing: -0.005em; min-height: 100vh; display: flex; flex-direction: column;">
+
+  <header style="position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,0.86); backdrop-filter: blur(18px) saturate(1.4); -webkit-backdrop-filter: blur(18px) saturate(1.4); border-bottom: 1px solid #D9E0E6;">
+    <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 0 28px; height: 68px; display: flex; align-items: center; gap: 28px;">
+      <a href="Rigged - Ocean Deep.dc.html" aria-label="Rigged home" style="flex: none; display: flex;"><img src="logo-rigged-dark.svg" alt="Rigged" style="height: 22px; width: auto; display: block;" /></a>
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <nav style="flex: 1; display: flex; gap: 2px;">
+        <a href="Rigged - Job Search.dc.html" aria-current="page" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #0B121A; padding: 8px 10px; border-radius: 6px; background: #EEF2F5;">Career</a>
+        <a href="Rigged - Certification.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #3D4A57; padding: 8px 10px; border-radius: 6px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">Certification</a>
+        <a href="Rigged - Insights.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #3D4A57; padding: 8px 10px; border-radius: 6px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">Insights</a>
+        <a href="#" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #3D4A57; padding: 8px 10px; border-radius: 6px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">Contact us</a>
+        <a href="#" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #3D4A57; padding: 8px 10px; border-radius: 6px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">For business</a>
+      </nav>
+      </sc-if>
+      <div style="margin-left: auto; display: flex; gap: 8px; align-items: center;">
+        <a href="Rigged - Professional Profile.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #0B121A; padding: 11px 14px; border-radius: 8px; border: 1px solid #D9E0E6; background: #FFFFFF; transition: border-color 170ms ease;" style-hover="border-color: #0B121A; color: #0B121A;">Sign in</a>
+        <a href="Rigged - Professional Profile.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #FFFFFF; padding: 12px 15px; border-radius: 8px; background: #0B121A; transition: background 170ms ease, box-shadow 170ms ease;" style-hover="background: #1A2633; color: #FFFFFF; box-shadow: 0 0 0 4px rgba(29,111,163,0.18);">Create account</a>
+        <sc-if value="{{ compact }}" hint-placeholder-val="{{ false }}">
+        <button type="button" aria-label="Menu" aria-expanded="{{ menuOpenAttr }}" onClick="{{ toggleMenu }}" style="width: 42px; height: 42px; display: grid; align-content: center; justify-items: center; gap: 5px; padding: 0; border-radius: 8px; border: 1px solid #D9E0E6; background: #FFFFFF; cursor: pointer; transition: border-color 170ms ease;" style-hover="border-color: #0B121A;">
+          <span style="display: block; width: 16px; height: 1.5px; background: #0B121A;"></span>
+          <span style="display: block; width: 16px; height: 1.5px; background: #0B121A;"></span>
+          <span style="display: block; width: 16px; height: 1.5px; background: #0B121A;"></span>
+        </button>
+        </sc-if>
+      </div>
+      <sc-if value="{{ menuVisible }}" hint-placeholder-val="{{ false }}">
+        <div style="position: absolute; top: calc(100% + 8px); left: 16px; right: 16px; padding: 8px; display: grid; gap: 2px; border-radius: 14px; background: rgba(255,255,255,0.97); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid #D9E0E6; box-shadow: 0 24px 48px -20px rgba(11,18,26,0.3);">
+          <a href="Rigged - Job Search.dc.html" onClick="{{ closeMenu }}" style="font-family: 'Michroma', 'Archivo', sans-serif; display: flex; align-items: center; justify-content: space-between; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 15px 14px; border-radius: 8px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">Career<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+          <a href="Rigged - Certification.dc.html" onClick="{{ closeMenu }}" style="font-family: 'Michroma', 'Archivo', sans-serif; display: flex; align-items: center; justify-content: space-between; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 15px 14px; border-radius: 8px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">Certification<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+          <a href="Rigged - Insights.dc.html" onClick="{{ closeMenu }}" style="font-family: 'Michroma', 'Archivo', sans-serif; display: flex; align-items: center; justify-content: space-between; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 15px 14px; border-radius: 8px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">Insights<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+          <a href="#" onClick="{{ closeMenu }}" style="font-family: 'Michroma', 'Archivo', sans-serif; display: flex; align-items: center; justify-content: space-between; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 15px 14px; border-radius: 8px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">Contact us<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+          <a href="#" onClick="{{ closeMenu }}" style="font-family: 'Michroma', 'Archivo', sans-serif; display: flex; align-items: center; justify-content: space-between; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 15px 14px; border-radius: 8px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">For business<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+        </div>
+      </sc-if>
+    </div>
+  </header>
+
+  <section style="background: #FFFFFF; border-bottom: 1px solid #D9E0E6;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 28px 28px 40px;">
+      <nav aria-label="Breadcrumb" style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #66727E;">
+        <a href="Rigged - Job Search.dc.html" style="color: #3D4A57; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(11,18,26,0.3); transition: color 170ms ease;" style-hover="color: #1D6FA3;">Search results</a>
+        <span aria-hidden="true">/</span><span aria-current="page">Derrickman</span>
+      </nav>
+
+      <div style="margin-top: 26px; display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+        <div style="min-width: 0;">
+          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <span style="display: inline-flex; align-items: center; gap: 7px; padding: 5px 10px 5px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; color: {{ st.color }}; background: {{ st.bg }}; border: 1px solid {{ st.border }};"><span style="width: 7px; height: 7px; border-radius: 50%; background: {{ st.dot }};"></span>{{ st.label }}</span>
+            <span style="font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #66727E;">Posted 2 days ago</span>
+            <span aria-hidden="true" style="width: 3px; height: 3px; border-radius: 50%; background: #A9B6C2;"></span>
+            <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: {{ closeColor }};">{{ closeLabel }}</span>
+          </div>
+          <h1 style="margin: 16px 0 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: clamp(28px, 3.6vw, 42px); line-height: 1.15; letter-spacing: 0.02em; text-transform: uppercase; font-weight: 400;">Derrickman</h1>
+          <p style="margin: 12px 0 0; font-size: 18px; color: #3D4A57;">Aberdeen Crewing Ltd</p>
+        </div>
+        <div style="flex: none; display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+          <button type="button" onClick="{{ toggleSave }}" aria-pressed="{{ savePressed }}" style="display: inline-flex; align-items: center; gap: 8px; height: 50px; padding: 0 16px; border-radius: 10px; border: 1px solid {{ toggleSaveBorder }}; background: {{ toggleSaveBg }}; color: {{ toggleSaveColor }}; font-size: 14px; font-weight: 600; cursor: pointer; transition: border-color 170ms ease, background 170ms ease, color 170ms ease, transform 140ms ease;" style-hover="border-color: #0B121A;" style-active="transform: translateY(1px);"><svg width="15" height="15" viewBox="0 0 24 24" fill="{{ saveFill }}" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M6 3.5h12v17l-6-4.2-6 4.2z"></path></svg>{{ saveLabel }}</button>
+          <button type="button" onClick="{{ copyLink }}" style="display: inline-flex; align-items: center; gap: 8px; height: 50px; padding: 0 16px; border-radius: 10px; border: 1px solid {{ copyLinkBorder }}; background: {{ copyLinkBg }}; color: {{ copyLinkColor }}; font-size: 14px; font-weight: 600; cursor: pointer; transition: border-color 170ms ease, background 170ms ease, color 170ms ease, transform 140ms ease;" style-hover="border-color: #0B121A;" style-active="transform: translateY(1px);"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"></path><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"></path></svg>{{ copyLabel }}</button>
+        </div>
+      </div>
+
+      <div style="margin-top: 28px; display: flex; flex-wrap: wrap; background: #FFFFFF; border: 1px solid #D9E0E6; border-radius: 12px; overflow: hidden;">
+        <div style="flex: 1 1 180px; margin: 0 -1px -1px 0; border-right: 1px solid #D9E0E6; border-bottom: 1px solid #D9E0E6; padding: 18px 22px; background: #FFFFFF; display: grid; gap: 8px; align-content: start;">
+          <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #66727E;">Country / region</span>
+          <span style="font-size: 17px; font-weight: 600; color: #0B121A; font-variant-numeric: tabular-nums;">Aberdeen, UK</span>
+        </div>
+        <div style="flex: 1 1 180px; margin: 0 -1px -1px 0; border-right: 1px solid #D9E0E6; border-bottom: 1px solid #D9E0E6; padding: 18px 22px; background: #FFFFFF; display: grid; gap: 8px; align-content: start;">
+          <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #66727E;">Sector</span>
+          <span style="font-size: 17px; font-weight: 600; color: #0B121A; font-variant-numeric: tabular-nums;">Oil &amp; Gas</span>
+        </div>
+        <div style="flex: 1 1 180px; margin: 0 -1px -1px 0; border-right: 1px solid #D9E0E6; border-bottom: 1px solid #D9E0E6; padding: 18px 22px; background: #FFFFFF; display: grid; gap: 8px; align-content: start;">
+          <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #66727E;">Duration</span>
+          <span style="font-size: 17px; font-weight: 600; color: #0B121A; font-variant-numeric: tabular-nums;">Temporary</span>
+        </div>
+        <div style="flex: 1 1 180px; margin: 0 -1px -1px 0; border-right: 1px solid #D9E0E6; border-bottom: 1px solid #D9E0E6; padding: 18px 22px; background: #FFFFFF; display: grid; gap: 8px; align-content: start;">
+          <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #66727E;">Rate</span>
+          <span style="font-size: 17px; font-weight: 600; color: #0B121A; font-variant-numeric: tabular-nums;">£420 / day</span>
+        </div>
+        <div style="flex: 1 1 180px; margin: 0 -1px -1px 0; border-right: 1px solid #D9E0E6; border-bottom: 1px solid #D9E0E6; padding: 18px 22px; background: #F1F7FB; display: grid; gap: 8px; align-content: start;">
+          <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #1D6FA3;">Payment type</span>
+          <span style="font-size: 17px; font-weight: 600; color: #0B121A;">{{ payType }}</span>
+          <span style="font-size: 13px; line-height: 1.45; color: #3D4A57;">{{ payHint }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main style="flex: 1; background: #FFFFFF;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 48px 28px 56px; display: grid; gap: 56px;">
+      <section>
+        <h2 style="margin: 0; padding-bottom: 16px; border-bottom: 1.5px solid #0B121A; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: #1D6FA3;">Contract</h2>
+        <dl style="margin: 0;">
+        <div style="display: grid; grid-template-columns: minmax(140px, 30%) minmax(0, 1fr); gap: 16px; padding: 17px 0; border-bottom: 1px solid #E3E8ED;">
+          <dt style="font-size: 15.5px; color: #3D4A57;">Rotation</dt><dd style="margin: 0; font-size: 15.5px; color: #0B121A;">3 weeks on, 3 weeks off</dd>
+        </div>
+        <div style="display: grid; grid-template-columns: minmax(140px, 30%) minmax(0, 1fr); gap: 16px; padding: 17px 0; border-bottom: 1px solid #E3E8ED;">
+          <dt style="font-size: 15.5px; color: #3D4A57;">Contract length</dt><dd style="margin: 0; font-size: 15.5px; color: #0B121A;">12 months</dd>
+        </div>
+        <div style="display: grid; grid-template-columns: minmax(140px, 30%) minmax(0, 1fr); gap: 16px; padding: 17px 0; border-bottom: 1px solid #E3E8ED;">
+          <dt style="font-size: 15.5px; color: #3D4A57;">Start date</dt><dd style="margin: 0; font-size: 15.5px; color: #0B121A;">14 November 2026</dd>
+        </div>
+        <div style="display: grid; grid-template-columns: minmax(140px, 30%) minmax(0, 1fr); gap: 16px; padding: 17px 0; border-bottom: 1px solid #E3E8ED;">
+          <dt style="font-size: 15.5px; color: #3D4A57;">Rig</dt><dd style="margin: 0; font-size: 15.5px; color: #0B121A;"><a href="Rigged - Rig Details.dc.html" title="See personnel ratings for Sovereign Alpha" style="display: inline-flex; align-items: center; gap: 8px; color: #0B121A; font-weight: 500; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(11,18,26,0.35); transition: color 170ms ease;" style-hover="color: #1D6FA3;">Sovereign Alpha<span style="display: inline-flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 600; color: #1D6FA3;"><svg width="13" height="13" viewBox="0 0 24 24" fill="#1D6FA3"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg>4.2</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"></path></svg></a></dd>
+        </div>
+        <div style="display: grid; grid-template-columns: minmax(140px, 30%) minmax(0, 1fr); gap: 16px; padding: 17px 0; border-bottom: 1px solid #E3E8ED;">
+          <dt style="font-size: 15.5px; color: #3D4A57;">Required certificates</dt><dd style="margin: 0; font-size: 15.5px; color: #0B121A;">BOSIET · HUET · Offshore medical</dd>
+        </div>
+        </dl>
+      </section>
+
+      <div style="display: flex; gap: 48px 56px; flex-wrap: wrap; align-items: flex-start;">
+      <section style="flex: 1 1 520px; min-width: 0; max-width: 820px;">
+        <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: #1D6FA3;">Description</span>
+        <h2 style="margin: 14px 0 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: clamp(19px, 2vw, 24px); line-height: 1.25; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 400;">About the role</h2>
+        <p style="margin: 20px 0 0; font-size: 16.5px; line-height: 1.7; color: #3D4A57; text-wrap: pretty;">We are recruiting an experienced derrickman for a semi-submersible operating in the Central North Sea, on a three-week-on, three-week-off rotation. Helicopter transfer from Aberdeen heliport. Accommodation, meals, and PPE provided on board.</p>
+        <p style="margin: 16px 0 0; font-size: 16.5px; line-height: 1.7; color: #3D4A57; text-wrap: pretty;">Day to day you will handle pipe in the derrick, maintain the racking system, and stand in as assistant driller during shift changes. You will report to the driller and work as part of a permanent team.</p>
+        <h3 style="margin: 32px 0 0; font-size: 17px; font-weight: 700; color: #0B121A;">What we expect</h3>
+        <ul style="margin: 16px 0 0; padding: 0; list-style: none; display: grid; gap: 10px;">
+          <li style="display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 10px; font-size: 16px; line-height: 1.6; color: #3D4A57;"><span aria-hidden="true" style="margin-top: 10px; width: 6px; height: 6px; border-radius: 1px; background: #1D6FA3; transform: rotate(45deg);"></span><span>Minimum three years offshore, at least one year in a derrick position</span></li>
+          <li style="display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 10px; font-size: 16px; line-height: 1.6; color: #3D4A57;"><span aria-hidden="true" style="margin-top: 10px; width: 6px; height: 6px; border-radius: 1px; background: #1D6FA3; transform: rotate(45deg);"></span><span>Valid BOSIET, HUET, and offshore medical certificates</span></li>
+          <li style="display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 10px; font-size: 16px; line-height: 1.6; color: #3D4A57;"><span aria-hidden="true" style="margin-top: 10px; width: 6px; height: 6px; border-radius: 1px; background: #1D6FA3; transform: rotate(45deg);"></span><span>Familiarity with hydraulic racking systems</span></li>
+          <li style="display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 10px; font-size: 16px; line-height: 1.6; color: #3D4A57;"><span aria-hidden="true" style="margin-top: 10px; width: 6px; height: 6px; border-radius: 1px; background: #1D6FA3; transform: rotate(45deg);"></span><span>Right to work in the United Kingdom</span></li>
+          <li style="display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 10px; font-size: 16px; line-height: 1.6; color: #3D4A57;"><span aria-hidden="true" style="margin-top: 10px; width: 6px; height: 6px; border-radius: 1px; background: #1D6FA3; transform: rotate(45deg);"></span><span>A calm, methodical attitude and a strong safety mindset — this team has run three years without a lost-time incident</span></li>
+        </ul>
+      </section>
+      <aside aria-labelledby="rig-h" style="flex: 1 1 320px; max-width: 420px; padding: 26px; border-radius: 14px; border: 1px solid #D9E0E6; background: #F8FAFB;">
+        <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: #1D6FA3;">Rig ratings</span>
+        <h2 id="rig-h" style="margin: 12px 0 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 15px; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 400;">Sovereign Alpha</h2>
+        <p style="margin: 6px 0 0; font-size: 14px; color: #3D4A57;">BP · Semi-submersible · North Sea</p>
+        <div style="margin-top: 20px; display: flex; align-items: baseline; gap: 10px;">
+          <span style="font-size: 38px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;">4.2</span>
+          <span style="font-size: 14px; color: #66727E;">out of 5 · 38 personnel ratings</span>
+        </div>
+        <dl style="margin: 18px 0 0; display: grid; gap: 11px;">
+          <div style="display: grid; grid-template-columns: 112px minmax(0, 1fr) 30px; gap: 12px; align-items: center;">
+            <dt style="font-size: 14px; color: #3D4A57;">Food</dt>
+            <span aria-hidden="true" style="height: 6px; border-radius: 999px; background: #E3E8ED; overflow: hidden;"><span style="display: block; height: 100%; width: 90%; border-radius: 999px; background: #1D6FA3;"></span></span>
+            <dd style="margin: 0; font-size: 14px; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums;">4.5</dd>
+          </div>
+          <div style="display: grid; grid-template-columns: 112px minmax(0, 1fr) 30px; gap: 12px; align-items: center;">
+            <dt style="font-size: 14px; color: #3D4A57;">Cabins</dt>
+            <span aria-hidden="true" style="height: 6px; border-radius: 999px; background: #E3E8ED; overflow: hidden;"><span style="display: block; height: 100%; width: 78%; border-radius: 999px; background: #1D6FA3;"></span></span>
+            <dd style="margin: 0; font-size: 14px; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums;">3.9</dd>
+          </div>
+          <div style="display: grid; grid-template-columns: 112px minmax(0, 1fr) 30px; gap: 12px; align-items: center;">
+            <dt style="font-size: 14px; color: #3D4A57;">Wi-Fi</dt>
+            <span aria-hidden="true" style="height: 6px; border-radius: 999px; background: #E3E8ED; overflow: hidden;"><span style="display: block; height: 100%; width: 68%; border-radius: 999px; background: #1D6FA3;"></span></span>
+            <dd style="margin: 0; font-size: 14px; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums;">3.4</dd>
+          </div>
+          <div style="display: grid; grid-template-columns: 112px minmax(0, 1fr) 30px; gap: 12px; align-items: center;">
+            <dt style="font-size: 14px; color: #3D4A57;">Gym</dt>
+            <span aria-hidden="true" style="height: 6px; border-radius: 999px; background: #E3E8ED; overflow: hidden;"><span style="display: block; height: 100%; width: 80%; border-radius: 999px; background: #1D6FA3;"></span></span>
+            <dd style="margin: 0; font-size: 14px; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums;">4.0</dd>
+          </div>
+          <div style="display: grid; grid-template-columns: 112px minmax(0, 1fr) 30px; gap: 12px; align-items: center;">
+            <dt style="font-size: 14px; color: #3D4A57;">Recreation</dt>
+            <span aria-hidden="true" style="height: 6px; border-radius: 999px; background: #E3E8ED; overflow: hidden;"><span style="display: block; height: 100%; width: 82%; border-radius: 999px; background: #1D6FA3;"></span></span>
+            <dd style="margin: 0; font-size: 14px; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums;">4.1</dd>
+          </div>
+          <div style="display: grid; grid-template-columns: 112px minmax(0, 1fr) 30px; gap: 12px; align-items: center;">
+            <dt style="font-size: 14px; color: #3D4A57;">Safety culture</dt>
+            <span aria-hidden="true" style="height: 6px; border-radius: 999px; background: #E3E8ED; overflow: hidden;"><span style="display: block; height: 100%; width: 92%; border-radius: 999px; background: #1D6FA3;"></span></span>
+            <dd style="margin: 0; font-size: 14px; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums;">4.6</dd>
+          </div>
+        </dl>
+        <blockquote style="margin: 20px 0 0; padding: 14px 16px; border-radius: 10px; background: #FFFFFF; border: 1px solid #E3E8ED; font-size: 14.5px; line-height: 1.55; color: #3D4A57;">“Good food and a solid crew. Cabins are dated but the safety culture is the best I've worked with.”<cite style="display: block; font-style: normal; margin-top: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #66727E;">Driller · Sep 2026</cite></blockquote>
+        <a href="Rigged - Rig Details.dc.html" style="margin-top: 18px; display: inline-flex; align-items: center; gap: 7px; font-size: 14.5px; font-weight: 600; color: #0B121A; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(11,18,26,0.3); transition: color 170ms ease;" style-hover="color: #1D6FA3;">Read all 38 reviews<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"></path></svg></a>
+      </aside>
+      </div>
+    </div>
+  </main>
+
+  <section id="apply" aria-labelledby="apply-h" style="background: #EEF2F5; border-top: 1px solid #D9E0E6;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 52px 28px 64px; display: grid; gap: 24px; max-width: 1240px;">
+      <div style="max-width: 820px; display: grid; gap: 24px;">
+        <div>
+          <h2 id="apply-h" style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: #1D6FA3;">Apply</h2>
+          <p style="margin: 14px 0 0; font-size: 16px; line-height: 1.6; color: #3D4A57;">Applications are handled by Aberdeen Crewing Ltd. Contact them directly using the options below.</p>
+        </div>
+
+        <div style="padding: 20px; border-radius: 12px; background: #FFFFFF; border: 1px solid #D9E0E6; display: grid; gap: 14px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+            <h3 style="margin: 0; font-size: 16px; font-weight: 700;">Do you qualify?</h3>
+            <span style="font-size: 13px; font-weight: 600; color: {{ qualColor }}; font-variant-numeric: tabular-nums;">{{ qualLabel }}</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 8px;">
+            <sc-for list="{{ checks }}" as="c" hint-placeholder-count="4">
+              <label style="display: flex; align-items: center; gap: 11px; padding: 12px 14px; border-radius: 10px; border: 1px solid {{ c.border }}; background: {{ c.bg }}; font-size: 15px; color: #0B121A; cursor: pointer; transition: border-color 170ms ease, background 170ms ease;" style-hover="border-color: #A9B6C2;">
+                <input type="checkbox" checked="{{ c.on }}" onChange="{{ c.toggle }}" style="width: 17px; height: 17px; margin: 0; accent-color: #17734A; cursor: pointer;" />
+                {{ c.label }}
+              </label>
+            </sc-for>
+          </div>
+        </div>
+
+        <div role="note" style="display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 14px; padding: 18px 20px; border-radius: 12px; background: #FFF8E8; border: 1px solid #F0D79A;">
+          <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9A6A00" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 7.5v5.5"></path><circle cx="12" cy="16.5" r="0.6" fill="#9A6A00"></circle></svg>
+          <div>
+            <p style="margin: 0; font-size: 15px; font-weight: 700; color: #5C4000;">Check your right to work</p>
+            <p style="margin: 5px 0 0; font-size: 15px; line-height: 1.55; color: #5C4000;">Before applying, please make sure you have the right to work in the United Kingdom. Applications without it can't be considered.</p>
+          </div>
+        </div>
+
+        <sc-if value="{{ isActive }}" hint-placeholder-val="{{ true }}">
+        <div data-apply-cta="" style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+          <a href="mailto:crewing@aberdeencrewing.co.uk?subject=Application%3A%20Derrickman%20%E2%80%93%20Sovereign%20Alpha" style="display: inline-flex; align-items: center; gap: 10px; height: 54px; padding: 0 26px; border-radius: 12px; background: #0B121A; color: #FFFFFF; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; transition: background 170ms ease, box-shadow 170ms ease, transform 140ms ease;" style-hover="background: #1A2633; color: #FFFFFF; box-shadow: 0 0 0 4px rgba(29,111,163,0.2);" style-active="transform: translateY(1px);">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3.5 6.5l8.5 6.5 8.5-6.5"></path></svg>
+            Apply by email
+          </a>
+          <a href="tel:+441224555019" style="display: inline-flex; align-items: center; gap: 10px; height: 54px; padding: 0 22px; border-radius: 12px; border: 1px solid #C3CDD6; background: #FFFFFF; color: #0B121A; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; transition: border-color 170ms ease;" style-hover="border-color: #0B121A; color: #0B121A;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"></path></svg>
+            +44 1224 555 019
+          </a>
+        </div>
+        <p style="margin: 0; font-size: 13.5px; color: #66727E;">Opens your email app with the job title and rig already in the subject line.</p>
+        </sc-if>
+        <sc-if value="{{ isFilled }}" hint-placeholder-val="{{ false }}">
+        <div data-apply-cta="" style="padding: 20px; border-radius: 12px; background: #FFFFFF; border: 1px solid #D9E0E6; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+          <div>
+            <p style="margin: 0; font-size: 16px; font-weight: 700;">This position has been filled</p>
+            <p style="margin: 5px 0 0; font-size: 15px; color: #3D4A57;">Aberdeen Crewing Ltd is no longer taking applications for this role.</p>
+          </div>
+          <a href="#similar" style="display: inline-flex; align-items: center; height: 48px; padding: 0 20px; border-radius: 10px; background: #0B121A; color: #FFFFFF; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;" style-hover="background: #1A2633; color: #FFFFFF;">See similar jobs</a>
+        </div>
+        </sc-if>
+        <div style="padding-top: 8px; border-top: 1px solid #D4DCE3;">
+          <sc-if value="{{ notReported }}" hint-placeholder-val="{{ true }}">
+          <button type="button" onClick="{{ report }}" style="display: inline-flex; align-items: center; gap: 7px; background: none; border: 0; padding: 8px 0; font-size: 13.5px; color: #66727E; cursor: pointer; transition: color 170ms ease;" style-hover="color: #0B121A;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h11l-1.5 4L16 12H5"></path></svg>Report this listing</button>
+          </sc-if>
+          <sc-if value="{{ reported }}" hint-placeholder-val="{{ false }}">
+          <p style="margin: 0; padding: 8px 0; font-size: 13.5px; color: #17734A;">Thanks — we'll review this listing within 24 hours.</p>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="similar" aria-labelledby="sim-h" style="background: #F5F7F9; border-top: 1px solid #D9E0E6;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 48px 28px 64px;">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-bottom: 16px; border-bottom: 1.5px solid #0B121A;">
+        <h2 id="sim-h" style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: #1D6FA3;">Similar jobs</h2>
+        <a href="Rigged - Job Search.dc.html" style="font-size: 14px; color: #3D4A57; text-decoration: underline; text-underline-offset: 4px;" style-hover="color: #1D6FA3;">Back to search results</a>
+      </div>
+      <div style="margin-top: 22px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px;">
+        <a href="Rigged - Job Details.dc.html" style="display: grid; gap: 10px; padding: 22px 24px; border-radius: 14px; border: 1px solid #D9E0E6; background: #FFFFFF; color: #0B121A; transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;" style-hover="border-color: #A9B6C2; box-shadow: 0 18px 40px -24px rgba(11,18,26,0.28); transform: translateY(-2px); color: #0B121A;">
+          <div style="display: flex; justify-content: space-between; gap: 12px; align-items: flex-start;">
+            <h3 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 13.5px; line-height: 1.45; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 400;">Derrickman</h3>
+            <span style="font-size: 16px; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums;">$600 / day</span>
+          </div>
+          <span style="font-size: 14.5px; color: #3D4A57;">Gulf Drilling Personnel</span>
+          <span style="font-size: 13.5px; color: #66727E;">Doha, QA · 4 / 4 weeks</span>
+        </a>
+        <a href="Rigged - Job Details.dc.html" style="display: grid; gap: 10px; padding: 22px 24px; border-radius: 14px; border: 1px solid #D9E0E6; background: #FFFFFF; color: #0B121A; transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;" style-hover="border-color: #A9B6C2; box-shadow: 0 18px 40px -24px rgba(11,18,26,0.28); transform: translateY(-2px); color: #0B121A;">
+          <div style="display: flex; justify-content: space-between; gap: 12px; align-items: flex-start;">
+            <h3 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 13.5px; line-height: 1.45; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 400;">Assistant driller</h3>
+            <span style="font-size: 16px; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums;">£510 / day</span>
+          </div>
+          <span style="font-size: 14.5px; color: #3D4A57;">Valaris Crewing</span>
+          <span style="font-size: 13.5px; color: #66727E;">Aberdeen, UK · 3 / 3 weeks</span>
+        </a>
+        <a href="Rigged - Job Details.dc.html" style="display: grid; gap: 10px; padding: 22px 24px; border-radius: 14px; border: 1px solid #D9E0E6; background: #FFFFFF; color: #0B121A; transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;" style-hover="border-color: #A9B6C2; box-shadow: 0 18px 40px -24px rgba(11,18,26,0.28); transform: translateY(-2px); color: #0B121A;">
+          <div style="display: flex; justify-content: space-between; gap: 12px; align-items: flex-start;">
+            <h3 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 13.5px; line-height: 1.45; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 400;">Floorman</h3>
+            <span style="font-size: 16px; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums;">£360 / day</span>
+          </div>
+          <span style="font-size: 14.5px; color: #3D4A57;">Valaris Crewing</span>
+          <span style="font-size: 13.5px; color: #66727E;">Aberdeen, UK · Sovereign Alpha · 3 / 3 weeks</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div aria-hidden="{{ barHidden }}" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 0 16px 14px; pointer-events: none; transform: translateY({{ barY }}); opacity: {{ barOpacity }}; transition: transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1), opacity 200ms ease;">
+    <div style="pointer-events: auto; max-width: 1240px; margin: 0 auto; padding: 10px 10px 10px 22px; display: flex; align-items: center; gap: 16px; border-radius: 14px; background: rgba(255,255,255,0.92); backdrop-filter: blur(18px) saturate(1.4); -webkit-backdrop-filter: blur(18px) saturate(1.4); border: 1px solid #D9E0E6; box-shadow: 0 18px 40px -18px rgba(11,18,26,0.35);">
+      <div style="min-width: 0; flex: 1; display: flex; align-items: baseline; gap: 6px 14px; flex-wrap: wrap;">
+        <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 12.5px; letter-spacing: 0.04em; text-transform: uppercase;">Derrickman</span>
+        <span style="font-size: 14px; color: #3D4A57; white-space: nowrap;">Aberdeen Crewing Ltd · <strong style="color: #0B121A; font-variant-numeric: tabular-nums;">£420 / day</strong></span>
+      </div>
+      <sc-if value="{{ isActive }}" hint-placeholder-val="{{ true }}">
+      <a href="mailto:crewing@aberdeencrewing.co.uk?subject=Application%3A%20Derrickman%20%E2%80%93%20Sovereign%20Alpha" tabindex="{{ barTab }}" style="flex: none; display: inline-flex; align-items: center; gap: 9px; height: 46px; padding: 0 20px; border-radius: 10px; background: #0B121A; color: #FFFFFF; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; transition: background 170ms ease;" style-hover="background: #1A2633; color: #FFFFFF;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3.5 6.5l8.5 6.5 8.5-6.5"></path></svg>Apply by email</a>
+      </sc-if>
+      <sc-if value="{{ isFilled }}" hint-placeholder-val="{{ false }}">
+      <a href="#similar" tabindex="{{ barTab }}" style="flex: none; display: inline-flex; align-items: center; height: 46px; padding: 0 18px; border-radius: 10px; border: 1px solid #D9E0E6; color: #0B121A; font-size: 14px; font-weight: 600;">Filled · see similar jobs</a>
+      </sc-if>
+    </div>
+  </div>
+
+  <footer style="background: #FFFFFF; border-top: 1px solid #D9E0E6;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 14px;"><img src="logo-rigged-dark.svg" alt="Rigged" style="height: 18px; width: auto; display: block;" /><span style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #66727E;">Offshore personnel and operators</span></div>
+      <nav style="display: flex; gap: 22px; flex-wrap: wrap;"><a href="Rigged - Job Search.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; color: #3D4A57; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; transition: color 170ms ease;" style-hover="color: #1D6FA3;">Career</a><a href="Rigged - Certification.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; color: #3D4A57; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; transition: color 170ms ease;" style-hover="color: #1D6FA3;">Certification</a><a href="Rigged - Insights.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; color: #3D4A57; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; transition: color 170ms ease;" style-hover="color: #1D6FA3;">Insights</a><a href="#" style="font-family: 'Michroma', 'Archivo', sans-serif; color: #3D4A57; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; transition: color 170ms ease;" style-hover="color: #1D6FA3;">Contact us</a></nav>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;paymentType&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;PAYE&quot;,&quot;options&quot;:[&quot;PAYE&quot;,&quot;Umbrella&quot;,&quot;Self employed&quot;,&quot;Limited company&quot;,&quot;Salary&quot;,&quot;Multiple options&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Job&quot;},&quot;status&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Active&quot;,&quot;options&quot;:[&quot;Active&quot;,&quot;Filled&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Job&quot;}}">
+class Component extends DCLogic {
+  state = { menu: false, w: typeof window !== 'undefined' ? window.innerWidth : 1440, bar: false, copied: false, reported: false,
+    saved: (() => { try { return JSON.parse(localStorage.getItem('rigged-saved-jobs') || '[]').includes(3); } catch (e) { return false; } })(),
+    checks: { bosiet: false, huet: false, medical: false, rtw: false } };
+  onScroll = () => {
+    const vh = window.innerHeight, on = (el) => { if (!el) return false; const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < vh; };
+    const top = document.querySelector('[data-top-cta]'), cta = document.querySelector('[data-apply-cta]');
+    const topGone = top ? top.getBoundingClientRect().bottom < 0 : window.scrollY > 420;
+    const bar = topGone && !on(cta) && !on([...document.querySelectorAll('footer')].pop());
+    if (bar !== this.state.bar) this.setState({ bar });
+  };
+  componentDidMount() { this._r = () => this.setState({ w: window.innerWidth, menu: window.innerWidth >= 1000 ? false : this.state.menu }); window.addEventListener('resize', this._r); this._r(); window.addEventListener('scroll', this.onScroll, { passive: true }); this.onScroll(); }
+  componentWillUnmount() { window.removeEventListener('resize', this._r); window.removeEventListener('scroll', this.onScroll); clearTimeout(this._ct); }
+  renderVals() {
+    const s = this.state;
+    const P = {
+      'PAYE': 'Tax and NI deducted at source by the employer',
+      'Umbrella': 'Paid through an umbrella company',
+      'Self employed': 'You invoice and handle your own tax',
+      'Limited company': 'Paid to your own limited company',
+      'Salary': 'Fixed annual salary, paid monthly',
+      'Multiple options': 'PAYE, umbrella or limited company',
+    };
+    const t = this.props.paymentType ?? 'PAYE';
+    return {
+      wide: s.w >= 1000, compact: s.w < 1000, menuVisible: s.w < 1000 && s.menu, menuOpenAttr: s.menu ? 'true' : 'false',
+      toggleMenu: () => this.setState({ menu: !this.state.menu }), closeMenu: () => this.setState({ menu: false }),
+      payType: t, payHint: P[t] || '',
+      ...(() => {
+        const filled = (this.props.status ?? 'Active') === 'Filled';
+        const C = [['bosiet', 'BOSIET (in date)'], ['huet', 'HUET'], ['medical', 'Offshore medical'], ['rtw', 'Right to work in the UK']];
+        const n = C.filter(([k]) => s.checks[k]).length;
+        const ghost = (on) => ({ Border: on ? 'rgba(29,111,163,0.45)' : '#C3CDD6', Bg: on ? '#EAF3F9' : '#FFFFFF', Color: on ? '#1D6FA3' : '#0B121A' });
+        const sv = ghost(s.saved), cp = ghost(s.copied);
+        return {
+          isActive: !filled, isFilled: filled,
+          st: filled ? { label: 'Filled', color: '#56616C', bg: '#EEF1F4', border: '#D9E0E6', dot: '#9AA4AE' } : { label: 'Active', color: '#17734A', bg: '#E7F5EE', border: '#BFE3CF', dot: '#22A06B' },
+          closeLabel: filled ? 'Applications closed' : 'Applications close 7 Nov 2026', closeColor: filled ? '#8A96A2' : '#9A6A00',
+          checks: C.map(([k, label]) => ({ label, on: !!s.checks[k], border: s.checks[k] ? '#BFE3CF' : '#D9E0E6', bg: s.checks[k] ? '#F1FAF5' : '#FFFFFF',
+            toggle: (e) => this.setState({ checks: { ...this.state.checks, [k]: e.target.checked } }) })),
+          qualLabel: n === C.length ? 'You meet the requirements' : n + ' of ' + C.length + ' confirmed', qualColor: n === C.length ? '#17734A' : '#66727E',
+          toggleSave: () => { const next = !s.saved; this.setState({ saved: next }); try { const a = JSON.parse(localStorage.getItem('rigged-saved-jobs') || '[]').filter(x => x !== 3); if (next) a.push(3); localStorage.setItem('rigged-saved-jobs', JSON.stringify(a)); } catch (e) {} },
+          toggleSaveBorder: sv.Border, toggleSaveBg: sv.Bg, toggleSaveColor: sv.Color,
+          saveLabel: s.saved ? 'Saved' : 'Save', saveFill: s.saved ? 'currentColor' : 'none', savePressed: s.saved ? 'true' : 'false',
+          copyLink: () => { const done = () => { this.setState({ copied: true }); clearTimeout(this._ct); this._ct = setTimeout(() => this.setState({ copied: false }), 2000); }; try { navigator.clipboard.writeText(location.href).then(done, done); } catch (e) { done(); } },
+          copyLinkBorder: cp.Border, copyLinkBg: cp.Bg, copyLinkColor: cp.Color, copyLabel: s.copied ? 'Link copied' : 'Copy link',
+          notReported: !s.reported, reported: s.reported, report: () => this.setState({ reported: true }),
+          barY: s.bar ? '0' : '120%', barOpacity: s.bar ? 1 : 0, barHidden: s.bar ? 'false' : 'true', barTab: s.bar ? 0 : -1,
+        };
+      })(),
+    };
+  }
+}
+</script>
+</body>
+</html>

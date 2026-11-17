@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #F5F7F9; }
+  * { box-sizing: border-box; }
+  a { color: #0B121A; text-decoration: none; }
+  a:hover { color: #1D6FA3; }
+  input, select, button { font: inherit; }
+  input::placeholder { color: #8A96A2; }
+  :focus-visible { outline: 2px solid #1D6FA3; outline-offset: 3px; }
+  ::selection { background: rgba(29,111,163,0.2); }
+</style>
+</helmet>
+
+
+<div style="font-family: 'Archivo', system-ui, sans-serif; background: #F5F7F9; color: #0B121A; -webkit-font-smoothing: antialiased; letter-spacing: -0.005em; min-height: 100vh; display: flex; flex-direction: column;">
+
+  <header style="position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,0.86); backdrop-filter: blur(18px) saturate(1.4); -webkit-backdrop-filter: blur(18px) saturate(1.4); border-bottom: 1px solid #D9E0E6;">
+    <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 0 28px; height: 68px; display: flex; align-items: center; gap: 28px;">
+      <a href="Rigged - Ocean Deep.dc.html" aria-label="Rigged home" style="flex: none; display: flex;"><img src="logo-rigged-dark.svg" alt="Rigged" style="height: 22px; width: auto; display: block;" /></a>
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <nav style="flex: 1; display: flex; gap: 2px;">
+        <a href="Rigged - Job Search.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #3D4A57; padding: 8px 10px; border-radius: 6px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">Career</a>
+        <a href="Rigged - Certification.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #3D4A57; padding: 8px 10px; border-radius: 6px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">Certification</a>
+        <a href="Rigged - Insights.dc.html" aria-current="page" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #0B121A; padding: 8px 10px; border-radius: 6px; background: #EEF2F5;">Insights</a>
+        <a href="#" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #3D4A57; padding: 8px 10px; border-radius: 6px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">Contact us</a>
+        <a href="#" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #3D4A57; padding: 8px 10px; border-radius: 6px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">For business</a>
+      </nav>
+      </sc-if>
+      <div style="margin-left: auto; display: flex; gap: 8px; align-items: center;">
+        <a href="Rigged - Professional Profile.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #0B121A; padding: 11px 14px; border-radius: 8px; border: 1px solid #D9E0E6; background: #FFFFFF; transition: border-color 170ms ease;" style-hover="border-color: #0B121A; color: #0B121A;">Sign in</a>
+        <a href="Rigged - Professional Profile.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #FFFFFF; padding: 12px 15px; border-radius: 8px; background: #0B121A; transition: background 170ms ease, box-shadow 170ms ease;" style-hover="background: #1A2633; color: #FFFFFF; box-shadow: 0 0 0 4px rgba(29,111,163,0.18);">Create account</a>
+        <sc-if value="{{ compact }}" hint-placeholder-val="{{ false }}">
+        <button type="button" aria-label="Menu" aria-expanded="{{ menuOpenAttr }}" onClick="{{ toggleMenu }}" style="width: 42px; height: 42px; display: grid; align-content: center; justify-items: center; gap: 5px; padding: 0; border-radius: 8px; border: 1px solid #D9E0E6; background: #FFFFFF; cursor: pointer; transition: border-color 170ms ease;" style-hover="border-color: #0B121A;">
+          <span style="display: block; width: 16px; height: 1.5px; background: #0B121A;"></span>
+          <span style="display: block; width: 16px; height: 1.5px; background: #0B121A;"></span>
+          <span style="display: block; width: 16px; height: 1.5px; background: #0B121A;"></span>
+        </button>
+        </sc-if>
+      </div>
+      <sc-if value="{{ menuVisible }}" hint-placeholder-val="{{ false }}">
+        <div style="position: absolute; top: calc(100% + 8px); left: 16px; right: 16px; padding: 8px; display: grid; gap: 2px; border-radius: 14px; background: rgba(255,255,255,0.97); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid #D9E0E6; box-shadow: 0 24px 48px -20px rgba(11,18,26,0.3);">
+          <a href="Rigged - Job Search.dc.html" onClick="{{ closeMenu }}" style="font-family: 'Michroma', 'Archivo', sans-serif; display: flex; align-items: center; justify-content: space-between; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 15px 14px; border-radius: 8px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">Career<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+          <a href="Rigged - Certification.dc.html" onClick="{{ closeMenu }}" style="font-family: 'Michroma', 'Archivo', sans-serif; display: flex; align-items: center; justify-content: space-between; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 15px 14px; border-radius: 8px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">Certification<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+          <a href="Rigged - Insights.dc.html" onClick="{{ closeMenu }}" style="font-family: 'Michroma', 'Archivo', sans-serif; display: flex; align-items: center; justify-content: space-between; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 15px 14px; border-radius: 8px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">Insights<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+          <a href="#" onClick="{{ closeMenu }}" style="font-family: 'Michroma', 'Archivo', sans-serif; display: flex; align-items: center; justify-content: space-between; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 15px 14px; border-radius: 8px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">Contact us<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+          <a href="#" onClick="{{ closeMenu }}" style="font-family: 'Michroma', 'Archivo', sans-serif; display: flex; align-items: center; justify-content: space-between; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 15px 14px; border-radius: 8px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">For business<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+        </div>
+      </sc-if>
+    </div>
+  </header>
+
+  <section style="background: #FFFFFF; border-bottom: 1px solid #D9E0E6;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 48px 28px 28px; display: grid; gap: 14px;">
+      <div style="margin-bottom: 14px;">
+        <span style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: #1D6FA3;">Real ratings</span>
+        <h1 style="margin: 14px 0 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: clamp(28px, 3.6vw, 42px); line-height: 1.15; letter-spacing: 0.02em; text-transform: uppercase; font-weight: 400;">Insights</h1>
+        <p style="margin: 14px 0 0; max-width: 640px; font-size: 17.5px; line-height: 1.6; color: #3D4A57; text-wrap: pretty;">Ratings of on-board living conditions on platforms and vessels, submitted by personnel who worked a rotation.</p>
+      </div>
+      <form onSubmit="{{ submit }}" role="search" style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <div style="position: relative; flex: 1 1 420px; height: 56px; border-radius: 12px; border: 1px solid #D9E0E6; background: #FFFFFF; transition: border-color 170ms ease, box-shadow 170ms ease;" style-hover="border-color: #A9B6C2;" style-focus-within="border-color: #1D6FA3; box-shadow: 0 0 0 4px rgba(29,111,163,0.14);">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#66727E" stroke-width="2" stroke-linecap="round" style="position: absolute; left: 18px; top: 50%; transform: translateY(-50%);"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+          <input type="search" aria-label="Platform, vessel or vendor" value="{{ q }}" onChange="{{ onQ }}" placeholder="Platform, vessel or vendor" style="width: 100%; height: 100%; padding: 0 16px 0 50px; border: 0; border-radius: 12px; background: transparent; color: #0B121A; font-size: 16px; outline: none;" />
+        </div>
+        <button type="submit" style="flex: 0 0 auto; height: 56px; padding: 0 30px; border: 0; border-radius: 12px; background: #0B121A; color: #FFFFFF; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; transition: background 170ms ease, box-shadow 170ms ease, transform 140ms ease;" style-hover="background: #1A2633; box-shadow: 0 0 0 4px rgba(29,111,163,0.18);" style-active="transform: translateY(1px);">Search</button>
+      </form>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+        <sc-if value="{{ filtersCompact }}" hint-placeholder-val="{{ false }}">
+        <button type="button" aria-expanded="{{ filtersOpenAttr }}" onClick="{{ toggleFilters }}" style="height: 46px; display: inline-flex; align-items: center; gap: 9px; padding: 0 16px; border-radius: 10px; border: 1px solid #D9E0E6; background: #FFFFFF; color: #0B121A; font-size: 15px; font-weight: 500; cursor: pointer; transition: border-color 170ms ease;" style-hover="border-color: #A9B6C2;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"></path></svg>
+          {{ filtersLabel }}
+        </button>
+        </sc-if>
+        <sc-if value="{{ showSelects }}" hint-placeholder-val="{{ true }}">
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; flex: {{ selFlex }}; order: {{ selOrder }};">
+        <div style="position: relative; flex: 0 1 210px; min-width: 160px; height: 46px; border-radius: 10px; border: 1px solid #D9E0E6; background: #FFFFFF; transition: border-color 170ms ease, box-shadow 170ms ease;" style-hover="border-color: #A9B6C2;" style-focus-within="border-color: #1D6FA3; box-shadow: 0 0 0 3px rgba(29,111,163,0.16);">
+          <select value="{{ type }}" onChange="{{ onType }}" style="appearance: none; -webkit-appearance: none; width: 100%; height: 100%; padding: 0 40px 0 16px; border: 0; background: transparent; color: #0B121A; font-size: 15px; cursor: pointer; outline: none;"><option value="">All types</option><option value="Semi-submersible">Semi-submersible</option><option value="Jack-up">Jack-up</option><option value="Drillship">Drillship</option><option value="FPSO">FPSO</option><option value="Fixed platform">Fixed platform</option><option value="Spar">Spar</option><option value="Wind farm">Wind farm</option><option value="Offshore substation">Offshore substation</option></select><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3D4A57" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); pointer-events: none;"><path d="M6 9l6 6 6-6"></path></svg>
+        </div>
+        <div style="position: relative; flex: 0 1 210px; min-width: 160px; height: 46px; border-radius: 10px; border: 1px solid #D9E0E6; background: #FFFFFF; transition: border-color 170ms ease, box-shadow 170ms ease;" style-hover="border-color: #A9B6C2;" style-focus-within="border-color: #1D6FA3; box-shadow: 0 0 0 3px rgba(29,111,163,0.16);">
+          <select value="{{ vendor }}" onChange="{{ onVendor }}" style="appearance: none; -webkit-appearance: none; width: 100%; height: 100%; padding: 0 40px 0 16px; border: 0; background: transparent; color: #0B121A; font-size: 15px; cursor: pointer; outline: none;"><option value="">All vendors</option><option value="BP">BP</option><option value="Shell">Shell</option><option value="Equinor">Equinor</option><option value="Harbour Energy">Harbour Energy</option><option value="TotalEnergies">TotalEnergies</option><option value="SSE Renewables">SSE Renewables</option><option value="Ørsted">Ørsted</option><option value="Boskalis">Boskalis</option><option value="DOF">DOF</option><option value="Bourbon">Bourbon</option></select><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3D4A57" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); pointer-events: none;"><path d="M6 9l6 6 6-6"></path></svg>
+        </div>
+        <div style="position: relative; flex: 0 1 210px; min-width: 160px; height: 46px; border-radius: 10px; border: 1px solid #D9E0E6; background: #FFFFFF; transition: border-color 170ms ease, box-shadow 170ms ease;" style-hover="border-color: #A9B6C2;" style-focus-within="border-color: #1D6FA3; box-shadow: 0 0 0 3px rgba(29,111,163,0.16);">
+          <select value="{{ region }}" onChange="{{ onRegion }}" style="appearance: none; -webkit-appearance: none; width: 100%; height: 100%; padding: 0 40px 0 16px; border: 0; background: transparent; color: #0B121A; font-size: 15px; cursor: pointer; outline: none;"><option value="">All regions</option><option value="North Sea">North Sea</option><option value="Norwegian Sea">Norwegian Sea</option><option value="Gulf of Mexico">Gulf of Mexico</option><option value="West Africa">West Africa</option><option value="Brazil">Brazil</option></select><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3D4A57" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); pointer-events: none;"><path d="M6 9l6 6 6-6"></path></svg>
+        </div>
+        </div>
+        </sc-if>
+        <div style="margin-left: auto; position: relative; height: 46px; display: flex; align-items: center;">
+          <select aria-label="Sort" value="{{ sort }}" onChange="{{ onSort }}" style="appearance: none; -webkit-appearance: none; height: 100%; padding: 0 30px 0 12px; border: 0; border-radius: 8px; background: transparent; color: #0B121A; font-size: 15px; font-weight: 500; cursor: pointer; outline: none; transition: background 170ms ease;" style-hover="background: #EEF2F5;"><option value="rating">Highest rated</option><option value="count">Most ratings</option><option value="newest">Newest built</option><option value="name">Name A–Z</option></select>
+          <svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3D4A57" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; right: 10px; pointer-events: none;"><path d="M6 9l6 6 6-6"></path></svg>
+        </div>
+      </div>
+      <sc-if value="{{ hasChips }}" hint-placeholder-val="{{ false }}">
+      <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+        <sc-for list="{{ chips }}" as="c" hint-placeholder-count="2">
+          <button type="button" onClick="{{ c.remove }}" aria-label="{{ c.aria }}" style="display: inline-flex; align-items: center; gap: 8px; height: 34px; padding: 0 10px 0 13px; border-radius: 999px; border: 1px solid rgba(29,111,163,0.35); background: #EAF3F9; color: #0F4C73; font-size: 13.5px; font-weight: 500; cursor: pointer; transition: background 170ms ease, border-color 170ms ease;" style-hover="background: #DCEBF5; border-color: #1D6FA3;">
+            <span style="color: #4E7A98;">{{ c.k }}</span>{{ c.v }}
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+          </button>
+        </sc-for>
+        <button type="button" onClick="{{ clearAll }}" style="background: none; border: 0; padding: 6px 8px; font-size: 13.5px; color: #66727E; text-decoration: underline; text-underline-offset: 4px; cursor: pointer;" style-hover="color: #0B121A;">Clear all</button>
+      </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <main style="flex: 1; max-width: 1240px; width: 100%; margin: 0 auto; padding: 32px 28px 72px;">
+    <div role="tablist" aria-label="Show" style="display: inline-flex; padding: 4px; gap: 2px; border-radius: 12px; background: #E9EEF2; margin-bottom: 26px;">
+      <sc-for list="{{ kinds }}" as="k" hint-placeholder-count="3">
+        <button type="button" role="tab" aria-selected="{{ k.sel }}" onClick="{{ k.pick }}" style="display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 18px; border: 0; border-radius: 9px; background: {{ k.bg }}; color: {{ k.color }}; box-shadow: {{ k.shadow }}; font-size: 14.5px; font-weight: 600; cursor: pointer; transition: background 170ms ease, color 170ms ease;" style-hover="color: #0B121A;">{{ k.label }}<span style="font-size: 12px; font-weight: 600; color: #66727E; font-variant-numeric: tabular-nums;">{{ k.n }}</span></button>
+      </sc-for>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 16px; border-bottom: 1.5px solid #0B121A;">
+      <span style="font-size: 12.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #3D4A57; font-variant-numeric: tabular-nums;">{{ countLabel }}</span>
+      <sc-if value="{{ filtered }}" hint-placeholder-val="{{ false }}">
+      <button type="button" onClick="{{ clearAll }}" style="background: none; border: 0; padding: 4px 2px; font-size: 14px; color: #66727E; text-decoration: underline; text-underline-offset: 4px; cursor: pointer;" style-hover="color: #0B121A;">Clear search</button>
+      </sc-if>
+    </div>
+
+    <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+      <div style="padding: 64px 0; text-align: center; display: grid; gap: 10px; justify-items: center;">
+        <p style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase;">No platforms or vessels match</p>
+        <p style="margin: 0; font-size: 15px; color: #3D4A57;">Try another name or clear a filter.</p>
+      </div>
+    </sc-if>
+
+    <ul style="list-style: none; margin: 0; padding: 0;">
+      <sc-for list="{{ rigs }}" as="r" hint-placeholder-count="6">
+        <li style="position: relative; border-bottom: 1px solid #E3E8ED;">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 14px 28px; flex-wrap: wrap; padding: 22px 18px; margin: 0 -18px; border-radius: 12px; transition: background 170ms ease;" style-hover="background: #FFFFFF;">
+            <div style="min-width: 0; flex: 1 1 380px;">
+              <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                <h2 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 15.5px; line-height: 1.4; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 400;"><a href="Rigged - Rig Details.dc.html" style="color: #0B121A;" style-hover="color: #1D6FA3;">{{ r.name }}</a></h2>
+                <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: {{ r.typeColor }}; padding: 5px 9px; border-radius: 6px; border: 1px solid {{ r.typeBorder }}; background: {{ r.typeBg }}; white-space: nowrap;">{{ r.type }}</span>
+              </div>
+              <div style="margin-top: 8px; font-size: 15px; color: #3D4A57;">{{ r.meta }}</div>
+            </div>
+            <div style="flex: none; display: grid; justify-items: end; gap: 10px;">
+              <div style="display: flex; align-items: center; gap: 14px;">
+              <span role="img" aria-label="{{ r.aria }}" style="position: relative; display: block; width: 96px; height: 16px; flex: none;">
+                <span style="position: absolute; inset: 0; display: flex; gap: 4px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#D5DCE2" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#D5DCE2" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#D5DCE2" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#D5DCE2" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#D5DCE2" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg></span>
+                <span style="position: absolute; top: 0; left: 0; bottom: 0; width: {{ r.pct }}; overflow: hidden; display: flex; gap: 4px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0B121A" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#0B121A" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#0B121A" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#0B121A" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#0B121A" style="flex: none;"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg></span>
+              </span>
+                <span style="min-width: 30px; font-size: 16px; font-weight: 700; font-variant-numeric: tabular-nums;">{{ r.score }}</span>
+                <span style="min-width: 96px; text-align: right; font-size: 11.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #66727E; font-variant-numeric: tabular-nums;">{{ r.countText }}</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: flex-end;">
+                <span style="font-size: 13px; color: #66727E;">{{ r.lastRated }}</span>
+                <sc-if value="{{ r.hasJobs }}" hint-placeholder-val="{{ false }}">
+                <a href="{{ r.jobsHref }}" style="display: inline-flex; align-items: center; gap: 7px; height: 32px; padding: 0 12px; border-radius: 999px; border: 1px solid #BFE3CF; background: #E7F5EE; color: #17734A; font-size: 13px; font-weight: 600; transition: border-color 170ms ease, background 170ms ease;" style-hover="border-color: #22A06B; background: #DAF0E4; color: #17734A;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #22A06B;"></span>{{ r.jobsText }}<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"></path></svg></a>
+                </sc-if>
+              </div>
+            </div>
+          </div>
+        </li>
+      </sc-for>
+    </ul>
+
+    <sc-if value="{{ multiPage }}" hint-placeholder-val="{{ true }}">
+    <nav aria-label="Pagination" style="margin-top: 36px; display: flex; justify-content: center; gap: 8px;">
+      <sc-for list="{{ pages }}" as="p" hint-placeholder-count="3">
+        <button type="button" aria-current="{{ p.current }}" onClick="{{ p.go }}" style="width: 44px; height: 44px; border-radius: 10px; border: 1px solid {{ p.border }}; background: {{ p.bg }}; color: {{ p.color }}; font-size: 15px; font-weight: 600; cursor: pointer; font-variant-numeric: tabular-nums; transition: border-color 170ms ease;" style-hover="border-color: #0B121A;">{{ p.n }}</button>
+      </sc-for>
+    </nav>
+    </sc-if>
+  </main>
+
+  <section aria-labelledby="fj-h" style="background: #FFFFFF; border-top: 1px solid #D9E0E6;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 52px 28px 64px;">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 20px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="width: 8px; height: 8px; border-radius: 2px; background: #1D6FA3; transform: rotate(45deg);"></span>
+          <h2 id="fj-h" style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 400;">Featured jobs</h2>
+        </div>
+        <a href="Rigged - Job Search.dc.html" style="display: inline-flex; align-items: center; gap: 7px; font-size: 14.5px; font-weight: 600; color: #0B121A; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(11,18,26,0.3);" style-hover="color: #1D6FA3;">Browse all jobs<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"></path></svg></a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 16px;">
+        <a href="Rigged - Job Details.dc.html" style="display: flex; flex-direction: column; gap: 16px; padding: 24px 26px 20px; border-radius: 14px; border: 1px solid rgba(29,111,163,0.28); background: linear-gradient(180deg, #F1F7FB 0%, #FFFFFF 60%); color: #0B121A; transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;" style-hover="border-color: #1D6FA3; box-shadow: 0 18px 40px -24px rgba(11,18,26,0.28); transform: translateY(-2px); color: #0B121A;">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 14px;">
+            <div style="min-width: 0;">
+              <h3 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 14.5px; line-height: 1.4; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 400;">Derrickman</h3>
+              <div style="margin-top: 7px; font-size: 14.5px; color: #3D4A57;">Aberdeen Crewing Ltd</div>
+            </div>
+            <span style="flex: none; font-size: 17px; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums;">£420 / day</span>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+            <span style="display: inline-flex; align-items: center; gap: 7px; padding: 5px 10px 5px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; color: #17734A; background: #E7F5EE; border: 1px solid #BFE3CF;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #22A06B;"></span>Active</span>
+            <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 6px 9px; border-radius: 6px; border: 1px solid #D9E0E6; background: #F7F9FB; white-space: nowrap;">Oil &amp; Gas</span><span style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 6px 9px; border-radius: 6px; border: 1px solid #D9E0E6; background: #F7F9FB; white-space: nowrap;">Temporary</span><span style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 6px 9px; border-radius: 6px; border: 1px solid #D9E0E6; background: #F7F9FB; white-space: nowrap;">3 / 3 weeks</span>
+          </div>
+          <div style="margin-top: auto; padding-top: 14px; border-top: 1px solid #E8EDF1; display: flex; align-items: center; gap: 8px 16px; flex-wrap: wrap; font-size: 14px; color: #3D4A57;">
+            <span style="display: inline-flex; align-items: center; gap: 7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#66727E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>Aberdeen, UK</span>
+            <span style="color: #0B121A; font-weight: 500;">Sovereign Alpha</span>
+          </div>
+        </a>
+        <a href="Rigged - Job Details.dc.html" style="display: flex; flex-direction: column; gap: 16px; padding: 24px 26px 20px; border-radius: 14px; border: 1px solid rgba(29,111,163,0.28); background: linear-gradient(180deg, #F1F7FB 0%, #FFFFFF 60%); color: #0B121A; transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;" style-hover="border-color: #1D6FA3; box-shadow: 0 18px 40px -24px rgba(11,18,26,0.28); transform: translateY(-2px); color: #0B121A;">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 14px;">
+            <div style="min-width: 0;">
+              <h3 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 14.5px; line-height: 1.4; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 400;">Turbine technician</h3>
+              <div style="margin-top: 7px; font-size: 14.5px; color: #3D4A57;">Northern Wind Recruitment</div>
+            </div>
+            <span style="flex: none; font-size: 17px; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums;">£48,000 / year</span>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+            <span style="display: inline-flex; align-items: center; gap: 7px; padding: 5px 10px 5px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; color: #17734A; background: #E7F5EE; border: 1px solid #BFE3CF;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #22A06B;"></span>Active</span>
+            <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 6px 9px; border-radius: 6px; border: 1px solid #D9E0E6; background: #F7F9FB; white-space: nowrap;">Wind</span><span style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 6px 9px; border-radius: 6px; border: 1px solid #D9E0E6; background: #F7F9FB; white-space: nowrap;">Permanent</span><span style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 6px 9px; border-radius: 6px; border: 1px solid #D9E0E6; background: #F7F9FB; white-space: nowrap;">2 / 2 weeks</span>
+          </div>
+          <div style="margin-top: auto; padding-top: 14px; border-top: 1px solid #E8EDF1; display: flex; align-items: center; gap: 8px 16px; flex-wrap: wrap; font-size: 14px; color: #3D4A57;">
+            <span style="display: inline-flex; align-items: center; gap: 7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#66727E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>Grimsby, UK</span>
+            <span style="color: #0B121A; font-weight: 500;">Dogger Bank C</span>
+          </div>
+        </a>
+        <a href="Rigged - Job Details.dc.html" style="display: flex; flex-direction: column; gap: 16px; padding: 24px 26px 20px; border-radius: 14px; border: 1px solid rgba(29,111,163,0.28); background: linear-gradient(180deg, #F1F7FB 0%, #FFFFFF 60%); color: #0B121A; transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;" style-hover="border-color: #1D6FA3; box-shadow: 0 18px 40px -24px rgba(11,18,26,0.28); transform: translateY(-2px); color: #0B121A;">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 14px;">
+            <div style="min-width: 0;">
+              <h3 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 14.5px; line-height: 1.4; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 400;">Chief officer, DP2</h3>
+              <div style="margin-top: 7px; font-size: 14.5px; color: #3D4A57;">Blue Horizon Marine</div>
+            </div>
+            <span style="flex: none; font-size: 17px; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums;">NOK 6 100 / day</span>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+            <span style="display: inline-flex; align-items: center; gap: 7px; padding: 5px 10px 5px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; color: #17734A; background: #E7F5EE; border: 1px solid #BFE3CF;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #22A06B;"></span>Active</span>
+            <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 6px 9px; border-radius: 6px; border: 1px solid #D9E0E6; background: #F7F9FB; white-space: nowrap;">Marine</span><span style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 6px 9px; border-radius: 6px; border: 1px solid #D9E0E6; background: #F7F9FB; white-space: nowrap;">Permanent</span><span style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 6px 9px; border-radius: 6px; border: 1px solid #D9E0E6; background: #F7F9FB; white-space: nowrap;">4 / 4 weeks</span>
+          </div>
+          <div style="margin-top: auto; padding-top: 14px; border-top: 1px solid #E8EDF1; display: flex; align-items: center; gap: 8px 16px; flex-wrap: wrap; font-size: 14px; color: #3D4A57;">
+            <span style="display: inline-flex; align-items: center; gap: 7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#66727E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>Stavanger, NO</span>
+            <span style="color: #0B121A; font-weight: 500;">Northern Resolve</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background: #FFFFFF; border-top: 1px solid #D9E0E6;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 14px;"><img src="logo-rigged-dark.svg" alt="Rigged" style="height: 18px; width: auto; display: block;" /><span style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #66727E;">Offshore personnel and operators</span></div>
+      <nav style="display: flex; gap: 22px; flex-wrap: wrap;"><a href="Rigged - Job Search.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; color: #3D4A57; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; transition: color 170ms ease;" style-hover="color: #1D6FA3;">Career</a><a href="Rigged - Certification.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; color: #3D4A57; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; transition: color 170ms ease;" style-hover="color: #1D6FA3;">Certification</a><a href="Rigged - Insights.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; color: #3D4A57; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; transition: color 170ms ease;" style-hover="color: #1D6FA3;">Insights</a><a href="#" style="font-family: 'Michroma', 'Archivo', sans-serif; color: #3D4A57; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; transition: color 170ms ease;" style-hover="color: #1D6FA3;">Contact us</a></nav>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { menu: false, w: typeof window !== 'undefined' ? window.innerWidth : 1440, q: '', sq: '', type: '', vendor: '', region: '', sort: 'rating', page: 1, kind: 'all', filtersOpen: false };
+  JOBS = { 'Sovereign Alpha': 3, 'Dogger Bank C': 2, 'Havstjerne': 1, 'Northgate Bravo': 1, 'Ocean Vantage': 1, 'Hornsea 2': 1, 'Northern Resolve': 1, 'Atlantic Tern': 1, 'Wind Osprey': 1 };
+  LAST = [3, 1, 6, 9, 14, 21, 2, 11, 5, 8, 4, 2, 12, 7, 3, 16, 25, 10];
+  RIGS = [
+    ['Sovereign Alpha', 'BP', 'Semi-submersible', 'Oil', 2011, 'North Sea', 4.2, 38],
+    ['Havstjerne', 'Equinor', 'Fixed platform', 'Gas', 2016, 'Norwegian Sea', 4.6, 21],
+    ['Ocean Vantage', 'Shell', 'Spar', 'Oil', 2008, 'Gulf of Mexico', 3.5, 47],
+    ['Dogger Bank C', 'SSE Renewables', 'Offshore substation', 'Wind', 2024, 'North Sea', 4.4, 12],
+    ['Brent Meridian', 'Shell', 'Fixed platform', 'Gas', 1998, 'North Sea', 2.9, 33],
+    ['Nordlys II', 'Equinor', 'Wind farm', 'Wind', 2022, 'Norwegian Sea', 4.1, 9],
+    ['Northgate Bravo', 'Harbour Energy', 'Jack-up', 'Oil', 2013, 'North Sea', 4.0, 29],
+    ['Atlântico Sul', 'TotalEnergies', 'FPSO', 'Oil', 2019, 'Brazil', 3.8, 26],
+    ['Kaombo Norte', 'TotalEnergies', 'FPSO', 'Oil', 2018, 'West Africa', 3.6, 31],
+    ['Hornsea 2', 'Ørsted', 'Wind farm', 'Wind', 2022, 'North Sea', 4.1, 17],
+    ['Deepwater Corona', 'BP', 'Drillship', 'Oil', 2015, 'Gulf of Mexico', 3.9, 22],
+    ['Northern Resolve', 'Boskalis', 'Construction support vessel', 'Vessel', 2017, 'North Sea', 4.7, 18],
+    ['Skandi Meridian', 'DOF', 'Subsea support vessel', 'Vessel', 2014, 'Norwegian Sea', 4.5, 24],
+    ['Atlantic Tern', 'Bourbon', 'Platform supply vessel', 'Vessel', 2012, 'West Africa', 4.3, 31],
+    ['Wind Osprey', 'Ørsted', 'Service operation vessel', 'Vessel', 2021, 'North Sea', 4.2, 15],
+    ['Gulf Sentinel', 'Shell', 'Platform supply vessel', 'Vessel', 2010, 'Gulf of Mexico', 3.9, 40],
+    ['Grane Delta', 'Equinor', 'Semi-submersible', 'Oil', 2009, 'Norwegian Sea', 3.3, 19],
+    ['Clair Ridge', 'BP', 'Fixed platform', 'Oil', 2018, 'North Sea', 4.0, 27],
+  ].map(([name, vendor, type, product, built, region, score, count], i) => ({ id: i, name, vendor, type, product, built, region, score, count }));
+  TOTAL = 214;
+  componentDidMount() { this._r = () => this.setState({ w: window.innerWidth, menu: window.innerWidth >= 1000 ? false : this.state.menu }); window.addEventListener('resize', this._r); this._r(); }
+  componentWillUnmount() { window.removeEventListener('resize', this._r); }
+  renderVals() {
+    const s = this.state, per = 6;
+    const set = (k) => (e) => this.setState({ [k]: e.target.value, page: 1 });
+    const words = s.sq.toLowerCase().split(/\s+/).filter(Boolean);
+    const isVessel = (r) => r.product === 'Vessel';
+    let list = this.RIGS.filter(r =>
+      (!words.length || words.every(w => [r.name, r.vendor, r.type, r.region].join(' ').toLowerCase().includes(w))) &&
+      (s.kind === 'all' || (s.kind === 'vessels') === isVessel(r)) && (!s.type || r.type === s.type) && (!s.vendor || r.vendor === s.vendor) && (!s.region || r.region === s.region));
+    const by = { rating: (a, b) => b.score - a.score || b.count - a.count, count: (a, b) => b.count - a.count, newest: (a, b) => b.built - a.built, name: (a, b) => a.name.localeCompare(b.name) };
+    list.sort(by[s.sort]);
+    const pages = Math.max(1, Math.ceil(list.length / per)), page = Math.min(s.page, pages);
+    const filtered = !!(s.sq || s.type || s.vendor || s.region || s.kind !== 'all');
+    const cat = (r, k, off) => { const v = Math.max(1, Math.min(4.9, r.score + off)); return { k, v: v.toFixed(1), pct: (v / 5 * 100) + '%', color: v < 3.5 ? '#C98A12' : '#1D6FA3' }; };
+    const ago = (d) => d === 1 ? 'Last rated yesterday' : d < 7 ? 'Last rated ' + d + ' days ago' : d < 14 ? 'Last rated 1 week ago' : 'Last rated ' + Math.floor(d / 7) + ' weeks ago';
+    const nP = 156, nV = this.TOTAL - nP;
+    const fc = [s.type, s.vendor, s.region].filter(Boolean).length;
+    const shown = list.slice((page - 1) * per, page * per);
+    return {
+      kinds: [['all', 'All', this.TOTAL], ['platforms', 'Platforms', nP], ['vessels', 'Vessels', nV]].map(([k, label, n]) => ({ label, n, sel: s.kind === k ? 'true' : 'false',
+        bg: s.kind === k ? '#FFFFFF' : 'transparent', color: s.kind === k ? '#0B121A' : '#3D4A57', shadow: s.kind === k ? '0 1px 3px rgba(11,18,26,0.14)' : 'none',
+        pick: () => this.setState({ kind: k, page: 1 }) })),
+      filtersCompact: s.w < 720, showSelects: s.w >= 720 || s.filtersOpen, selFlex: s.w < 720 ? '1 1 100%' : '0 1 auto', selOrder: s.w < 720 ? 3 : 0,
+      filtersOpenAttr: s.filtersOpen ? 'true' : 'false', toggleFilters: () => this.setState({ filtersOpen: !this.state.filtersOpen }),
+      filtersLabel: 'Filters' + (fc ? ' · ' + fc : ''),
+      chips: [['Search', s.sq, { q: '', sq: '' }], ['Type', s.type, { type: '' }], ['Vendor', s.vendor, { vendor: '' }], ['Region', s.region, { region: '' }]]
+        .filter(c => c[1]).map(([k, v, up]) => ({ k, v, aria: 'Remove filter ' + v, remove: () => this.setState({ ...up, page: 1 }) })),
+      hasChips: !!(s.sq || s.type || s.vendor || s.region),
+      wide: s.w >= 1000, compact: s.w < 1000, menuVisible: s.w < 1000 && s.menu, menuOpenAttr: s.menu ? 'true' : 'false',
+      toggleMenu: () => this.setState({ menu: !this.state.menu }), closeMenu: () => this.setState({ menu: false }),
+      q: s.q, onQ: (e) => this.setState({ q: e.target.value }),
+      submit: (e) => { e.preventDefault(); this.setState({ sq: this.state.q.trim(), page: 1 }); },
+      type: s.type, onType: set('type'), vendor: s.vendor, onVendor: set('vendor'), region: s.region, onRegion: set('region'), sort: s.sort, onSort: set('sort'),
+      clearAll: () => this.setState({ q: '', sq: '', type: '', vendor: '', region: '', kind: 'all', page: 1 }),
+      filtered, empty: !list.length,
+      countLabel: filtered ? list.length + (list.length === 1 ? ' match' : ' matches') + (s.sq ? ' for “' + s.sq + '”' : '') : shown.length + ' of ' + this.TOTAL + ' platforms & vessels',
+      rigs: shown.map(r => ({ ...r, score: r.score.toFixed(1), pct: (r.score / 5 * 100) + '%', aria: r.score.toFixed(1) + ' out of 5',
+        countText: r.count + ' ratings',
+        cats: (() => { const w = -0.1 * (r.id % 3) - 0.2, o = [0.2, -0.3, w, 0.2]; const m = o.reduce((a, b) => a + b, 0) / 4; return [['Food', o[0]], ['Cabins', o[1]], ['Wi-Fi', o[2]], ['Safety', o[3]]].map(([k, x]) => cat(r, k, x - m)); })(),
+        lastRated: ago(this.LAST[r.id] || 7),
+        hasJobs: !!this.JOBS[r.name], jobsText: (this.JOBS[r.name] || 0) + (this.JOBS[r.name] === 1 ? ' open job' : ' open jobs'),
+        jobsHref: 'Rigged - Job Search.dc.html?q=' + encodeURIComponent(r.name), meta: [r.vendor, isVessel(r) ? null : r.product, 'Built ' + r.built, r.region].filter(Boolean).join(' · '),
+        typeColor: isVessel(r) ? '#0F4C73' : '#3D4A57', typeBg: isVessel(r) ? '#EAF3F9' : '#F7F9FB', typeBorder: isVessel(r) ? 'rgba(29,111,163,0.35)' : '#D9E0E6' })),
+      multiPage: pages > 1,
+      pages: Array.from({ length: pages }, (_, i) => ({ n: i + 1, current: i + 1 === page ? 'page' : 'false',
+        bg: i + 1 === page ? '#0B121A' : '#FFFFFF', color: i + 1 === page ? '#FFFFFF' : '#0B121A', border: i + 1 === page ? '#0B121A' : '#D9E0E6',
+        go: () => { this.setState({ page: i + 1 }); window.scrollTo({ top: 0, behavior: 'smooth' }); } })),
+    };
+  }
+}
+</script>
+</body>
+</html>

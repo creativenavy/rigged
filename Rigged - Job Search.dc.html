@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet" />
+<style>
+  @keyframes rig-gate { 0% { opacity: 0; transform: translateY(10px) scale(0.985); } 100% { opacity: 1; transform: none; } }
+  html, body { margin: 0; padding: 0; background: #F5F7F9; }
+  * { box-sizing: border-box; }
+  a { color: #0B121A; text-decoration: none; }
+  a:hover { color: #1D6FA3; }
+  input, select, button { font: inherit; }
+  input::placeholder { color: #8A96A2; }
+  :focus-visible { outline: 2px solid #1D6FA3; outline-offset: 3px; }
+  ::selection { background: rgba(29,111,163,0.2); }
+</style>
+</helmet>
+<div style="font-family: 'Archivo', system-ui, sans-serif; background: #F5F7F9; color: #0B121A; -webkit-font-smoothing: antialiased; letter-spacing: -0.005em; min-height: 100vh; display: flex; flex-direction: column;">
+
+  <header style="position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,0.86); backdrop-filter: blur(18px) saturate(1.4); -webkit-backdrop-filter: blur(18px) saturate(1.4); border-bottom: 1px solid #D9E0E6;">
+    <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 0 28px; height: 68px; display: flex; align-items: center; gap: 28px;">
+      <a href="Rigged - Ocean Deep.dc.html" aria-label="Rigged home" style="flex: none; display: flex;"><img src="logo-rigged-dark.svg" alt="Rigged" style="height: 22px; width: auto; display: block;" /></a>
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <nav style="flex: 1; display: flex; gap: 2px;">
+        <a href="Rigged - Job Search.dc.html" aria-current="page" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #0B121A; padding: 8px 10px; border-radius: 6px; background: #EEF2F5;">Career</a>
+        <a href="Rigged - Certification.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #3D4A57; padding: 8px 10px; border-radius: 6px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">Certification</a>
+        <a href="Rigged - Insights.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #3D4A57; padding: 8px 10px; border-radius: 6px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">Insights</a>
+        <a href="#" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #3D4A57; padding: 8px 10px; border-radius: 6px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">Contact us</a>
+        <a href="#" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #3D4A57; padding: 8px 10px; border-radius: 6px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">For business</a>
+      </nav>
+      </sc-if>
+      <div style="margin-left: auto; display: flex; gap: 8px; align-items: center;">
+        <a href="Rigged - Professional Profile.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #0B121A; padding: 11px 14px; border-radius: 8px; border: 1px solid #D9E0E6; background: #FFFFFF; transition: border-color 170ms ease;" style-hover="border-color: #0B121A; color: #0B121A;">Sign in</a>
+        <a href="Rigged - Professional Profile.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #FFFFFF; padding: 12px 15px; border-radius: 8px; background: #0B121A; transition: background 170ms ease, box-shadow 170ms ease;" style-hover="background: #1A2633; color: #FFFFFF; box-shadow: 0 0 0 4px rgba(29,111,163,0.18);">Create account</a>
+        <sc-if value="{{ compact }}" hint-placeholder-val="{{ false }}">
+        <button type="button" aria-label="Menu" aria-expanded="{{ menuOpenAttr }}" onClick="{{ toggleMenu }}" style="width: 42px; height: 42px; display: grid; align-content: center; justify-items: center; gap: 5px; padding: 0; border-radius: 8px; border: 1px solid #D9E0E6; background: #FFFFFF; cursor: pointer; transition: border-color 170ms ease;" style-hover="border-color: #0B121A;">
+          <span style="display: block; width: 16px; height: 1.5px; background: #0B121A;"></span>
+          <span style="display: block; width: 16px; height: 1.5px; background: #0B121A;"></span>
+          <span style="display: block; width: 16px; height: 1.5px; background: #0B121A;"></span>
+        </button>
+        </sc-if>
+      </div>
+      <sc-if value="{{ menuVisible }}" hint-placeholder-val="{{ false }}">
+        <div style="position: absolute; top: calc(100% + 8px); left: 16px; right: 16px; padding: 8px; display: grid; gap: 2px; border-radius: 14px; background: rgba(255,255,255,0.97); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid #D9E0E6; box-shadow: 0 24px 48px -20px rgba(11,18,26,0.3);">
+          <a href="Rigged - Job Search.dc.html" onClick="{{ closeMenu }}" style="font-family: 'Michroma', 'Archivo', sans-serif; display: flex; align-items: center; justify-content: space-between; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 15px 14px; border-radius: 8px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">Career<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+          <a href="Rigged - Certification.dc.html" onClick="{{ closeMenu }}" style="font-family: 'Michroma', 'Archivo', sans-serif; display: flex; align-items: center; justify-content: space-between; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 15px 14px; border-radius: 8px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">Certification<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+          <a href="Rigged - Insights.dc.html" onClick="{{ closeMenu }}" style="font-family: 'Michroma', 'Archivo', sans-serif; display: flex; align-items: center; justify-content: space-between; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 15px 14px; border-radius: 8px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">Insights<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+          <a href="#" onClick="{{ closeMenu }}" style="font-family: 'Michroma', 'Archivo', sans-serif; display: flex; align-items: center; justify-content: space-between; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 15px 14px; border-radius: 8px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">Contact us<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+          <a href="#" onClick="{{ closeMenu }}" style="font-family: 'Michroma', 'Archivo', sans-serif; display: flex; align-items: center; justify-content: space-between; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 15px 14px; border-radius: 8px; transition: color 170ms ease, background 170ms ease;" style-hover="color: #0B121A; background: #EEF2F5;">For business<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+        </div>
+      </sc-if>
+    </div>
+  </header>
+
+  <section style="background: #FFFFFF; border-bottom: 1px solid #D9E0E6;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 36px 28px 28px; display: grid; gap: 14px;">
+      <form onSubmit="{{ submit }}" role="search" style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <div style="position: relative; flex: 1 1 380px; height: 56px; border-radius: 12px; border: 1px solid #D9E0E6; background: #FFFFFF; transition: border-color 170ms ease, box-shadow 170ms ease;" style-hover="border-color: #A9B6C2;" style-focus-within="border-color: #1D6FA3; box-shadow: 0 0 0 4px rgba(29,111,163,0.14);">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#66727E" stroke-width="2" stroke-linecap="round" style="position: absolute; left: 18px; top: 50%; transform: translateY(-50%);"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+          <input type="search" aria-label="Job title, company or keyword" value="{{ q }}" onChange="{{ onQ }}" placeholder="Job title, company or keyword" style="width: 100%; height: 100%; padding: 0 16px 0 50px; border: 0; border-radius: 12px; background: transparent; color: #0B121A; font-size: 16px; outline: none;" />
+        </div>
+        <div style="position: relative; flex: 0 1 230px; min-width: 150px; height: 56px; border-radius: 10px; border: 1px solid #D9E0E6; background: #FFFFFF; transition: border-color 170ms ease, box-shadow 170ms ease;" style-hover="border-color: #A9B6C2;" style-focus-within="border-color: #1D6FA3; box-shadow: 0 0 0 3px rgba(29,111,163,0.16);">
+          <select aria-label="Country" value="{{ country }}" onChange="{{ onCountry }}" style="appearance: none; -webkit-appearance: none; width: 100%; height: 100%; padding: 0 40px 0 16px; border: 0; background: transparent; color: #0B121A; font-size: 15px; cursor: pointer; outline: none;"><option value="">All countries</option><sc-for list="{{ countries }}" as="ct" hint-placeholder-count="1"><option value="{{ ct }}">{{ ct }}</option></sc-for></select><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3D4A57" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); pointer-events: none;"><path d="M6 9l6 6 6-6"></path></svg>
+        </div>
+        <button type="submit" style="flex: 0 0 auto; height: 56px; padding: 0 30px; border: 0; border-radius: 12px; background: #0B121A; color: #FFFFFF; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; transition: background 170ms ease, box-shadow 170ms ease, transform 140ms ease;" style-hover="background: #1A2633; box-shadow: 0 0 0 4px rgba(29,111,163,0.18);" style-active="transform: translateY(1px);">Search</button>
+      </form>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+        <sc-if value="{{ filtersCompact }}" hint-placeholder-val="{{ false }}">
+        <button type="button" aria-expanded="{{ filtersOpenAttr }}" onClick="{{ toggleFilters }}" style="height: 46px; display: inline-flex; align-items: center; gap: 9px; padding: 0 16px; border-radius: 10px; border: 1px solid #D9E0E6; background: #FFFFFF; color: #0B121A; font-size: 15px; font-weight: 500; cursor: pointer; transition: border-color 170ms ease;" style-hover="border-color: #A9B6C2;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"></path></svg>
+          {{ filtersLabel }}
+        </button>
+        </sc-if>
+        <sc-if value="{{ showSelects }}" hint-placeholder-val="{{ true }}">
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; flex: {{ selFlex }}; order: {{ selOrder }};">
+        <div style="position: relative; flex: 0 1 190px; min-width: 150px; height: 46px; border-radius: 10px; border: 1px solid #D9E0E6; background: #FFFFFF; transition: border-color 170ms ease, box-shadow 170ms ease;" style-hover="border-color: #A9B6C2;" style-focus-within="border-color: #1D6FA3; box-shadow: 0 0 0 3px rgba(29,111,163,0.16);">
+          <select value="{{ sector }}" onChange="{{ onSector }}" style="appearance: none; -webkit-appearance: none; width: 100%; height: 100%; padding: 0 40px 0 16px; border: 0; background: transparent; color: #0B121A; font-size: 15px; cursor: pointer; outline: none;"><option value="">All sectors</option><option value="Oil & Gas">Oil & Gas</option><option value="Wind">Wind</option><option value="Marine">Marine</option></select><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3D4A57" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); pointer-events: none;"><path d="M6 9l6 6 6-6"></path></svg>
+        </div>
+        <div style="position: relative; flex: 0 1 190px; min-width: 150px; height: 46px; border-radius: 10px; border: 1px solid #D9E0E6; background: #FFFFFF; transition: border-color 170ms ease, box-shadow 170ms ease;" style-hover="border-color: #A9B6C2;" style-focus-within="border-color: #1D6FA3; box-shadow: 0 0 0 3px rgba(29,111,163,0.16);">
+          <select value="{{ duration }}" onChange="{{ onDuration }}" style="appearance: none; -webkit-appearance: none; width: 100%; height: 100%; padding: 0 40px 0 16px; border: 0; background: transparent; color: #0B121A; font-size: 15px; cursor: pointer; outline: none;"><option value="">Any duration</option><option value="Permanent">Permanent</option><option value="Temporary">Temporary</option></select><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3D4A57" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); pointer-events: none;"><path d="M6 9l6 6 6-6"></path></svg>
+        </div>
+        <div style="position: relative; flex: 0 1 190px; min-width: 150px; height: 46px; border-radius: 10px; border: 1px solid #D9E0E6; background: #FFFFFF; transition: border-color 170ms ease, box-shadow 170ms ease;" style-hover="border-color: #A9B6C2;" style-focus-within="border-color: #1D6FA3; box-shadow: 0 0 0 3px rgba(29,111,163,0.16);">
+          <select value="{{ rotation }}" onChange="{{ onRotation }}" style="appearance: none; -webkit-appearance: none; width: 100%; height: 100%; padding: 0 40px 0 16px; border: 0; background: transparent; color: #0B121A; font-size: 15px; cursor: pointer; outline: none;"><option value="">Any rotation</option><option value="2 / 2 weeks">2 / 2 weeks</option><option value="3 / 3 weeks">3 / 3 weeks</option><option value="4 / 4 weeks">4 / 4 weeks</option></select><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3D4A57" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); pointer-events: none;"><path d="M6 9l6 6 6-6"></path></svg>
+        </div>
+        </div>
+        </sc-if>
+        <div style="margin-left: auto; display: flex; align-items: center; gap: 4px; flex-wrap: wrap;">
+          <label style="display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 12px; border-radius: 8px; font-size: 14.5px; color: #0B121A; cursor: pointer; transition: background 170ms ease;" style-hover="background: #EEF2F5;">
+            <input type="checkbox" checked="{{ showFilled }}" onChange="{{ onShowFilled }}" style="position: absolute; opacity: 0; width: 1px; height: 1px;" />
+            <span aria-hidden="true" style="position: relative; width: 34px; height: 20px; border-radius: 999px; background: {{ showFilledTrack }}; transition: background 180ms ease;"><span style="position: absolute; top: 2px; left: {{ showFilledKnob }}; width: 16px; height: 16px; border-radius: 50%; background: #FFFFFF; box-shadow: 0 1px 3px rgba(11,18,26,0.3); transition: left 180ms ease;"></span></span>
+            Show filled
+          </label>
+          <label style="display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 12px; border-radius: 8px; font-size: 14.5px; color: #0B121A; cursor: pointer; transition: background 170ms ease;" style-hover="background: #EEF2F5;">
+            <input type="checkbox" checked="{{ savedOnly }}" onChange="{{ onSavedOnly }}" style="position: absolute; opacity: 0; width: 1px; height: 1px;" />
+            <span aria-hidden="true" style="position: relative; width: 34px; height: 20px; border-radius: 999px; background: {{ savedOnlyTrack }}; transition: background 180ms ease;"><span style="position: absolute; top: 2px; left: {{ savedOnlyKnob }}; width: 16px; height: 16px; border-radius: 50%; background: #FFFFFF; box-shadow: 0 1px 3px rgba(11,18,26,0.3); transition: left 180ms ease;"></span></span>
+            Saved
+          </label>
+          <span style="font-size: 12px; color: #66727E; font-variant-numeric: tabular-nums; margin-left: -6px; margin-right: 6px;">{{ savedCount }}</span>
+          <div style="position: relative; height: 46px; display: flex; align-items: center;">
+          <select aria-label="Sort" value="{{ sort }}" onChange="{{ onSort }}" style="appearance: none; -webkit-appearance: none; height: 100%; padding: 0 30px 0 12px; border: 0; border-radius: 8px; background: transparent; color: #0B121A; font-size: 15px; font-weight: 500; cursor: pointer; outline: none; transition: background 170ms ease;" style-hover="background: #EEF2F5;"><option value="new">Newest first</option><option value="old">Oldest first</option><option value="active">Active first</option></select>
+          <svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3D4A57" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; right: 10px; pointer-events: none;"><path d="M6 9l6 6 6-6"></path></svg>
+        </div>
+        </div>
+      </div>
+      <sc-if value="{{ hasChips }}" hint-placeholder-val="{{ false }}">
+      <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+        <sc-for list="{{ chips }}" as="c" hint-placeholder-count="2">
+          <button type="button" onClick="{{ c.remove }}" aria-label="{{ c.aria }}" style="display: inline-flex; align-items: center; gap: 8px; height: 34px; padding: 0 10px 0 13px; border-radius: 999px; border: 1px solid rgba(29,111,163,0.35); background: #EAF3F9; color: #0F4C73; font-size: 13.5px; font-weight: 500; cursor: pointer; transition: background 170ms ease, border-color 170ms ease;" style-hover="background: #DCEBF5; border-color: #1D6FA3;">
+            <span style="color: #4E7A98;">{{ c.k }}</span>{{ c.v }}
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+          </button>
+        </sc-for>
+        <button type="button" onClick="{{ clearAll }}" style="background: none; border: 0; padding: 6px 8px; font-size: 13.5px; color: #66727E; text-decoration: underline; text-underline-offset: 4px; cursor: pointer;" style-hover="color: #0B121A;">Clear all</button>
+      </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <main style="flex: 1; max-width: 1240px; width: 100%; margin: 0 auto; padding: 40px 28px 80px;">
+    <sc-if value="{{ showFeatured }}" hint-placeholder-val="{{ true }}">
+    <section aria-labelledby="featured-h" style="margin-bottom: 48px;">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 18px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="width: 8px; height: 8px; border-radius: 2px; background: #1D6FA3; transform: rotate(45deg);"></span>
+          <h2 id="featured-h" style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 400; color: #0B121A;">Featured jobs</h2>
+        </div>
+        <span style="font-size: 13px; color: #66727E;">Promoted by employers</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 16px;">
+        <sc-for list="{{ featured }}" as="f" hint-placeholder-count="3">
+          <article style="position: relative; display: flex; flex-direction: column; gap: 18px; padding: 26px 28px 22px; border-radius: 14px; border: 1px solid rgba(29,111,163,0.28); background: linear-gradient(180deg, #F1F7FB 0%, #FFFFFF 60%); opacity: {{ f.dim }}; box-shadow: 0 1px 0 rgba(11,18,26,0.03); transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;" style-hover="border-color: #1D6FA3; box-shadow: 0 18px 40px -24px rgba(11,18,26,0.28); transform: translateY(-2px);">
+            <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;">
+              <div style="min-width: 0;">
+                <h3 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 15.5px; line-height: 1.4; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 400;"><a href="Rigged - Job Details.dc.html" onClick="{{ f.open }}" style="color: #0B121A;" style-hover="color: #1D6FA3;">{{ f.role }}</a></h3>
+                <div style="margin-top: 7px; font-size: 15px; color: #3D4A57;">{{ f.company }}</div>
+              </div>
+              <div style="flex: none; display: flex; align-items: flex-start; gap: 12px;">
+                <sc-if value="{{ f.hasPay }}" hint-placeholder-val="{{ true }}">
+                  <span style="font-size: 18px; font-weight: 700; letter-spacing: -0.01em; color: {{ f.payColor }}; font-variant-numeric: tabular-nums; white-space: nowrap; padding-top: 2px;">{{ f.pay }}</span>
+                </sc-if>
+                <sc-if value="{{ f.tpc }}" hint-placeholder-val="{{ false }}">
+                  <span title="To be confirmed" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 11px; letter-spacing: 0.14em; color: #3D4A57; padding: 7px 10px; border-radius: 6px; border: 1px solid #D9E0E6;">TPC</span>
+                </sc-if>
+                <button type="button" aria-label="{{ f.bmLabel }}" aria-pressed="{{ f.bmPressed }}" title="{{ f.bmLabel }}" onClick="{{ f.toggleSave }}" style="width: 34px; height: 34px; display: grid; place-items: center; padding: 0; border-radius: 9px; border: 1px solid {{ f.bmBorder }}; background: {{ f.bmBg }}; color: {{ f.bmColor }}; cursor: pointer; transition: border-color 170ms ease, background 170ms ease, color 170ms ease, transform 140ms ease;" style-hover="border-color: #1D6FA3; color: #1D6FA3;" style-active="transform: scale(0.94);"><svg width="15" height="15" viewBox="0 0 24 24" fill="{{ f.bmFill }}" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M6 3.5h12v17l-6-4.2-6 4.2z"></path></svg></button>
+              </div>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+              <span title="Payroll type" style="display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #0F4C73; padding: 6px 9px; border-radius: 6px; border: 1px solid rgba(29,111,163,0.35); background: #EAF3F9; white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"></rect><path d="M3 10h18"></path><path d="M7 15h3"></path></svg>{{ f.payroll }}</span>
+              <sc-if value="{{ f.isNew }}" hint-placeholder-val="{{ false }}"><span style="display: inline-flex; align-items: center; gap: 7px; padding: 5px 10px 5px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap; color: #FFFFFF; background: #1D6FA3; border: 1px solid #1D6FA3;">New</span></sc-if>
+              <span style="display: inline-flex; align-items: center; gap: 7px; padding: 5px 10px 5px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap; color: {{ f.stColor }}; background: {{ f.stBg }}; border: 1px solid {{ f.stBorder }};"><span style="width: 7px; height: 7px; border-radius: 50%; background: {{ f.stDot }};"></span>{{ f.stLabel }}</span>
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 6px 9px; border-radius: 6px; border: 1px solid #D9E0E6; background: #F7F9FB; white-space: nowrap;">{{ f.sector }}</span>
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 6px 9px; border-radius: 6px; border: 1px solid #D9E0E6; background: #F7F9FB; white-space: nowrap;">{{ f.type }}</span>
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 6px 9px; border-radius: 6px; border: 1px solid #D9E0E6; background: #F7F9FB; white-space: nowrap;">{{ f.rotation }}</span>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; font-size: 13.5px; color: #3D4A57;">
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #66727E;">Requires</span>
+              <span>{{ f.certs }}</span>
+            </div>
+            <div style="margin-top: auto; padding-top: 16px; border-top: 1px solid #E8EDF1; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+              <div style="display: flex; align-items: center; gap: 8px 18px; flex-wrap: wrap; font-size: 14.5px; color: #3D4A57;">
+                <span style="display: inline-flex; align-items: center; gap: 7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#66727E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>{{ f.location }}</span>
+                <sc-if value="{{ f.hasRig }}" hint-placeholder-val="{{ false }}">
+                  <a href="Rigged - Ocean Deep.dc.html" title="{{ f.rigTitle }}" style="display: inline-flex; align-items: center; gap: 6px; color: #0B121A; font-weight: 500; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(11,18,26,0.35); transition: color 170ms ease;" style-hover="color: #1D6FA3;">{{ f.rig }}<span style="display: inline-flex; align-items: center; gap: 3px; font-size: 13px; font-weight: 600; color: #1D6FA3; text-decoration: none;"><svg width="12" height="12" viewBox="0 0 24 24" fill="#1D6FA3"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg>{{ f.rigScore }}</span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"></path></svg></a>
+                </sc-if>
+              </div>
+              <span style="font-size: 11.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #66727E;">{{ f.posted }}</span>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </section>
+    </sc-if>
+
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 16px; border-bottom: 1.5px solid #0B121A;">
+      <span style="font-size: 12.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #3D4A57;">{{ resultLabel }}</span>
+      <button type="button" onClick="{{ clearAll }}" style="background: none; border: 0; padding: 4px 2px; font-size: 14px; color: #66727E; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; transition: color 170ms ease;" style-hover="color: #0B121A;">Clear search</button>
+    </div>
+
+    <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+      <div style="padding: 64px 0; text-align: center; display: grid; gap: 10px; justify-items: center;">
+        <p style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase;">No jobs match</p>
+        <p style="margin: 0; font-size: 15px; color: #3D4A57;">Try a broader keyword or clear a filter.</p>
+      </div>
+    </sc-if>
+
+    <div style="margin-top: 22px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: 16px;">
+      <sc-for list="{{ results }}" as="r" hint-placeholder-count="6">
+        <article style="position: relative; display: flex; flex-direction: column; gap: 18px; padding: 26px 28px 22px; border-radius: 14px; border: 1px solid {{ r.cardBorder }}; background: {{ r.cardBg }}; opacity: {{ r.dim }}; box-shadow: 0 1px 0 rgba(11,18,26,0.03); transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;" style-hover="border-color: #A9B6C2; box-shadow: 0 18px 40px -24px rgba(11,18,26,0.28); transform: translateY(-2px);">
+            <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;">
+              <div style="min-width: 0;">
+                <h3 style="margin: 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 15.5px; line-height: 1.4; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 400;"><a href="Rigged - Job Details.dc.html" onClick="{{ r.open }}" style="color: #0B121A;" style-hover="color: #1D6FA3;">{{ r.role }}</a></h3>
+                <div style="margin-top: 7px; font-size: 15px; color: #3D4A57;">{{ r.company }}</div>
+              </div>
+              <div style="flex: none; display: flex; align-items: flex-start; gap: 12px;">
+                <sc-if value="{{ r.hasPay }}" hint-placeholder-val="{{ true }}">
+                  <span style="font-size: 18px; font-weight: 700; letter-spacing: -0.01em; color: {{ r.payColor }}; font-variant-numeric: tabular-nums; white-space: nowrap; padding-top: 2px;">{{ r.pay }}</span>
+                </sc-if>
+                <sc-if value="{{ r.tpc }}" hint-placeholder-val="{{ false }}">
+                  <span title="To be confirmed" style="font-family: 'Michroma', 'Archivo', sans-serif; font-size: 11px; letter-spacing: 0.14em; color: #3D4A57; padding: 7px 10px; border-radius: 6px; border: 1px solid #D9E0E6;">TPC</span>
+                </sc-if>
+                <button type="button" aria-label="{{ r.bmLabel }}" aria-pressed="{{ r.bmPressed }}" title="{{ r.bmLabel }}" onClick="{{ r.toggleSave }}" style="width: 34px; height: 34px; display: grid; place-items: center; padding: 0; border-radius: 9px; border: 1px solid {{ r.bmBorder }}; background: {{ r.bmBg }}; color: {{ r.bmColor }}; cursor: pointer; transition: border-color 170ms ease, background 170ms ease, color 170ms ease, transform 140ms ease;" style-hover="border-color: #1D6FA3; color: #1D6FA3;" style-active="transform: scale(0.94);"><svg width="15" height="15" viewBox="0 0 24 24" fill="{{ r.bmFill }}" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M6 3.5h12v17l-6-4.2-6 4.2z"></path></svg></button>
+              </div>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+              <span title="Payroll type" style="display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #0F4C73; padding: 6px 9px; border-radius: 6px; border: 1px solid rgba(29,111,163,0.35); background: #EAF3F9; white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"></rect><path d="M3 10h18"></path><path d="M7 15h3"></path></svg>{{ r.payroll }}</span>
+              <sc-if value="{{ r.feat }}" hint-placeholder-val="{{ false }}"><span style="display: inline-flex; align-items: center; gap: 7px; padding: 5px 10px 5px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap; color: #0F4C73; background: #EAF3F9; border: 1px solid rgba(29,111,163,0.35);"><span style="width: 7px; height: 7px; border-radius: 2px; background: #1D6FA3; transform: rotate(45deg);"></span>Featured</span></sc-if>
+              <sc-if value="{{ r.isNew }}" hint-placeholder-val="{{ false }}"><span style="display: inline-flex; align-items: center; gap: 7px; padding: 5px 10px 5px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap; color: #FFFFFF; background: #1D6FA3; border: 1px solid #1D6FA3;">New</span></sc-if>
+              <span style="display: inline-flex; align-items: center; gap: 7px; padding: 5px 10px 5px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap; color: {{ r.stColor }}; background: {{ r.stBg }}; border: 1px solid {{ r.stBorder }};"><span style="width: 7px; height: 7px; border-radius: 50%; background: {{ r.stDot }};"></span>{{ r.stLabel }}</span>
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 6px 9px; border-radius: 6px; border: 1px solid #D9E0E6; background: #F7F9FB; white-space: nowrap;">{{ r.sector }}</span>
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 6px 9px; border-radius: 6px; border: 1px solid #D9E0E6; background: #F7F9FB; white-space: nowrap;">{{ r.type }}</span>
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A57; padding: 6px 9px; border-radius: 6px; border: 1px solid #D9E0E6; background: #F7F9FB; white-space: nowrap;">{{ r.rotation }}</span>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; font-size: 13.5px; color: #3D4A57;">
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #66727E;">Requires</span>
+              <span>{{ r.certs }}</span>
+            </div>
+            <div style="margin-top: auto; padding-top: 16px; border-top: 1px solid #E8EDF1; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+              <div style="display: flex; align-items: center; gap: 8px 18px; flex-wrap: wrap; font-size: 14.5px; color: #3D4A57;">
+                <span style="display: inline-flex; align-items: center; gap: 7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#66727E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>{{ r.location }}</span>
+                <sc-if value="{{ r.hasRig }}" hint-placeholder-val="{{ false }}">
+                  <a href="Rigged - Ocean Deep.dc.html" title="{{ r.rigTitle }}" style="display: inline-flex; align-items: center; gap: 6px; color: #0B121A; font-weight: 500; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(11,18,26,0.35); transition: color 170ms ease;" style-hover="color: #1D6FA3;">{{ r.rig }}<span style="display: inline-flex; align-items: center; gap: 3px; font-size: 13px; font-weight: 600; color: #1D6FA3; text-decoration: none;"><svg width="12" height="12" viewBox="0 0 24 24" fill="#1D6FA3"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.7l-6.1 3.4 1.4-6.8L2.2 9.6l6.9-.8z"></path></svg>{{ r.rigScore }}</span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"></path></svg></a>
+                </sc-if>
+              </div>
+              <span style="font-size: 11.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #66727E;">{{ r.posted }}</span>
+            </div>
+          </article>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{ multiPage }}" hint-placeholder-val="{{ true }}">
+    <nav aria-label="Pagination" style="margin-top: 36px; display: flex; justify-content: center; gap: 8px;">
+      <sc-for list="{{ pages }}" as="p" hint-placeholder-count="3">
+        <button type="button" aria-current="{{ p.current }}" onClick="{{ p.go }}" style="width: 44px; height: 44px; border-radius: 10px; border: 1px solid {{ p.border }}; background: {{ p.bg }}; color: {{ p.color }}; font-size: 15px; font-weight: 600; cursor: pointer; font-variant-numeric: tabular-nums; transition: border-color 170ms ease, background 170ms ease;" style-hover="border-color: #0B121A;">{{ p.n }}</button>
+      </sc-for>
+    </nav>
+    </sc-if>
+  </main>
+
+  <sc-if value="{{ gateOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeGate }}" style="position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 20px; background: rgba(11,18,26,0.5); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);">
+    <div role="dialog" aria-modal="true" aria-labelledby="gate-h" onClick="{{ stop }}" style="position: relative; width: 100%; max-width: 460px; max-height: calc(100vh - 40px); overflow: auto; border-radius: 18px; background: #FFFFFF; border: 1px solid #D9E0E6; box-shadow: 0 40px 90px -30px rgba(11,18,26,0.5); animation: rig-gate 220ms cubic-bezier(0.2, 0.7, 0.2, 1) both;">
+      <button type="button" aria-label="Close" onClick="{{ closeGate }}" style="position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; display: grid; place-items: center; padding: 0; border: 0; border-radius: 9px; background: transparent; color: #3D4A57; cursor: pointer; transition: background 160ms ease;" style-hover="background: #EEF2F5;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+      <div style="padding: 28px 28px 22px; border-bottom: 1px solid #E8EDF1; background: linear-gradient(180deg, #F1F7FB 0%, #FFFFFF 100%); border-radius: 18px 18px 0 0;">
+        <span style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #1D6FA3;">Members only</span>
+        <h2 id="gate-h" style="margin: 12px 44px 0 0; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 17px; line-height: 1.4; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 400; color: #0B121A;">{{ gateRole }}</h2>
+        <div style="margin-top: 6px; font-size: 15px; color: #3D4A57;">{{ gateCompany }}</div>
+        <div style="margin-top: 16px; display: grid; gap: 8px; font-size: 14px; color: #0B121A;">
+          <span style="display: flex; align-items: center; gap: 9px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D6FA3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>Full job description and requirements</span>
+          <span style="display: flex; align-items: center; gap: 9px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D6FA3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>Employer email to apply</span>
+        </div>
+      </div>
+      <form onSubmit="{{ gateSubmit }}" style="padding: 22px 28px 26px; display: grid; gap: 14px;">
+        <div role="tablist" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; border-radius: 12px; background: #EEF2F5;">
+          <sc-for list="{{ gateTabs }}" as="t" hint-placeholder-count="2">
+            <button type="button" role="tab" aria-selected="{{ t.sel }}" onClick="{{ t.pick }}" style="height: 40px; border: 0; border-radius: 9px; background: {{ t.bg }}; color: #0B121A; font-size: 14px; font-weight: 600; cursor: pointer; box-shadow: {{ t.shadow }}; transition: background 160ms ease, box-shadow 160ms ease;">{{ t.label }}</button>
+          </sc-for>
+        </div>
+        <sc-if value="{{ gateCreate }}" hint-placeholder-val="{{ false }}">
+          <label style="display: grid; gap: 7px;"><span style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #3D4A57;">Full name</span><input type="text" required="{{ true }}" autoComplete="name" placeholder="e.g. Tom Delany" style="width: 100%; min-width: 0; height: 48px; padding: 0 14px; border-radius: 10px; border: 1px solid #D9E0E6; background: #FFFFFF; color: #0B121A; font-size: 15px; outline: none; transition: border-color 170ms ease, box-shadow 170ms ease;" style-hover="border-color: #A9B6C2;" style-focus="border-color: #1D6FA3; box-shadow: 0 0 0 4px rgba(29,111,163,0.14);" /></label>
+        </sc-if>
+        <label style="display: grid; gap: 7px;"><span style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #3D4A57;">Email</span><input type="email" required="{{ true }}" autoComplete="email" autoFocus="{{ true }}" placeholder="you@example.com" style="width: 100%; min-width: 0; height: 48px; padding: 0 14px; border-radius: 10px; border: 1px solid #D9E0E6; background: #FFFFFF; color: #0B121A; font-size: 15px; outline: none; transition: border-color 170ms ease, box-shadow 170ms ease;" style-hover="border-color: #A9B6C2;" style-focus="border-color: #1D6FA3; box-shadow: 0 0 0 4px rgba(29,111,163,0.14);" /></label>
+        <label style="display: grid; gap: 7px;"><span style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #3D4A57;">Password</span><input type="password" required="{{ true }}" autoComplete="{{ gatePwAuto }}" minLength="6" placeholder="{{ gatePwHint }}" style="width: 100%; min-width: 0; height: 48px; padding: 0 14px; border-radius: 10px; border: 1px solid #D9E0E6; background: #FFFFFF; color: #0B121A; font-size: 15px; outline: none; transition: border-color 170ms ease, box-shadow 170ms ease;" style-hover="border-color: #A9B6C2;" style-focus="border-color: #1D6FA3; box-shadow: 0 0 0 4px rgba(29,111,163,0.14);" /></label>
+        <button type="submit" style="margin-top: 4px; height: 52px; border: 0; border-radius: 12px; background: #0B121A; color: #FFFFFF; font-family: 'Michroma', 'Archivo', sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; transition: background 170ms ease, box-shadow 170ms ease, transform 140ms ease;" style-hover="background: #1A2633; box-shadow: 0 0 0 4px rgba(29,111,163,0.18);" style-active="transform: translateY(1px);">{{ gateCta }}</button>
+        <p style="margin: 0; font-size: 13px; line-height: 1.55; color: #66727E; text-align: center;">Free for offshore personnel. Takes under a minute.</p>
+      </form>
+    </div>
+  </div>
+  </sc-if>
+
+  <footer style="background: #FFFFFF; border-top: 1px solid #D9E0E6;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 14px;"><img src="logo-rigged-dark.svg" alt="Rigged" style="height: 18px; width: auto; display: block;" /><span style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #66727E;">Offshore personnel and operators</span></div>
+      <nav style="display: flex; gap: 22px; flex-wrap: wrap;"><a href="Rigged - Job Search.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; color: #3D4A57; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; transition: color 170ms ease;" style-hover="color: #1D6FA3;">Career</a><a href="Rigged - Certification.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; color: #3D4A57; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; transition: color 170ms ease;" style-hover="color: #1D6FA3;">Certification</a><a href="Rigged - Insights.dc.html" style="font-family: 'Michroma', 'Archivo', sans-serif; color: #3D4A57; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; transition: color 170ms ease;" style-hover="color: #1D6FA3;">Insights</a><a href="#" style="font-family: 'Michroma', 'Archivo', sans-serif; color: #3D4A57; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; transition: color 170ms ease;" style-hover="color: #1D6FA3;">Contact us</a></nav>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { saved: (() => { try { return JSON.parse(localStorage.getItem('rigged-saved-jobs') || '[]'); } catch (e) { return []; } })(), showFilled: false, savedOnly: false, filtersOpen: false, menu: false, w: typeof window !== 'undefined' ? window.innerWidth : 1440, q: 'Derrickman', sq: null, country: '', gate: null, gateTab: 'in', sector: '', duration: '', rotation: '', sort: 'new', page: 1 };
+  JOBS = [
+    ['Derrickman', 'Aberdeen Crewing Ltd', '£420 / day', 'Oil & Gas', 'Temporary', '3 / 3 weeks', 'Aberdeen, UK', 'North Sea', 'Sovereign Alpha', 2, 'active', true],
+    ['Turbine technician', 'Northern Wind Recruitment', '£48,000 / year', 'Wind', 'Permanent', '2 / 2 weeks', 'Grimsby, UK', 'North Sea', 'Dogger Bank C', 4, 'active', true],
+    ['Chief officer, DP2', 'Blue Horizon Marine', 'NOK 6 100 / day', 'Marine', 'Permanent', '4 / 4 weeks', 'Stavanger, NO', 'Norwegian Sea', '', 3, 'active', true],
+    ['Derrickman', 'Aberdeen Crewing Ltd', '£420 / day', 'Oil & Gas', 'Temporary', '3 / 3 weeks', 'Aberdeen, UK', 'North Sea', 'Sovereign Alpha', 2, 'active'],
+    ['Turbine technician', 'Northern Wind Recruitment', '£48,000 / year', 'Wind', 'Permanent', '2 / 2 weeks', 'Grimsby, UK', 'North Sea', 'Dogger Bank C', 4, 'active'],
+    ['Rig electrician', 'Gulf Marine Personnel', '', 'Oil & Gas', 'Temporary', '2 / 2 weeks', 'Houston, US', 'Gulf of Mexico', '', 5, 'filled'],
+    ['Chief officer', 'Blue Horizon Marine', 'NOK 6 100 / day', 'Marine', 'Permanent', '4 / 4 weeks', 'Stavanger, NO', 'Norwegian Sea', '', 7, 'active'],
+    ['Offshore medic', 'Aberdeen Crewing Ltd', '£455 / day', 'Oil & Gas', 'Temporary', '3 / 3 weeks', 'Aberdeen, UK', 'North Sea', 'Sovereign Alpha', 7, 'active'],
+    ['Deck crew', 'Nordic Offshore Staffing', '', 'Marine', 'Temporary', '4 / 4 weeks', 'Stavanger, NO', 'Norwegian Sea', '', 14, 'filled'],
+    ['Assistant driller', 'Valaris Crewing', '£510 / day', 'Oil & Gas', 'Temporary', '3 / 3 weeks', 'Aberdeen, UK', 'North Sea', 'Northgate Bravo', 1, 'active'],
+    ['Crane operator, stage 3', 'Equinor Contract Pool', 'NOK 5 200 / day', 'Oil & Gas', 'Temporary', '2 / 4 weeks', 'Bergen, NO', 'Norwegian Sea', 'Havstjerne', 3, 'active'],
+    ['Roughneck', 'Baltic Drilling', '€310 / day', 'Oil & Gas', 'Temporary', '2 / 2 weeks', 'Gdańsk, PL', 'North Sea', '', 6, 'filled'],
+    ['Blade technician', 'Ørsted Services', '£42,000 / year', 'Wind', 'Permanent', '2 / 2 weeks', 'Hull, UK', 'North Sea', 'Hornsea 2', 8, 'active'],
+    ['Mechanical technician', 'Shell Contractor Network', '$540 / day', 'Oil & Gas', 'Temporary', '2 / 2 weeks', 'Houston, US', 'Gulf of Mexico', 'Ocean Vantage', 9, 'active'],
+    ['Able seaman', 'Bourbon Marine', '', 'Marine', 'Permanent', '4 / 4 weeks', 'Port Harcourt, NG', 'West Africa', 'Atlantic Tern', 10, 'active'],
+    ['Derrickman', 'Gulf Drilling Personnel', '$600 / day', 'Oil & Gas', 'Temporary', '4 / 4 weeks', 'Doha, QA', 'Middle East', '', 11, 'filled'],
+    ['HV technician', 'SSE Renewables', '£52,000 / year', 'Wind', 'Permanent', '2 / 2 weeks', 'Edinburgh, UK', 'North Sea', 'Dogger Bank C', 12, 'active'],
+    ['Motorman', 'Nordic Offshore Staffing', '€380 / day', 'Oil & Gas', 'Temporary', '3 / 3 weeks', 'Esbjerg, DK', 'North Sea', '', 13, 'active'],
+    ['Floorman', 'Valaris Crewing', '£360 / day', 'Oil & Gas', 'Temporary', '3 / 3 weeks', 'Aberdeen, UK', 'North Sea', 'Sovereign Alpha', 15, 'active'],
+    ['Second engineer', 'Boskalis Crewing', '€540 / day', 'Marine', 'Permanent', '5 / 5 weeks', 'Rotterdam, NL', 'North Sea', 'Northern Resolve', 16, 'filled'],
+    ['Service technician', 'Esvagt Wind', '£45,000 / year', 'Wind', 'Permanent', '2 / 2 weeks', 'Lowestoft, UK', 'North Sea', 'Wind Osprey', 18, 'active'],
+  ].map(([role, company, pay, sector, type, rotation, location, region, rig, days, st, feat], i) => ({ id: i, role, company, pay, sector, type, rotation, location, region, rig, days, st, feat: !!feat,
+    country: { UK: 'United Kingdom', NO: 'Norway', US: 'United States', PL: 'Poland', NG: 'Nigeria', QA: 'Qatar', DK: 'Denmark', NL: 'Netherlands' }[location.split(', ').pop()] || location,
+    payroll: type === 'Permanent' ? 'Salary' : ['PAYE', 'Umbrella', 'Limited Company', 'Self Employed', 'Multiple options'][i % 5] }));
+  COUNTRIES = ['Australia', 'Brazil', 'Denmark', 'Netherlands', 'Nigeria', 'Norway', 'Poland', 'Qatar', 'United Kingdom', 'United States'];
+  RIGS = { 'Sovereign Alpha': 4.2, 'Dogger Bank C': 4.4, 'Havstjerne': 4.6, 'Northgate Bravo': 4.0, 'Ocean Vantage': 3.5, 'Northern Resolve': 4.7, 'Atlantic Tern': 4.3, 'Wind Osprey': 4.2, 'Hornsea 2': 4.1 };
+  CERTS = { 'Oil & Gas': 'BOSIET · Offshore medical · MIST', 'Wind': 'GWO Basic Safety · Offshore medical', 'Marine': 'STCW Basic Safety · ENG1 medical' };
+  syncUrl() {
+    try {
+      const s = this.state, p = new URLSearchParams(location.search);
+      ['q', 'country', 'sector', 'duration', 'rotation', 'sort', 'filled', 'page'].forEach(k => p.delete(k));
+      if (s.sq) p.set('q', s.sq); ['country', 'sector', 'duration', 'rotation'].forEach(k => s[k] && p.set(k, s[k]));
+      if (s.sort !== 'new') p.set('sort', s.sort); if (s.showFilled) p.set('filled', '1'); if (s.page > 1) p.set('page', s.page);
+      const qs = p.toString(); history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
+    } catch (e) {}
+  }
+  componentDidUpdate() {
+    const s = this.state, key = JSON.stringify([s.sq, s.country, s.sector, s.duration, s.rotation, s.sort, s.showFilled, s.page]);
+    if (this._urlKey === undefined) { this._urlKey = key; return; }
+    if (key !== this._urlKey) { this._urlKey = key; this.syncUrl(); }
+  }
+  componentDidMount() {
+    try {
+      const p = new URLSearchParams(location.search), up = {};
+      if (p.has('q')) { up.q = p.get('q'); up.sq = p.get('q'); }
+      ['country', 'sector', 'duration', 'rotation', 'sort'].forEach(k => { if (p.get(k)) up[k] = p.get(k); });
+      if (p.get('filled') === '1') up.showFilled = true; if (p.get('page')) up.page = +p.get('page') || 1;
+      if (Object.keys(up).length) this.setState(up);
+    } catch (e) {} this._r = () => this.setState({ w: window.innerWidth, menu: window.innerWidth >= 1000 ? false : this.state.menu });
+    this._r(); window.addEventListener('resize', this._r);
+    this._k = (e) => { if (e.key === 'Escape' && this.state.gate) this.setState({ gate: null }); }; document.addEventListener('keydown', this._k); }
+  componentWillUnmount() { window.removeEventListener('resize', this._r); document.removeEventListener('keydown', this._k); }
+  posted(d) { return d === 1 ? '1 day ago' : d < 7 ? d + ' days ago' : d < 14 ? '1 week ago' : Math.floor(d / 7) + ' weeks ago'; }
+  view(j) {
+    const filled = j.st === 'filled';
+    const saved = this.state.saved.includes(j.id);
+    return { ...j, hasPay: !!j.pay,
+      cardBorder: j.feat ? 'rgba(29,111,163,0.28)' : '#D9E0E6', cardBg: j.feat ? 'linear-gradient(180deg, #F1F7FB 0%, #FFFFFF 60%)' : '#FFFFFF',
+      open: (e) => { e.preventDefault(); this.setState({ gate: j, gateTab: 'in' }); }, isNew: j.days <= 1, certs: this.CERTS[j.sector], rigScore: (this.RIGS[j.rig] || 0).toFixed(1), rigTitle: 'See personnel ratings for ' + j.rig,
+      bmFill: saved ? 'currentColor' : 'none', bmColor: saved ? '#1D6FA3' : '#66727E', bmBorder: saved ? 'rgba(29,111,163,0.45)' : '#D9E0E6', bmBg: saved ? '#EAF3F9' : '#FFFFFF',
+      bmPressed: saved ? 'true' : 'false', bmLabel: saved ? 'Remove from saved' : 'Save job',
+      toggleSave: (e) => { e.preventDefault(); e.stopPropagation(); const next = saved ? this.state.saved.filter(x => x !== j.id) : [...this.state.saved, j.id]; this.setState({ saved: next }); try { localStorage.setItem('rigged-saved-jobs', JSON.stringify(next)); } catch (er) {} }, tpc: !j.pay, hasRig: !!j.rig, posted: this.posted(j.days),
+      payColor: filled ? '#8A96A2' : '#0B121A', dim: filled ? 0.78 : 1,
+      stLabel: filled ? 'Filled' : 'Active', stColor: filled ? '#56616C' : '#17734A', stBg: filled ? '#EEF1F4' : '#E7F5EE', stBorder: filled ? '#D9E0E6' : '#BFE3CF', stDot: filled ? '#9AA4AE' : '#22A06B' };
+  }
+  renderVals() {
+    const s = this.state, per = 6;
+    const set = (k) => (e) => this.setState({ [k]: e.target.value, page: 1 });
+    const words = (s.sq || '').toLowerCase().split(/\s+/).filter(Boolean);
+    const searching = !!((s.sq || '').trim() || s.country || s.sector || s.duration || s.rotation || s.savedOnly);
+    const featKeys = new Set(this.JOBS.filter(j => j.feat).map(j => j.role + '|' + j.company));
+    let list = this.JOBS.filter(j => searching ? (j.feat || !featKeys.has(j.role + '|' + j.company)) : !j.feat).filter(j =>
+      (!words.length || words.every(w => [j.role, j.company, j.sector, j.location, j.rig].join(' ').toLowerCase().includes(w))) &&
+      (!s.country || j.country === s.country) && (!s.sector || j.sector === s.sector) &&
+      (!s.duration || j.type === s.duration) && (!s.rotation || j.rotation === s.rotation) &&
+      (s.showFilled || j.st !== 'filled') && (!s.savedOnly || s.saved.includes(j.id)));
+    list.sort((a, b) => (searching ? (b.feat - a.feat) : 0) || (s.sort === 'old' ? b.days - a.days : s.sort === 'active' ? ((a.st === 'filled') - (b.st === 'filled')) || a.days - b.days : a.days - b.days));
+    const pages = Math.max(1, Math.ceil(list.length / per)), page = Math.min(s.page, pages);
+    const label = s.sq === null ? 'Derrickman' : (s.sq || '').trim();
+    return {
+      wide: s.w >= 1000, compact: s.w < 1000, menuVisible: s.w < 1000 && s.menu, menuOpenAttr: s.menu ? 'true' : 'false',
+      toggleMenu: () => this.setState({ menu: !this.state.menu }), closeMenu: () => this.setState({ menu: false }),
+      q: s.q, onQ: (e) => this.setState({ q: e.target.value }),
+      submit: (e) => { e.preventDefault(); this.setState({ sq: this.state.q, page: 1 }); },
+      country: s.country, onCountry: set('country'), countries: this.COUNTRIES,
+      gateOpen: !!s.gate, gateRole: s.gate ? s.gate.role : '', gateCompany: s.gate ? s.gate.company : '',
+      closeGate: () => this.setState({ gate: null }), stop: (e) => e.stopPropagation(),
+      gateCreate: s.gateTab === 'up', gateCta: s.gateTab === 'up' ? 'Create account & view job' : 'Sign in & view job',
+      gatePwAuto: s.gateTab === 'up' ? 'new-password' : 'current-password', gatePwHint: s.gateTab === 'up' ? 'At least 6 characters' : 'Your password',
+      gateTabs: [['in', 'Sign in'], ['up', 'Create account']].map(([k, label]) => ({ label, sel: s.gateTab === k ? 'true' : 'false', bg: s.gateTab === k ? '#FFFFFF' : 'transparent', shadow: s.gateTab === k ? '0 1px 2px rgba(11,18,26,0.12)' : 'none', pick: () => this.setState({ gateTab: k }) })),
+      gateSubmit: (e) => { e.preventDefault(); try { localStorage.setItem('rigged-signed-in', '1'); } catch (er) {} location.href = 'Rigged - Job Details.dc.html'; }, sector: s.sector, onSector: set('sector'),
+      duration: s.duration, onDuration: set('duration'), rotation: s.rotation, onRotation: set('rotation'),
+      sort: s.sort, onSort: set('sort'),
+      clearAll: () => this.setState({ q: '', sq: '', country: '', sector: '', duration: '', rotation: '', savedOnly: false, page: 1 }),
+      filtersCompact: s.w < 720, showSelects: s.w >= 720 || s.filtersOpen, selFlex: s.w < 720 ? '1 1 100%' : '0 1 auto', selOrder: s.w < 720 ? 3 : 0,
+      filtersOpenAttr: s.filtersOpen ? 'true' : 'false', toggleFilters: () => this.setState({ filtersOpen: !this.state.filtersOpen }),
+      filtersLabel: 'Filters' + ([s.sector, s.duration, s.rotation].filter(Boolean).length ? ' · ' + [s.sector, s.duration, s.rotation].filter(Boolean).length : ''),
+      showFilled: s.showFilled, showFilledTrack: s.showFilled ? '#1D6FA3' : '#C9D2DA', showFilledKnob: s.showFilled ? '16px' : '2px',
+      onShowFilled: (e) => this.setState({ showFilled: e.target.checked, page: 1 }),
+      savedOnly: s.savedOnly, savedOnlyTrack: s.savedOnly ? '#1D6FA3' : '#C9D2DA', savedOnlyKnob: s.savedOnly ? '16px' : '2px',
+      onSavedOnly: (e) => this.setState({ savedOnly: e.target.checked, page: 1 }),
+      savedCount: s.saved.length ? '(' + s.saved.length + ')' : '',
+      chips: [['Keyword', s.sq, { q: '', sq: '' }], ['Country', s.country, { country: '' }], ['Sector', s.sector, { sector: '' }], ['Duration', s.duration, { duration: '' }], ['Rotation', s.rotation, { rotation: '' }], ['', s.savedOnly ? 'Saved jobs' : '', { savedOnly: false }]]
+        .filter(c => c[1]).map(([k, v, up]) => ({ k, v, aria: 'Remove filter ' + v, remove: () => this.setState({ ...up, page: 1 }) })),
+      hasChips: !!(s.sq || s.country || s.sector || s.duration || s.rotation || s.savedOnly),
+      showFeatured: page === 1 && !searching,
+      featured: this.JOBS.filter(j => j.feat).map(j => this.view(j)),
+      resultLabel: list.length + (list.length === 1 ? ' result' : ' results') + (label ? ' for “' + label + '”' : ''),
+      empty: !list.length,
+      results: list.slice((page - 1) * per, page * per).map(j => this.view(j)),
+      multiPage: pages > 1,
+      pages: Array.from({ length: pages }, (_, i) => ({ n: i + 1, current: i + 1 === page ? 'page' : 'false',
+        bg: i + 1 === page ? '#0B121A' : '#FFFFFF', color: i + 1 === page ? '#FFFFFF' : '#0B121A', border: i + 1 === page ? '#0B121A' : '#D9E0E6',
+        go: () => { this.setState({ page: i + 1 }); window.scrollTo({ top: 0, behavior: 'smooth' }); } })),
+    };
+  }
+}
+</script>
+</body>
+</html>
